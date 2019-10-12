@@ -30,7 +30,7 @@ public class Usuario implements Serializable{
     @Id
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SEQ_USUARIOID"  )// ver como funciona los trigger.
     @Column(name="ID_USUARIO")
-    private Long id;
+    private long id;
     @Column(name="PASS", length=30, nullable=true)
     private String pass;
     @Column(name="USUARIO", length=80, nullable=true)
@@ -59,7 +59,7 @@ public class Usuario implements Serializable{
          
     
 
-	public Usuario(Long id, String pass, String usuario, String nombre, String apellido, String estado, String tipodoc,
+	public Usuario(long id, String pass, String usuario, String nombre, String apellido, String estado, String tipodoc,
 			String numerodoc, String direccion, String mail) {
 		super();
 		this.id = id;
@@ -82,10 +82,10 @@ public class Usuario implements Serializable{
 	}
 	
 	
-	public Long getId() {
+	public long getId() {
 		return id;
 	}
-	public void setId(Long id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 	public String getPass() {

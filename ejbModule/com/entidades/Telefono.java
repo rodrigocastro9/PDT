@@ -31,14 +31,14 @@ public class Telefono implements Serializable{
     @Id
     @GeneratedValue( strategy = GenerationType.AUTO )
     @Column(name="ID_TEL")
-    private Long id;
+    private long id;
     @Column(name="NUMERO", length=20, nullable=true)
     private String numero;
    
-	public Long getId() {
+	public long getId() {
 		return id;
 	}
-	public void setId(Long id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 	public String getNumero() {
@@ -50,7 +50,7 @@ public class Telefono implements Serializable{
 	
 	
 	
-	public Telefono(Long id, String numero ) {
+	public Telefono(long id, String numero ) {
 		super();
 		this.id = id;
 		this.numero = numero;

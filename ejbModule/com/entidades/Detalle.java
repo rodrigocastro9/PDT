@@ -21,14 +21,14 @@ public class Detalle implements Serializable {
 	    @Id
 	    @GeneratedValue( strategy = GenerationType.AUTO )
 	    @Column(name="ID_CARACT")
-	    private Long id_caract;
+	    private long id_caract;
 	    
 	    
 	   /* Nose como es esto hay que verificar  
 	    @Id
 	    @GeneratedValue( strategy = GenerationType.AUTO )
 	    @Column(name="ID_OBSERVACION")
-	    private Long id_obs;
+	    private long id_obs;
 	    */
 	    
 	    @Column(name="FECHORA", nullable=true)
@@ -44,7 +44,7 @@ public class Detalle implements Serializable {
 			return id_caract;
 		}
 
-		public void setId_caract(Long id_caract) {
+		public void setId_caract(long id_caract) {
 			this.id_caract = id_caract;
 		}
 
@@ -73,7 +73,7 @@ public class Detalle implements Serializable {
 		}
 
 		
-		public Detalle(Long id_caract, Date fecha, int valorNum, String valorText) {
+		public Detalle(long id_caract, Date fecha, int valorNum, String valorText) {
 			super();
 			this.id_caract = id_caract;
 			this.fecha = fecha;

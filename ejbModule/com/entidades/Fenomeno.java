@@ -5,8 +5,6 @@ package com.entidades;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import javax.ejb.LocalBean;
-import javax.ejb.Stateless;
 import javax.persistence.CollectionTable;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
@@ -17,10 +15,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
-
-@Stateless
-@LocalBean
 
 
 @Entity
@@ -35,7 +29,7 @@ public class Fenomeno implements Serializable{
     @Id
     @GeneratedValue( strategy = GenerationType.AUTO )
     @Column(name="CODIGO_FEN")
-    private Long codigo;
+    private long codigo;
     @Column(name="NOMBRE_FEN", length=40, nullable=true)
     private String nombreFen;
     @Column(name="DESCRIPCION", length=100, nullable=true)
@@ -47,12 +41,12 @@ public class Fenomeno implements Serializable{
     private ArrayList<Telefono> telefonos;
 
     
-	public Long getCodigo() {
+	public long getCodigo() {
 		return codigo;
 	}
 
 	
-	public void setCodigo(Long codigo) {
+	public void setCodigo(long codigo) {
 		this.codigo = codigo;
 	}
 
@@ -80,7 +74,7 @@ public class Fenomeno implements Serializable{
 		this.telefonos = telefonos;
 	}
 
-	public Fenomeno(Long codigo, String nombreFen, String descripcion, ArrayList<Telefono> telefonos) {
+	public Fenomeno(long codigo, String nombreFen, String descripcion, ArrayList<Telefono> telefonos) {
 		super();
 		this.codigo = codigo;
 		this.nombreFen = nombreFen;

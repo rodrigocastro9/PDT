@@ -30,7 +30,7 @@ public class Caracteristica implements Serializable{
 		    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SEQ_CARACTERISTICASID"  )// ver como funciona los trigger.
 		   
 			@Column(name="ID_CARACT")
-		    private Long id;
+		    private long id;
 			
 		    @Column(name="NOMBRE", length=50, nullable=true)
 		    private String nombre;
@@ -43,10 +43,10 @@ public class Caracteristica implements Serializable{
 		    private Fenomeno fenomeno;
 		    
 		    
-		    public Long getId() {
+		    public long getId() {
 				return id;
 			}
-			public void setId(Long id) {
+			public void setId(long id) {
 				this.id = id;
 			}
 			public String getNombre() {
@@ -76,7 +76,7 @@ public class Caracteristica implements Serializable{
 			}
 			
 			
-			public Caracteristica(Long id, Fenomeno fenomeno, String nombre, String etiqueta, String tipoDato) {
+			public Caracteristica(long id, Fenomeno fenomeno, String nombre, String etiqueta, String tipoDato) {
 				super();
 				this.id = id;
 				this.fenomeno = fenomeno;
