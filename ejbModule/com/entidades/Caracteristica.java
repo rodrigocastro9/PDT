@@ -41,8 +41,6 @@ public class Caracteristica implements Serializable{
 		    @Column(name="ID_CARACT")
 		    private Long id;
 			
-		
-			
 		    @Column(name="NOMBRE", length=50, nullable=true)
 		    private String nombre;
 		    @Column(name="ETIQUETA", length=50, nullable=true)
@@ -50,19 +48,15 @@ public class Caracteristica implements Serializable{
 		    @Column(name="TIPODATO", length=50, nullable=true)
 		    private String tipoDato;
 			
-		   
+		    @ManyToOne (optional=false)
+		    private Fenomeno fenomeno;
+		    
 		    
 		    public Long getId() {
 				return id;
 			}
 			public void setId(Long id) {
 				this.id = id;
-			}
-			public List<Fenomeno> getFenomenos() {
-				return fenomenos;
-			}
-			public void setFenomenos(List<Fenomeno> fenomenos) {
-				this.fenomenos = fenomenos;
 			}
 			public String getNombre() {
 				return nombre;
@@ -83,15 +77,20 @@ public class Caracteristica implements Serializable{
 				this.tipoDato = tipoDato;
 			}
 			
+			public Fenomeno getFenomenos() {
+				return fenomeno;
+			}
+			public void setFenomenos(Fenomeno fenomenos) {
+				this.fenomeno = fenomenos;
+			}
 			
 			
-			public Caracteristica(Long id, List<Fenomeno> fenomenos, String nombre, String etiqueta, String tipoDato) {
+			public Caracteristica(Long id, Fenomeno fenomeno, String nombre, String etiqueta, String tipoDato) {
 				super();
 				this.id = id;
-				this.fenomenos = fenomenos;
+				this.fenomeno = fenomeno;
 				this.nombre = nombre;
 				this.etiqueta = etiqueta;
 				this.tipoDato = tipoDato;
 			}
-			    
 }
