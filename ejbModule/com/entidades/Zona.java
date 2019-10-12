@@ -1,41 +1,38 @@
 package com.entidades;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
-/**
- * Session Bean implementation class ZONA
- */
+
+
 @Entity
 @Table(name = "ZONA")
 public class Zona implements Serializable {
-	@Id
-	@Column(name="id_zona", length=(50))
-	private long id_zona;
-	
-	@Column(name="nombre_zona",length=(40),nullable=false)
-	private String nombre_zona;
 	
 	public Zona() {
 
 	}
-	public Zona(long id_zona, String nombre_zona){
-			this.id_zona = id_zona;
-			this.nombre_zona = nombre_zona;
+	
+    private static final long serialVersionUID = 1L;
+	
+	@Id
+    @GeneratedValue( strategy = GenerationType.AUTO )
+	@Column(name="ID_ZONA")
+	private long id;
+	@Column(name="NOMBRE_ZONA",length=(40),nullable=false)
+	private String nombre_zona;
+	
+	
+	
+	public long getId() {
+		return id;
 	}
-	public long getId_zona() {
-		return id_zona;
-	}
-	public void setId_zona(long id_zona) {
-		this.id_zona = id_zona;
+	public void setId(long id) {
+		this.id = id;
 	}
 	public String getNombre_zona() {
 		return nombre_zona;
@@ -43,5 +40,12 @@ public class Zona implements Serializable {
 	public void setNombre_zona(String nombre_zona) {
 		this.nombre_zona = nombre_zona;
 	}
+	
+	public Zona(long id, String nombre_zona){
+		this.id = id;
+		this.nombre_zona = nombre_zona;
+}
+
+	
 
 }

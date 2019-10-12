@@ -1,59 +1,63 @@
 package com.entidades;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-/**
- * Session Bean implementation class Departamento
- */
+
 @Entity
 @Table(name = "DEPARTAMENTO")
 public class Departamento implements Serializable {
 	
+	
+    private static final long serialVersionUID = 1L;
+	
+	
 	@Id
-	@Column(name="id_localidad")
-	private long id_localidad;
+	@GeneratedValue( strategy = GenerationType.AUTO )
+	@Column(name="ID_DEPARTAMENTO")
+	private long id;
 	
-	@Column(name="nombre_dep")
-	private String nombre_dep;
+	@Column(name="NOMBRE_DEP", length=(40), nullable=false)
+	private String nombreDep;
+	@ManyToOne (optional=false)
+	private Zona zona; 
 	
-	@OneToMany 
-	private List<Zona> zona = new ArrayList<>(); //Crear una nueva clase llamada Zona con los atributos de zona....
 	
 	public Departamento() {
 
 	}
-	public Departamento(long id_localidad, String nombre_dep,List<Zona>zona){
-			this.id_localidad = id_localidad;
-			this.nombre_dep = nombre_dep;
-			this.zona = zona;	
-    }
+	
 	public long getId_localidad() {
-		return id_localidad;
+		return id;
 	}
-	public void setId_localidad(long id_localidad) {
-		this.id_localidad = id_localidad;
+	public void setId(long id) {
+		this.id = id;
 	}
-	public String getNombre_dep() {
-		return nombre_dep;
+	public String getNombreDep() {
+		return nombreDep;
 	}
-	public void setNombre_dep(String nombre_dep) {
-		this.nombre_dep = nombre_dep;
+	public void setNombreDep(String nombreDep) {
+		this.nombreDep = nombreDep;
 	}
-	public List<Zona> getzona() {
+	
+
+	public Zona getZona() {
 		return zona;
 	}
-	public void setzona(List<Zona> zona) {
-		this.zona= zona;
+
+	public void setZona(Zona zona) {
+		this.zona = zona;
 	}
 
+	public Departamento(long id, String nombreDep,Zona zona){
+		this.id= id;
+		this.nombreDep = nombreDep;
+		this.zona = zona;	
+}
 
 }
