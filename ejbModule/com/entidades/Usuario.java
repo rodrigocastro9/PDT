@@ -56,10 +56,7 @@ public class Usuario implements Serializable{
     private TipoUsuario tipousuario;
     
         
-    
-    
-    
-    
+         
     
 
 	public Usuario(Long id, String pass, String usuario, String nombre, String apellido, String estado, String tipodoc,
