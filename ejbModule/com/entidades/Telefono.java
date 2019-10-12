@@ -35,8 +35,7 @@ public class Telefono implements Serializable{
     private Long id;
     @Column(name="NUMERO", length=20, nullable=true)
     private String numero;
-    @ManyToOne(optional=false)
-    private Fenomeno fenomeno;
+   
 	public Long getId() {
 		return id;
 	}
@@ -49,20 +48,14 @@ public class Telefono implements Serializable{
 	public void setNumero(String numero) {
 		this.numero = numero;
 	}
-	public Fenomeno getFenomeno() {
-		return fenomeno;
-	}
-	public void setFenomeno(Fenomeno fenomeno) {
-		this.fenomeno = fenomeno;
-	}
 	
 	
 	
-	public Telefono(Long id, String numero, Fenomeno fenomeno) {
+	public Telefono(Long id, String numero ) {
 		super();
 		this.id = id;
 		this.numero = numero;
-		this.fenomeno = fenomeno;
+	
 	}
 
 }

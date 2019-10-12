@@ -1,3 +1,8 @@
+
+
+
+
+
 package com.entidades;
 
 import java.io.Serializable;
@@ -36,8 +41,7 @@ public class Caracteristica implements Serializable{
 		    @Column(name="ID_CARACT")
 		    private Long id;
 			
-			@ManyToMany //¿Se deberia usar esto?(mappedBy="fenomenos")
-			private List<Fenomeno> fenomenos;
+		
 			
 		    @Column(name="NOMBRE", length=50, nullable=true)
 		    private String nombre;

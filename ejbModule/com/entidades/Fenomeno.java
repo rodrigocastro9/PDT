@@ -49,11 +49,34 @@ public class Fenomeno implements Serializable{
     @CollectionTable(name = "TELEFONOS")
     private ArrayList<Telefono> telefonos;
 
+    @OneToMany
+    @ElementCollection(fetch = FetchType.LAZY)
+    @CollectionTable(name = "OBSERVACIONES")
+    private List<Observacion> observaciones = new ArrayList<>(); 
     
-    
+    @OneToMany
+    @ElementCollection(fetch = FetchType.LAZY)
+    @CollectionTable(name = "CARACTERISTICAS")
+    private List<Caracteristica> caracteristicas = new ArrayList<>(); 
     
 	public Long getCodigo() {
 		return codigo;
+	}
+
+	public List<Observacion> getObservaciones() {
+		return observaciones;
+	}
+
+	public void setObservaciones(List<Observacion> observaciones) {
+		this.observaciones = observaciones;
+	}
+
+	public List<Caracteristica> getCaracteristicas() {
+		return caracteristicas;
+	}
+
+	public void setCaracteristicas(List<Caracteristica> caracteristicas) {
+		this.caracteristicas = caracteristicas;
 	}
 
 	public void setCodigo(Long codigo) {
