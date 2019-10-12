@@ -26,7 +26,7 @@ public class Departamento implements Serializable {
 	private String nombre_dep;
 	
 	@OneToMany 
-	private private List<Zona> zona = new ArrayList<>(); //Crear una nueva clase llamada Zona con los atributos de zona....
+	private List<Zona> zona = new ArrayList<>(); //Crear una nueva clase llamada Zona con los atributos de zona....
 	
 	public Departamento() {
 
