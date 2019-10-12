@@ -6,13 +6,7 @@
 package com.entidades;
 
 import java.io.Serializable;
-import javax.ejb.LocalBean;
-import javax.ejb.Stateless;
 import javax.persistence.*;
-
-
-@Stateless
-@LocalBean
 
 @Entity
 @Table(name = "CARACTERISTICAS")
@@ -28,7 +22,6 @@ public class Caracteristica implements Serializable{
     
 			@Id
 		    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SEQ_CARACTERISTICASID"  )// ver como funciona los trigger.
-		   
 			@Column(name="ID_CARACT")
 		    private long id;
 			
@@ -38,17 +31,17 @@ public class Caracteristica implements Serializable{
 		    private String etiqueta;
 		    @Column(name="TIPODATO", length=50, nullable=true)
 		    private String tipoDato;
-			
+		    
 		    @ManyToOne (optional=false)
 		    private Fenomeno fenomeno;
 		    
-		    
-		    public long getId() {
+			public long getId() {
 				return id;
 			}
 			public void setId(long id) {
 				this.id = id;
 			}
+			
 			public String getNombre() {
 				return nombre;
 			}
