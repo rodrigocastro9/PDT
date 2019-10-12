@@ -38,7 +38,8 @@ public class Caracteristica implements Serializable{
     
 			@Id
 		    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SEQ_CARACTERISTICASID"  )// ver como funciona los trigger.
-		    @Column(name="ID_CARACT")
+		   
+			@Column(name="ID_CARACT")
 		    private Long id;
 			
 		    @Column(name="NOMBRE", length=50, nullable=true)
