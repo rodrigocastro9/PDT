@@ -18,12 +18,12 @@ public class Usuariodao {
 		@PersistenceContext
 		private EntityManager em;
 		
-	public void AgregarUsuario(Usuario usuario,Long id_tipo) throws Exception 
+	public void AgregarUsuario(Usuario usuario,Long id) throws Exception 
 		{
 		try {
 			Usuario usuarionuevo = new Usuario();
 			//Acapodriatraer nombre usuario
-			usuarionuevo.setTipousuario(em.find(TipoUsuario.class,id_tipo));
+			usuarionuevo.setTipousuario(em.find(TipoUsuario.class,id));
 			em.persist(usuarionuevo);
 			em.flush();
 				

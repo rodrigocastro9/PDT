@@ -19,16 +19,23 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "USUARIO")
 public class Usuario implements Serializable{
-
-	
-	@SequenceGenerator(name="SEQ_USUARIOID", initialValue=1, allocationSize=100)
+    /*
+     * @Id
+     @GeneratedValue(strategy=GenerationType.AUTO, generator="a1")
+     @SequenceGenerator(name="a1", sequenceName="usersequence")
+     private Long id;
+     */
 	private static final long serialVersionUID = 1L;
+	
+	
     public Usuario() {
         // TODO Auto-generated constructor stub
     }
 
     @Id
-    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SEQ_USUARIOID"  )// ver como funciona los trigger.
+    @SequenceGenerator(name="secuenciausuario",sequenceName="SEQ_USUARIOID", initialValue=1, allocationSize=100)
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="secuenciausuario"  )
+    
     @Column(name="ID_USUARIO")
     private long id;
     @Column(name="PASS", length=30, nullable=true)
@@ -55,10 +62,6 @@ public class Usuario implements Serializable{
     @ManyToOne (optional=false)
     private TipoUsuario tipousuario;
     
-        
-         
-    
-
 	public Usuario(long id, String pass, String usuario, String nombre, String apellido, String estado, String tipodoc,
 			String numerodoc, String direccion, String mail) {
 		super();

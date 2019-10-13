@@ -1,31 +1,38 @@
-
-
-
-
-
 package com.entidades;
 
 import java.io.Serializable;
-import javax.persistence.*;
+
+import javax.ejb.Stateless;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "CARACTERISTICAS")
 public class Caracteristica implements Serializable{
 	
-	@SequenceGenerator(name="SEQ_CARACTERISTICASID", initialValue=1, allocationSize=100)
-    private static final long serialVersionUID = 1L;
-
+	private static final long serialVersionUID = 1L;
 	
 	public Caracteristica() {
         // TODO Auto-generated constructor stub
-    }	
-    
+    }
 			@Id
-		    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SEQ_CARACTERISTICASID"  )// ver como funciona los trigger.
+			@SequenceGenerator(name="secuenciacaracteristica",sequenceName="SEQ_CARACTERISTICAID", initialValue=1, allocationSize=100)
+		    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="secuenciacaracteristica")// ver como funciona los trigger.
 			@Column(name="ID_CARACT")
 		    private long id;
 			
-		    @Column(name="NOMBRE", length=50, nullable=true)
+		    public static long getSerialversionuid() {
+				return serialVersionUID;
+			}
+
+			@Column(name="NOMBRE", length=50, nullable=true)
 		    private String nombre;
 		    @Column(name="ETIQUETA", length=50, nullable=true)
 		    private String etiqueta;
@@ -39,7 +46,7 @@ public class Caracteristica implements Serializable{
 				return id;
 			}
 			public void setId(long id) {
-				this.id = id;
+				this.id = id; 
 			}
 			
 			public String getNombre() {
@@ -68,6 +75,12 @@ public class Caracteristica implements Serializable{
 				this.fenomeno = fenomenos;
 			}
 			
+			public Fenomeno getFenomeno() {
+				return fenomeno;
+			}
+			public void setFenomeno(Fenomeno fenomeno) {
+				this.fenomeno = fenomeno;
+			}
 			
 			public Caracteristica(long id, Fenomeno fenomeno, String nombre, String etiqueta, String tipoDato) {
 				super();

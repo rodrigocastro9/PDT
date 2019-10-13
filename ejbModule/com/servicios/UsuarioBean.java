@@ -4,8 +4,8 @@ import javax.ejb.EJB;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import com.entidades.*;
-import com.remote.UsuarioRemote;
-import com.dao.UsuarioDao;
+import com.Remote.UsuarioRemote;
+import com.dao.Usuariodao;
 
 
 @Stateless
@@ -13,7 +13,7 @@ import com.dao.UsuarioDao;
 public class UsuarioBean implements UsuarioRemote {
 
 @EJB 
-private UsuarioDao usuariodao;
+private Usuariodao usuariodao;
 
 public UsuarioBean()
 {}
