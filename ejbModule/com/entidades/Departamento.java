@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
@@ -16,11 +17,11 @@ public class Departamento implements Serializable {
 	
     private static final long serialVersionUID = 1L;
 	
-	
-	@Id
-	@GeneratedValue( strategy = GenerationType.AUTO )
-	@Column(name="ID_DEPARTAMENTO")
-	private long id;
+    @Id
+	@SequenceGenerator(name="secuenciacaradepartamento",sequenceName="SEQ_IDDEPARTAMENTO", initialValue=1, allocationSize=100)
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="secuenciacaradepartamento")// ver como funciona los trigger.
+	@Column(name="ID_DEPARTMENTO")
+    private long id;
 	
 	@Column(name="NOMBRE_DEP", length=(40), nullable=false)
 	private String nombreDep;
