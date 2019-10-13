@@ -7,6 +7,9 @@ import javax.persistence.*;
 
 
 
+
+
+
 @Entity
 @Table(name = "DETALLE")
 public class Detalle implements Serializable {
@@ -18,19 +21,20 @@ public class Detalle implements Serializable {
 		super();
 	}
     
-	    @Id
-	    @GeneratedValue( strategy = GenerationType.AUTO )
-	    @Column(name="ID_CARACT")
-	    private long id_caract;
-	    
-	    
-	   /* Nose como es esto hay que verificar  
-	    @Id
-	    @GeneratedValue( strategy = GenerationType.AUTO )
-	    @Column(name="ID_OBSERVACION")
-	    private long id_obs;
-	    */
-	    
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private Long id;
+	
+	@ManyToOne
+	@JoinColumn(name = "ID_CARACT")
+	private Caracteristica caracteristica;
+	
+	
+	@ManyToOne
+	@JoinColumn(name = "ID_OBSERVACION")
+	private Observacion observacion;
+	
+		
 	    @Column(name="FECHORA", nullable=true)
 	    private Date fecha;
 	    
@@ -40,13 +44,7 @@ public class Detalle implements Serializable {
 	    @Column(name="VALORTEXTO", length=40, nullable=true)
 	    private String valorText;
 
-		public Long getId_caract() {
-			return id_caract;
-		}
-
-		public void setId_caract(long id_caract) {
-			this.id_caract = id_caract;
-		}
+		
 
 		public Date getFecha() {
 			return fecha;
@@ -71,11 +69,35 @@ public class Detalle implements Serializable {
 		public void setValorText(String valorText) {
 			this.valorText = valorText;
 		}
+		
+		public Long getId() {
+			return id;
+		}
+
+		public void setId(Long id) {
+			this.id = id;
+		}
+
+		public Caracteristica getCaracteristica() {
+			return caracteristica;
+		}
+
+		public void setCaracteristica(Caracteristica caracteristica) {
+			this.caracteristica = caracteristica;
+		}
+
+		public Observacion getObservacion() {
+			return observacion;
+		}
+
+		public void setObservacion(Observacion observacion) {
+			this.observacion = observacion;
+		}
 
 		
-		public Detalle(long id_caract, Date fecha, int valorNum, String valorText) {
+		public Detalle(long id, Date fecha, int valorNum, String valorText) {
 			super();
-			this.id_caract = id_caract;
+			this.id = id;
 			this.fecha = fecha;
 			this.valorNum = valorNum;
 			this.valorText = valorText;
