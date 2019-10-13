@@ -11,18 +11,18 @@ import javax.persistence.*;
 @Table(name = "LOCALIDAD")
 public class Localidad implements Serializable {
 
-	
+
 	public Localidad() {
 		super();
 	}
-	
+
 	private static final long serialVersionUID = 1L;
 
-	
 	@Id
-    @GeneratedValue( strategy = GenerationType.AUTO )
+	@SequenceGenerator(name="secuenciafenomeno",sequenceName="SEQ_IDLOCALIDAD", initialValue=1, allocationSize=100)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="secuenciafenomeno")// ver como funciona los trigger.
 	@Column(name="ID_LOCALIDAD")
-	private long id;	
+	private long id;
 	@ManyToOne (optional=false)
 	private Departamento departamento; 
 	@Column(name="NOMBRE_LOC",length=(40),nullable=false)
@@ -33,8 +33,8 @@ public class Localidad implements Serializable {
 	private float longitud;
 	@Column(name="ALTITUD",length=(50),nullable=false)
 	private String altitud;
-	
-	
+
+
 	public long getId() {
 		return id;
 	}
@@ -81,7 +81,7 @@ public class Localidad implements Serializable {
 		this.longitud = longitud;
 		this.altitud = altitud;
 	}
-	
+
 }
-	
+
 

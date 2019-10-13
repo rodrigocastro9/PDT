@@ -23,7 +23,7 @@ import javax.persistence.Table;
 public class Fenomeno implements Serializable{
 
     public Fenomeno() {
-        // TODO Auto-generated constructor stub
+        
     }
     
     private static final long serialVersionUID = 1L;
