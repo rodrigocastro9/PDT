@@ -20,18 +20,13 @@ public class Caracteristica implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	public Caracteristica() {
-        // TODO Auto-generated constructor stub
+        
     }
 			@Id
 			@SequenceGenerator(name="secuenciacaracteristica",sequenceName="SEQ_CARACTERISTICAID", initialValue=1, allocationSize=100)
 		    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="secuenciacaracteristica")// ver como funciona los trigger.
 			@Column(name="ID_CARACT")
 		    private long id;
-			
-		    public static long getSerialversionuid() {
-				return serialVersionUID;
-			}
-
 			@Column(name="NOMBRE", length=50, nullable=true)
 		    private String nombre;
 		    @Column(name="ETIQUETA", length=50, nullable=true)
