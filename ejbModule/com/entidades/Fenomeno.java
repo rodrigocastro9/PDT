@@ -14,6 +14,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 
@@ -26,9 +27,11 @@ public class Fenomeno implements Serializable{
     }
     
     private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue( strategy = GenerationType.AUTO )
-    @Column(name="CODIGO_FEN")
+ 
+      @Id
+	@SequenceGenerator(name="secuenciafenomeno",sequenceName="SEQ_CODIGOFENOMENO", initialValue=1, allocationSize=100)
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="secuenciafenomeno")// ver como funciona los trigger.
+	@Column(name="CODIGO_FENOMENO")
     private long codigo;
     @Column(name="NOMBRE_FEN", length=40, nullable=true)
     private String nombreFen;
