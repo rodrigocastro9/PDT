@@ -39,7 +39,7 @@ public class Fenomeno implements Serializable{
     private String descripcion;  
 
     @OneToMany
-    @ElementCollection(fetch = FetchType.LAZY)
+    //@ElementCollection(fetch = FetchType.LAZY)
     @CollectionTable(name = "TELEFONOS")
     private ArrayList<Telefono> telefonos;
 
