@@ -28,7 +28,7 @@ public class Fenomeno implements Serializable{
     
     private static final long serialVersionUID = 1L;
  
-     @Id
+    @Id
 	@SequenceGenerator(name="secuenciafenomeno",sequenceName="SEQ_CODIGOFENOMENO", initialValue=1, allocationSize=100)
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="secuenciafenomeno")// ver como funciona los trigger.
 	@Column(name="CODIGO_FENOMENO")
@@ -38,7 +38,7 @@ public class Fenomeno implements Serializable{
     @Column(name="DESCRIPCION", length=100, nullable=true)
     private String descripcion;  
 
-    @OneToMany
+    @OneToMany    // Si comentamos toda esta relacion el PDT.jar hace el deploy y funciona. si no.
     //@ElementCollection(fetch = FetchType.LAZY)
     @CollectionTable(name = "TELEFONOS")
     private ArrayList<Telefono> telefonos;

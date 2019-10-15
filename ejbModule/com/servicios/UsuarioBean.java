@@ -27,15 +27,10 @@ public boolean CrearUsuario(Long id,String pass, String usuario, String nombre, 
 		this.usuariodao.AgregarUsuario(usuarionuevo, 1l);
 		pudeCrear = true;
 	} catch (Exception e) {
-		// ca va el cofigo se falla el insert
+		 System.out.println(e.getMessage());
 		pudeCrear = false;
 	}
 
-	
-	
-	
-	
-	
 	return pudeCrear;
 	
 }

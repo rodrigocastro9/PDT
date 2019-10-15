@@ -33,6 +33,16 @@ public class Usuariodao {
 		}
 		}
 	
+	public void Modificarusuario(Usuario usuario)
+	{
+		try {
+			em.merge(usuario);
+			em.flush();
+		}catch(PersistenceException e)
+		{
+			System.out.println ("Error al querer modificar el usuario.");
+		}
+	}
 	
 }
 
