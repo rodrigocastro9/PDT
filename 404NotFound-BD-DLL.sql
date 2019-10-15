@@ -64,15 +64,23 @@ CREATE SEQUENCE "PDT"."SEQ_IDDEPARTAMENTO"  MINVALUE 1 MAXVALUE 9999999999999999
 --------------------------------------------------------
 -- TABLA REVISA RELACION DE EXPERTO CON OBSERVACION.
 --------------------------------------------------------
-/*
+
 CREATE TABLE "PDT.REVISA"
 (
-	"ID_REVISA" NUMBER(10),
+	"ID_USUARIO" NUMBER(10),
+	"ID_OBSERVACION" NUMBER(10),
 	"FIABILIDAD" VARCHAR(50),
 	"FECHAYHORA" DATE,
-	"COMENTARIOS" VARCHAR(50),
+	"COMENTARIOS" VARCHAR(100)
+	
 )
-*/
+
+ALTER TABLE PDT.REVISA ADD CONSTRAINT PRIMARY KEY (ID_OBSERVACION,ID_USUARIO,FECHAYHORA);
+
+
+ALTER TABLE "PDT"."REVISA" ADD CONSTRAINT "FK_EX_REVISA_OBS" FOREIGN KEY ("ID")
+  REFERENCES "PDT"."TIPOSUSUARIOS" ("ID_TIPO") ENABLE;
+
 --------------------------------------------------------
 --  DDL for Table CARACTERISTICAS
 --------------------------------------------------------
@@ -606,6 +614,18 @@ SET DEFINE OFF;
   ALTER TABLE "PDT"."DETALLE" ADD CONSTRAINT "FK_OBSERVACION_DETALLE" FOREIGN KEY ("ID_OBSERVACION")
 	  REFERENCES "PDT"."OBSERVACIONES" ("ID_OBSERVACION") ENABLE;
 --------------------------------------------------------
+--  Ref Constraints for Table R
+--------------------------------------------------------
+ALTER TABLE "PDT"."REVISA" ADD CONSTRAINT "FK_EX_REV_" FOREIGN KEY ("ID_USUARIO")
+	  REFERENCES "PDT"."USUARIO" ("ID_USUARIO") ENABLE;
+ 
+  ALTER TABLE "PDT"."REVISA" ADD CONSTRAINT "FK_REV_OBS" FOREIGN KEY ("ID_OBSERVACION")
+	  REFERENCES "PDT"."OBSERVACIONES" ("ID_OBSERVACION") ENABLE;
+
+
+
+--------------------------------------------------------
+
 --  Ref Constraints for Table LOCALIDAD
 --------------------------------------------------------
 
@@ -626,6 +646,8 @@ SET DEFINE OFF;
  
   ALTER TABLE "PDT"."OBSERVACIONES" ADD CONSTRAINT "FK_USU_OBSERVACION" FOREIGN KEY ("ID_USUARIO")
 	  REFERENCES "PDT"."USUARIO" ("ID_USUARIO") ENABLE;
+	  
+
 --------------------------------------------------------
 --  Ref Constraints for Table TELEFONO
 --------------------------------------------------------
