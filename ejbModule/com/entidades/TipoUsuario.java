@@ -8,7 +8,7 @@ import javax.persistence.*;
  *
  */
 @Entity
-
+@Table(name = "TIPOSUSUARIOS")
 public class TipoUsuario implements Serializable {
 
 	

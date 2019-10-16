@@ -19,7 +19,7 @@ public class Departamento implements Serializable {
 	
     @Id
 	@SequenceGenerator(name="secuenciacaradepartamento",sequenceName="SEQ_IDDEPARTAMENTO", initialValue=1, allocationSize=100)
-    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="secuenciacaradepartamento")// ver como funciona los trigger.
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="secuenciacaradepartamento")
 	@Column(name="ID_DEPARTMENTO")
     private long id;
 	

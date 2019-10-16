@@ -5,8 +5,6 @@ package com.entidades;
 
 import java.io.Serializable;
 
-import javax.ejb.LocalBean;
-import javax.ejb.Stateless;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,9 +12,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-
-@Stateless
-@LocalBean
 
 @Entity
 @Table(name = "TELEFONO")

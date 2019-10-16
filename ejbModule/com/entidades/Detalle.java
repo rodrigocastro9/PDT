@@ -7,9 +7,6 @@ import javax.persistence.*;
 
 
 
-
-
-
 @Entity
 @Table(name = "DETALLE")
 public class Detalle implements Serializable {

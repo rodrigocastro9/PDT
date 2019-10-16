@@ -3,10 +3,6 @@ package com.entidades;
 import java.io.Serializable;
 import javax.persistence.*;
 
-/**
- * Entity implementation class for Entity: Estado
- *
- */
 
 @Entity
 @Table(name = "ESTDO_OBSERV")

@@ -3,12 +3,9 @@ package com.entidades;
 import java.io.Serializable;
 import javax.persistence.*;
 
-/**
- * Entity implementation class for Entity: ExRevisaObs
- *
- */
-@Entity
 
+@Entity
+@Table(name = "REVISA")
 public class ExRevisaObs implements Serializable {
 
 	
