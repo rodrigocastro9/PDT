@@ -1,8 +1,5 @@
 package com.dao;
 
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -22,7 +19,6 @@ public class Usuariodao {
 		{
 		try {
 			Usuario usuarionuevo = new Usuario();
-			//Acapodriatraer nombre usuario
 			usuarionuevo.setTipousuario(em.find(TipoUsuario.class,id));
 			em.persist(usuarionuevo);
 			em.flush();

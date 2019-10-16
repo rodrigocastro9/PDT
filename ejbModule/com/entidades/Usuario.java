@@ -3,7 +3,6 @@ package com.entidades;
 
 import java.io.Serializable;
 
-import javax.ejb.Stateless;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -63,7 +62,7 @@ public class Usuario implements Serializable{
     private TipoUsuario tipousuario;
     
 	public Usuario(long id, String pass, String usuario, String nombre, String apellido, String estado, String tipodoc,
-			String numerodoc, String direccion, String mail) {
+			String numerodoc, String direccion, String mail, TipoUsuario tipousuario) {
 		super();
 		this.id = id;
 		this.pass = pass;
@@ -75,6 +74,7 @@ public class Usuario implements Serializable{
 		this.numerodoc = numerodoc;
 		this.direccion = direccion;
 		this.mail = mail;
+		this.tipousuario = tipousuario;
 	}
     
 	public TipoUsuario getTipousuario() {
@@ -83,7 +83,6 @@ public class Usuario implements Serializable{
 	public void setTipousuario(TipoUsuario tipousuario) {
 		this.tipousuario = tipousuario;
 	}
-	
 	
 	public long getId() {
 		return id;
@@ -145,23 +144,5 @@ public class Usuario implements Serializable{
 	public void setMail(String mail) {
 		this.mail = mail;
 	}
-	@Override
-	public String toString() {
-		return "Usuario [id=" + id + ", pass=" + pass + ", usuario=" + usuario + ", nombre=" + nombre + ", apellido="
-				+ apellido + ", estado=" + estado + ", tipodoc=" + tipodoc + ", numerodoc=" + numerodoc + ", direccion="
-				+ direccion + ", mail=" + mail + "]";
-	}
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+	    
 }
