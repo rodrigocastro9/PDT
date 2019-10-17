@@ -34,10 +34,10 @@ public class Fenomeno implements Serializable{
     @Column(name="DESCRIPCION", length=100, nullable=true)
     private String descripcion;  
 
-    @OneToMany    // Si comentamos toda esta relacion el PDT.jar hace el deploy y funciona. si no.
+   /* @OneToMany    // Si comentamos toda esta relacion el PDT.jar hace el deploy y funciona. si no.
     //@ElementCollection(fetch = FetchType.LAZY)
     @CollectionTable(name = "TELEFONOS")
-    private ArrayList<Telefono> telefonos;
+    private ArrayList<Telefono> telefonos;*/
 
     
 	public long getCodigo() {
@@ -65,20 +65,20 @@ public class Fenomeno implements Serializable{
 		this.descripcion = descripcion;
 	}
 
-	public ArrayList<Telefono> getTelefonos() {
+	/*public ArrayList<Telefono> getTelefonos() {
 		return telefonos;
 	}
 
 	public void setTelefonos(ArrayList<Telefono> telefonos) {
 		this.telefonos = telefonos;
-	}
+	}*/
 
-	public Fenomeno(long codigo, String nombreFen, String descripcion, ArrayList<Telefono> telefonos) {
+	public Fenomeno(long codigo, String nombreFen, String descripcion) {
 		super();
 		this.codigo = codigo;
 		this.nombreFen = nombreFen;
 		this.descripcion = descripcion;
-		this.telefonos = telefonos;
+		
 	}
       
 }

@@ -1,12 +1,11 @@
 package com.dao;
 
-<<<<<<< Updated upstream
-=======
+
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.List;
 
->>>>>>> Stashed changes
+
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
