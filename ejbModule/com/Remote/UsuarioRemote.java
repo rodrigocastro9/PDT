@@ -17,6 +17,6 @@ public interface UsuarioRemote {
 
 	
     List<Usuario> ObtenerUsuarioYPass (String usuario, String pass);
-    List<Usuario> ObtenerTipoUsu (String usuario, String pass);
+    List<TipoUsuario> ObtenerTipoUsu ();
 
 }

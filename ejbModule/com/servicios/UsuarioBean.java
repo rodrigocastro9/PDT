@@ -42,9 +42,9 @@ public boolean CrearUsuario(Long id,String pass, String usuario, String nombre, 
 		return usuariodao.ObtenerUsuarioYPass(usuario, pass);
 	}
 	
-   public  List<Usuario> ObtenerTipoUsu (String usuario, String pass)
+   public  List<TipoUsuario> ObtenerTipoUsu ()
     {
-    	return usuariodao.ObtenerTipoUsu(usuario, pass);
+    	return usuariodao.ObtenerTipoUsu();
     }
 
 

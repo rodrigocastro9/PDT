@@ -59,10 +59,8 @@ public class Usuariodao {
 	    
 	    
 	    
-	    public List<Usuario> ObtenerTipoUsu (String usuario, String pass){
-	    	TypedQuery<Usuario> query = em.createQuery("SELECT u FROM USUARIO u WHERE u.USUARIO LIKE :nombre AND u.PASS LIKE :pass AND u.ID_TIPO =1",Usuario.class)
-					.setParameter("nombre", usuario)
-					.setParameter("pass",pass);
+	    public List<TipoUsuario> ObtenerTipoUsu (){
+	    	TypedQuery<TipoUsuario> query = em.createQuery("SELECT u FROM TIPOSUSUARIOS", TipoUsuario.class);
 			return query.getResultList();
 
 	    }
