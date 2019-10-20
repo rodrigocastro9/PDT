@@ -20,8 +20,9 @@ public class Caracteristica implements Serializable{
 	public Caracteristica() {
         
     }
+	
 			@Id
-			@SequenceGenerator(name="secuenciacaracteristica",sequenceName="SEQ_CARACTERISTICAID", initialValue=1, allocationSize=100)
+			@SequenceGenerator(name="secuenciacaracteristica",sequenceName="SEQ_CARACTERISTICASID", initialValue=1, allocationSize=100)
 		    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="secuenciacaracteristica")
 			@Column(name="ID_CARACT")
 		    private long id;
