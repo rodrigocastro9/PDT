@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -22,10 +23,10 @@ public class Departamento implements Serializable {
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="secuenciacaradepartamento")
 	@Column(name="ID_DEPARTMENTO")
     private long id;
-	
 	@Column(name="NOMBRE_DEP", length=(40), nullable=false)
 	private String nombreDep;
 	@ManyToOne (optional=false)
+	@JoinColumn (name="ID_ZONA")
 	private Zona zona; 
 	
 	
