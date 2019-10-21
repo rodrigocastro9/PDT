@@ -2,14 +2,11 @@
 package com.entidades;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import javax.persistence.CollectionTable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -26,19 +23,13 @@ public class Fenomeno implements Serializable{
  
     @Id
 	@SequenceGenerator(name="secuenciafenomeno",sequenceName="SEQ_CODIGOFENOMENO", initialValue=1, allocationSize=100)
-    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="secuenciafenomeno")// ver como funciona los trigger.
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="secuenciafenomeno")
 	@Column(name="CODIGO_FENOMENO")
     private long codigo;
     @Column(name="NOMBRE_FEN", length=40, nullable=true)
     private String nombreFen;
     @Column(name="DESCRIPCION", length=100, nullable=true)
     private String descripcion;  
-
-   /* @OneToMany    // Si comentamos toda esta relacion el PDT.jar hace el deploy y funciona. si no.
-    //@ElementCollection(fetch = FetchType.LAZY)
-    @CollectionTable(name = "TELEFONOS")
-    private ArrayList<Telefono> telefonos;*/
-
     
 	public long getCodigo() {
 		return codigo;
@@ -65,20 +56,11 @@ public class Fenomeno implements Serializable{
 		this.descripcion = descripcion;
 	}
 
-	/*public ArrayList<Telefono> getTelefonos() {
-		return telefonos;
-	}
-
-	public void setTelefonos(ArrayList<Telefono> telefonos) {
-		this.telefonos = telefonos;
-	}*/
-
 	public Fenomeno(long codigo, String nombreFen, String descripcion) {
 		super();
 		this.codigo = codigo;
 		this.nombreFen = nombreFen;
-		this.descripcion = descripcion;
-		
+		this.descripcion = descripcion;	
 	}
       
 }

@@ -24,6 +24,7 @@ public class Localidad implements Serializable {
 	@Column(name="ID_LOCALIDAD")
 	private long id;
 	@ManyToOne (optional=false)
+    @JoinColumn (name="ID_DEPARTAMENTO")
 	private Departamento departamento; 
 	@Column(name="NOMBRE_LOC",length=(40),nullable=false)
 	private String nombreLoc;

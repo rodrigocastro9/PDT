@@ -22,7 +22,7 @@ public class Zona implements Serializable {
 	
     @Id
 	@SequenceGenerator(name="secuenciazona",sequenceName="SEQ_IDZONA", initialValue=1, allocationSize=100)
-    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="secuenciazona")// ver como funciona los trigger.
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="secuenciazona")
 	@Column(name="ID_ZONA")
     private long id;
 	

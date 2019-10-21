@@ -3,10 +3,7 @@ package com.entidades;
 import java.io.Serializable;
 import javax.persistence.*;
 
-/**
- * Entity implementation class for Entity: TipoUsuario
- *
- */
+
 @Entity
 @Table(name = "TIPOSUSUARIOS")
 public class TipoUsuario implements Serializable {

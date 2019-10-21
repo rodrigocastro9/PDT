@@ -6,10 +6,6 @@ import java.util.Date;
 
 import javax.persistence.*;
 
-/**
- * Entity implementation class for Entity: Observacion
- *
- */
 @Entity
 @Table(name = "OBSERVACIONES")
 public class Observacion implements Serializable {
@@ -26,11 +22,14 @@ public class Observacion implements Serializable {
     @Column(name="ID_OBSERVACION")
     private long id;
     @ManyToOne (optional=false)
+    @JoinColumn (name="ID_USUARIO")
 	private Usuario usuario; 
     @ManyToOne (optional=false)
-	private Fenomeno fenomeno; 
+    @JoinColumn (name="CODIGO_FEN")
+    private Fenomeno fenomeno; 
     @ManyToOne (optional=false)
-	private Localidad localidad; 
+    @JoinColumn (name="ID_LOCALIDAD")
+    private Localidad localidad; 
     @Column(name="DESCRIPCION", length=(50), nullable=false)
 	private String descripcion;
     @Column(name="IMAGEN")

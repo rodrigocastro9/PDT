@@ -10,6 +10,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 
@@ -29,7 +31,16 @@ public class Telefono implements Serializable{
     private long id;
     @Column(name="NUMERO", length=20, nullable=true)
     private String numero;
+    @ManyToOne (optional=false)
+    @JoinColumn (name="CODIGO_FEN")
+    private Fenomeno fenomeno;
    
+	public Fenomeno getFenomeno() {
+		return fenomeno;
+	}
+	public void setFenomeno(Fenomeno fenomeno) {
+		this.fenomeno = fenomeno;
+	}
 	public long getId() {
 		return id;
 	}
@@ -45,10 +56,11 @@ public class Telefono implements Serializable{
 	
 	
 	
-	public Telefono(long id, String numero ) {
+	public Telefono(long id, String numero, Fenomeno fenomeno ) {
 		super();
 		this.id = id;
 		this.numero = numero;
+		this.fenomeno = fenomeno;
 	
 	}
 
