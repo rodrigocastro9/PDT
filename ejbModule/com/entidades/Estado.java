@@ -5,7 +5,7 @@ import javax.persistence.*;
 
 
 @Entity
-@Table(name = "ESTDO_OBSERV")
+@Table(name = "ESTADO_OBSERV")
 public class Estado implements Serializable {
 
 	
@@ -19,7 +19,7 @@ public class Estado implements Serializable {
     @GeneratedValue( strategy = GenerationType.AUTO )
     @Column(name="ID_ESTADO")
     private long id;
-	@Column(name="NUMERO", length=50, nullable=true)
+	@Column(name="NOMBRE", length=50, nullable=true)
     private String nombre;
 
 	public long getId() {

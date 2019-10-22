@@ -2,6 +2,7 @@ package com.entidades;
 
 import java.io.File;
 import java.io.Serializable;
+import java.sql.Blob;
 import java.util.Date;
 
 import javax.persistence.*;
@@ -33,14 +34,15 @@ public class Observacion implements Serializable {
     @Column(name="DESCRIPCION", length=(50), nullable=false)
 	private String descripcion;
     @Column(name="IMAGEN")
-	private File imagen;
+	private Blob imagen;
     @Column(name="LATITUD",length=(50),nullable=false)
 	private float latitud;
 	@Column(name="LONGITUD",length=(50),nullable=false)
 	private float longitud;
 	@Column(name="ALTITUD",length=(50),nullable=false)
-	private String altitud;
+	private float altitud;
 	@ManyToOne (optional=false)
+    @JoinColumn (name="ID_ESTADO")
 	private Estado estado;
     @Column(name="FECHAHORA", nullable=true)
     private Date fecha;
@@ -75,10 +77,10 @@ public class Observacion implements Serializable {
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
-	public File getImagen() {
+	public Blob getImagen() {
 		return imagen;
 	}
-	public void setImagen(File imagen) {
+	public void setImagen(Blob imagen) {
 		this.imagen = imagen;
 	}
 	public float getLatitud() {
@@ -93,10 +95,10 @@ public class Observacion implements Serializable {
 	public void setLongitud(float longitud) {
 		this.longitud = longitud;
 	}
-	public String getAltitud() {
+	public float getAltitud() {
 		return altitud;
 	}
-	public void setAltitud(String altitud) {
+	public void setAltitud(float altitud) {
 		this.altitud = altitud;
 	}
 	public Estado getEstado() {
@@ -113,7 +115,7 @@ public class Observacion implements Serializable {
 	}
 	
 	public Observacion(long id, Usuario usuario, Fenomeno fenomeno, Localidad localidad, String descripcion,
-			File imagen, float latitud, float longitud, String altitud, Estado estado, Date fecha) {
+			Blob imagen, float latitud, float longitud, float altitud, Estado estado, Date fecha) {
 		super();
 		this.id = id;
 		this.usuario = usuario;
