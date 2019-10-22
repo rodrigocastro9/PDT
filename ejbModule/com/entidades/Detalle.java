@@ -9,6 +9,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "DETALLE")
+@IdClass(PK_Detalle.class)
 public class Detalle implements Serializable {
 
 	
@@ -18,20 +19,17 @@ public class Detalle implements Serializable {
 		super();
 	}
     
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Long id;
 	
+	@Id
 	@ManyToOne
 	@JoinColumn(name = "ID_CARACT")
 	private Caracteristica caracteristica;
 	
-	
+	@Id
 	@ManyToOne
 	@JoinColumn(name = "ID_OBSERVACION")
 	private Observacion observacion;
 	
-		
 	    @Column(name="FECHORA", nullable=true)
 	    private Date fecha;
 	    
@@ -67,14 +65,6 @@ public class Detalle implements Serializable {
 			this.valorText = valorText;
 		}
 		
-		public Long getId() {
-			return id;
-		}
-
-		public void setId(Long id) {
-			this.id = id;
-		}
-
 		public Caracteristica getCaracteristica() {
 			return caracteristica;
 		}
@@ -92,14 +82,11 @@ public class Detalle implements Serializable {
 		}
 
 		
-		public Detalle(long id, Date fecha, int valorNum, String valorText) {
+		public Detalle(Date fecha, int valorNum, String valorText) {
 			super();
-			this.id = id;
 			this.fecha = fecha;
 			this.valorNum = valorNum;
 			this.valorText = valorText;
 		}
-	    
-	    
-   
+	
 }

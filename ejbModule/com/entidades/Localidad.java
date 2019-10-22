@@ -33,7 +33,7 @@ public class Localidad implements Serializable {
 	@Column(name="LONGITUD",length=(50),nullable=false)
 	private float longitud;
 	@Column(name="ALTITUD",length=(50),nullable=false)
-	private String altitud;
+	private float altitud;
 
 
 	public long getId() {
@@ -66,14 +66,14 @@ public class Localidad implements Serializable {
 	public void setLongitud(float longitud) {
 		this.longitud = longitud;
 	}
-	public String getAltitud() {
+	public float getAltitud() {
 		return altitud;
 	}
-	public void setAltitud(String altitud) {
+	public void setAltitud(float altitud) {
 		this.altitud = altitud;
 	}
 	public Localidad(long id, Departamento departamento, String nombreLoc, float latitud, float longitud,
-			String altitud) {
+			float altitud) {
 		super();
 		this.id = id;
 		this.departamento = departamento;
