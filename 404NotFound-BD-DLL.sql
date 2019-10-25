@@ -16,6 +16,8 @@ DROP SEQUENCE "PDT"."SEQ_CARACTERISTICASID";
 DROP SEQUENCE "PDT"."SEQ_GEOLOCALIZACIONID";
 DROP SEQUENCE "PDT"."SEQ_OBSERVACIONID";
 DROP SEQUENCE "PDT"."SEQ_USUARIOID";
+
+PURGE RECYCLEBIN;
 --------------------------------------------------------
 --  DDL for Sequence CARACTERISTICASID
 --------------------------------------------------------

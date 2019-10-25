@@ -1,6 +1,5 @@
 package com.entidades;
 
-import java.io.File;
 import java.io.Serializable;
 import java.sql.Blob;
 import java.util.Date;
