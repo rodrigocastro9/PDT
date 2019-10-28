@@ -9,47 +9,33 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "DETALLE")
-@IdClass(PK_Detalle.class)
 public class Detalle implements Serializable {
-
-	
 	private static final long serialVersionUID = 1L;
-
-	public Detalle() {
-		super();
-	}
+	
     
+	@EmbeddedId
+	private PK_Detalle pkDetalle;
 	
-	@Id
-	@ManyToOne
-	@JoinColumn(name = "ID_CARACT")
-	private Caracteristica caracteristica;
-	
-	@Id
-	@ManyToOne
-	@JoinColumn(name = "ID_OBSERVACION")
-	private Observacion observacion;
-	
-	    @Column(name="FECHORA", nullable=true)
-	    private Date fecha;
-	    
 	    @Column(name="VALORNUM", length=10, nullable=true)
 	    private int valorNum;
 	    
 	    @Column(name="VALORTEXTO", length=40, nullable=true)
 	    private String valorText;
 
+	    @Column(name="FECHORA")
+		private Date fecha;
+		
 		
 
-		public Date getFecha() {
-			return fecha;
+			public PK_Detalle getPkDetalle() {
+			return pkDetalle;
 		}
 
-		public void setFecha(Date fecha) {
-			this.fecha = fecha;
+		public void setPkDetalle(PK_Detalle pkDetalle) {
+			this.pkDetalle = pkDetalle;
 		}
 
-		public int getValorNum() {
+			public int getValorNum() {
 			return valorNum;
 		}
 
@@ -65,28 +51,16 @@ public class Detalle implements Serializable {
 			this.valorText = valorText;
 		}
 		
-		public Caracteristica getCaracteristica() {
-			return caracteristica;
+		public Date getFecha() {
+			return fecha;
 		}
-
-		public void setCaracteristica(Caracteristica caracteristica) {
-			this.caracteristica = caracteristica;
-		}
-
-		public Observacion getObservacion() {
-			return observacion;
-		}
-
-		public void setObservacion(Observacion observacion) {
-			this.observacion = observacion;
-		}
-
-		
-		public Detalle(Date fecha, int valorNum, String valorText) {
-			super();
+		public void setFecha(Date fecha) {
 			this.fecha = fecha;
-			this.valorNum = valorNum;
-			this.valorText = valorText;
 		}
+		
+		
+		public Detalle() {
+			super();
+		}		
 	
 }
