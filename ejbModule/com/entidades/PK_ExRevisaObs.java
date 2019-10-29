@@ -84,6 +84,13 @@ public class PK_ExRevisaObs  implements Serializable{
 		return true;
 	}
 
+	public PK_ExRevisaObs(long usuario, long observacion, Date fecha) {
+		super();
+		this.usuario = usuario;
+		this.observacion = observacion;
+		this.fecha = fecha;
+	}
+
 	
 	
 	

@@ -49,6 +49,13 @@ public class ExRevisaObs implements Serializable {
 
 
 	
+	public ExRevisaObs(PK_ExRevisaObs pkRevisa, String fiabilidad, String comentarios) {
+		super();
+		this.pkRevisa = pkRevisa;
+		Fiabilidad = fiabilidad;
+		Comentarios = comentarios;
+	}
+
 	public ExRevisaObs() {
 		super();
 	}

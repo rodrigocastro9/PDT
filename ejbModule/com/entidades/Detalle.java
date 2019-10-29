@@ -59,6 +59,15 @@ public class Detalle implements Serializable {
 		}
 		
 		
+		
+		public Detalle(PK_Detalle pkDetalle, int valorNum, String valorText, Date fecha) {
+			super();
+			this.pkDetalle = pkDetalle;
+			this.valorNum = valorNum;
+			this.valorText = valorText;
+			this.fecha = fecha;
+		}
+
 		public Detalle() {
 			super();
 		}		

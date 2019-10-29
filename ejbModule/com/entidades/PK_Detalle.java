@@ -51,6 +51,16 @@ public class PK_Detalle implements Serializable{
 	}
 	
 	
+	
+	
+	public PK_Detalle(long caracteristica, long observacion) {
+		super();
+		this.caracteristica = caracteristica;
+		this.observacion = observacion;
+	}
+
+
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;

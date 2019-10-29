@@ -55,7 +55,6 @@ public class Usuariodao {
 	    }
 	    
 	    
-	    
 	    public List<TipoUsuario> ObtenerTipoUsu (){
 	    	TypedQuery<TipoUsuario> query = em.createQuery("SELECT u FROM TIPOSUSUARIOS", TipoUsuario.class);
 			return query.getResultList();
