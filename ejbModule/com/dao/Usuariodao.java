@@ -44,6 +44,21 @@ public class Usuariodao {
 			System.out.println ("Error al querer modificar el usuario.");
 		}
 	}
+	
+	
+	public void Borrarusuario (long id)
+	{
+		try 
+		{
+			Usuario usuario= em.find(Usuario.class,id);
+					em.remove(usuario);
+					em.flush();
+		}catch(PersistenceException e) 
+		{
+
+			System.out.println ("No se pudo eliminar el usuario.");
+		}
+	}
 	  
 	    
 	    public List<Usuario> ObtenerUsuarioYPass (String usuario, String pass){
@@ -60,6 +75,13 @@ public class Usuariodao {
 	    	TypedQuery<TipoUsuario> query = em.createQuery("SELECT u FROM TIPOSUSUARIOS", TipoUsuario.class);
 			return query.getResultList();
 
+	    }
+	    
+	    
+	    public List<Usuario> obtenerusuarios()
+	    {
+	    	TypedQuery<Usuario> query = em.createQuery("SELECT U FROM USUARIO U",Usuario.class);
+	    	return query.getResultList();
 	    }
 	
 }

@@ -46,6 +46,18 @@ public boolean CrearUsuario(Long id,String pass, String usuario, String nombre, 
     {
     	return usuariodao.ObtenerTipoUsu();
     }
+   
+   public List<Usuario> obtenerusuarios()
+   {
+	   return usuariodao.obtenerusuarios();
+   }
+   
+   public  void borrarUsuarios(long id)
+   {
+	   return usuariodao.Borrarusuario(id);
+   }
+   
+   
 
 
 }
