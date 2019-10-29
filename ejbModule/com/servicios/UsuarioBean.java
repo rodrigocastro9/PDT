@@ -5,7 +5,10 @@ import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
+import javax.persistence.PersistenceException;
+
 import com.entidades.*;
+import com.exception.ServiciosException;
 import com.Remote.UsuarioRemote;
 import com.dao.Usuariodao;
 
@@ -15,49 +18,77 @@ import com.dao.Usuariodao;
 public class UsuarioBean implements UsuarioRemote {
 
 
-@EJB 
-private Usuariodao usuariodao;
+	@EJB 
+	private Usuariodao usuariodao;
+	Usuario usu = new Usuario();
+	public UsuarioBean()
+	{}
+	@Override
+	public boolean CrearUsuario(Long id,String pass, String usuario, String nombre, String apellido, String estado, String tipodoc,
+			String numerodoc, String direccion, String mail, TipoUsuario tipousuario)throws ServiciosException
+	{
+		boolean pudeCrear;
+		usu= new Usuario(id, pass, usuario, nombre, apellido, estado, tipodoc ,numerodoc, direccion, mail, tipousuario);
+		try {
+			this.usuariodao.AgregarUsuario(usuario, id); 
+			pudeCrear = true;
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			pudeCrear = false;
+		}
 
-public UsuarioBean()
-{}
+		return pudeCrear;
 
-public boolean CrearUsuario(Long id,String pass, String usuario, String nombre, String apellido, String estado, String tipodoc,
-		String numerodoc, String direccion, String mail, TipoUsuario tipousuario)
-{
-	boolean pudeCrear;
-	Usuario usuarionuevo= new Usuario(id, pass, usuario, nombre, apellido, estado, tipodoc ,numerodoc, direccion, mail, tipousuario);
-	try {
-		this.usuariodao.AgregarUsuario(usuarionuevo, 1l);
-		pudeCrear = true;
-	} catch (Exception e) {
-		System.out.println(e.getMessage());
-		pudeCrear = false;
+	}
+	@Override
+	public boolean ModificarUsuario(Long id,String pass, String usuario, String nombre, String apellido, String estado, String tipodoc,
+			String numerodoc, String direccion, String mail, TipoUsuario tipousuario)throws ServiciosException
+	{
+		boolean pudeModificar;
+		usu= new Usuario(id, pass, usuario, nombre, apellido, estado, tipodoc ,numerodoc, direccion, mail, tipousuario);
+		try {
+			this.usuariodao.Modificarusuario(usu);
+			pudeModificar=true;
+		}catch(PersistenceException e)
+		{
+			System.out.print("No se pudo actualizar el usuario.");
+			pudeModificar=false;
+		}
+		return pudeModificar;
 	}
 
-	return pudeCrear;
+	@Override
+	public boolean EliminarUsuario(long id) throws ServiciosException{
+		boolean pudeEliminar;
+		try {
+			this.usuariodao.EliminarUsuario(id);
+			pudeEliminar=true;
+		}
+		catch (Exception e)
+		{
+			System.out.println(e.getMessage());
+			pudeEliminar=false;
+		}
+		return pudeEliminar;
+	}
 	
-}
 	public List<Usuario> ObtenerUsuarioYPass (String usuario, String pass)
 	{
 		return usuariodao.ObtenerUsuarioYPass(usuario, pass);
 	}
-	
-   public  List<TipoUsuario> ObtenerTipoUsu ()
-    {
-    	return usuariodao.ObtenerTipoUsu();
-    }
-   
-   public List<Usuario> obtenerusuarios()
-   {
-	   return usuariodao.obtenerusuarios();
-   }
-   
-   public  void borrarUsuarios(long id)
-   {
-	   return usuariodao.Borrarusuario(id);
-   }
-   
-   
+
+	public  List<TipoUsuario> ObtenerTipoUsu ()
+	{
+		return usuariodao.ObtenerTipoUsu();
+	}
+
+	public List<Usuario> obtenerusuarios()
+	{
+		return usuariodao.obtenerusuarios();
+	}
+
+
+
 
 
 }

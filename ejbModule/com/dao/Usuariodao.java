@@ -21,10 +21,11 @@ public class Usuariodao {
 		private EntityManager em;
 	
 		
-	public void AgregarUsuario(Usuario usuario,Long id) throws Exception 
+	public void AgregarUsuario(String usuario,Long id) throws Exception 
 		{
 		try {
 			Usuario usuarionuevo = new Usuario();
+			usuarionuevo.setUsuario(usuario);
 			usuarionuevo.setTipousuario(em.find(TipoUsuario.class,id));
 			em.persist(usuarionuevo);
 			em.flush();
@@ -46,7 +47,7 @@ public class Usuariodao {
 	}
 	
 	
-	public void Borrarusuario (long id)
+	public void EliminarUsuario (long id)
 	{
 		try 
 		{
@@ -71,7 +72,7 @@ public class Usuariodao {
 	    
 	    
 	    public List<TipoUsuario> ObtenerTipoUsu (){
-	    	TypedQuery<TipoUsuario> query = em.createQuery("SELECT u FROM TIPOSUSUARIOS", TipoUsuario.class);
+	    	TypedQuery<TipoUsuario> query = em.createQuery("SELECT u FROM TIPOSUSUARIOS u", TipoUsuario.class);
 			return query.getResultList();
 
 	    }
