@@ -28,7 +28,6 @@ public class ObservacionBean implements ObservacionBeanRemote {
     public ObservacionBean() 
     {}
     
-
 	@Override
     public boolean CrearObservacion(Long id, Usuario usuario, Fenomeno fenomeno, Localidad localidad, 
     		String descripcion, Blob imagen, float latitud, float longitud, float altitud, Estado estado, Date fecha) throws ServiciosException
@@ -36,7 +35,7 @@ public class ObservacionBean implements ObservacionBeanRemote {
     	boolean pudeCrear;
     	obs = new Observacion(id, usuario, fenomeno, localidad, descripcion, imagen, latitud ,longitud, altitud, estado, fecha);
     	try {
-    		this.obsDao.AgregarObservacion(obs, 1l);
+    		this.obsDao.AgregarObservacion(obs, usuario.getId(), estado.getId(), fenomeno.getCodigo(), localidad.getId());
     		pudeCrear = true;
     	} catch (Exception e) {
     		System.out.println(e.getMessage());

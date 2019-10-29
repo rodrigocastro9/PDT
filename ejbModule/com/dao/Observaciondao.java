@@ -21,17 +21,19 @@ public class Observaciondao {
     @PersistenceContext
 	private EntityManager em;
 
-    public void AgregarObservacion(Observacion observacion, Long id) throws ServiciosException 
+    public void AgregarObservacion(Observacion nuevaObs, Long idUsu, Long idEst, Long idFen, Long idLocal) throws ServiciosException 
 	{
     	try {
-			Observacion nuevaObs = new Observacion();		
-					
+			nuevaObs.setUsuario(em.find(Usuario.class, idUsu));
+			nuevaObs.setEstado(em.find(Estado.class, idEst));
+			nuevaObs.setFenomeno(em.find(Fenomeno.class, idFen));
+			nuevaObs.setLocalidad(em.find(Localidad.class, idLocal));
 			em.persist(nuevaObs);
 			em.flush();
 				
 		}catch(PersistenceException e)
 			{
-				System.out.println ("Error al querer consultar la observacion.");
+				throw new ServiciosException ("Error al querer agregar la observacion.");
 			}
 	}
 
@@ -42,7 +44,7 @@ public class Observaciondao {
 			em.flush();
 		}catch(PersistenceException e)
 		{
-			System.out.println ("Error al querer modificar la observacion.");
+			throw new ServiciosException("No se pudo modificar la observacion");		
 		}
 	}
         
@@ -58,7 +60,7 @@ public class Observaciondao {
 	    
 	    catch(PersistenceException e)
 	    {
-	    	System.out.println("Error al intentar eliminar la observacion.");
+	    	throw new ServiciosException("Error al intentar eliminar la observacion.");
 	    }
     }
  
@@ -76,5 +78,11 @@ public class Observaciondao {
 		return query.getResultList();
 	}
     
+   /* public List<Observacion> ListarObservacionporZona(long ID_Zona)
+	{
+    	TypedQuery<Observacion> query = em.createQuery("SELECT O FROM OBSERVACIONES O WHERE O.ID_OBSERVACION LIKE :id", Observacion.class)
+				.setParameter("ID_OBSERVACION", ID_OBSERVACION); 
+		return query.getResultList();
+	}*/
     
 }
