@@ -24,4 +24,6 @@ public interface ObservacionBeanRemote {
 	
 	List <Observacion> obtenerTodasObservaciones();
 	
+	List<Observacion> ListarObservacionporZona(long ID_Zona);
+	
 }

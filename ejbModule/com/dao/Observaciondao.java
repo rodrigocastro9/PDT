@@ -66,7 +66,7 @@ public class Observaciondao {
  
 	public List<Observacion> ListarObservacionporID(long ID_OBSERVACION)
 	{
-    	TypedQuery<Observacion> query = em.createQuery("SELECT O FROM OBSERVACIONES O WHERE O.ID_OBSERVACION LIKE :id", Observacion.class)
+    	TypedQuery<Observacion> query = em.createQuery("SELECT O FROM OBSERVACIONES O WHERE O.ID_OBSERVACION LIKE :ID_OBSERVACION", Observacion.class)
 				.setParameter("ID_OBSERVACION", ID_OBSERVACION); 
 		return query.getResultList();
 	}
@@ -78,11 +78,12 @@ public class Observaciondao {
 		return query.getResultList();
 	}
     
-   /* public List<Observacion> ListarObservacionporZona(long ID_Zona)
+    public List<Observacion> ListarObservacionporZona(long ID_Zona)
 	{
-    	TypedQuery<Observacion> query = em.createQuery("SELECT O FROM OBSERVACIONES O WHERE O.ID_OBSERVACION LIKE :id", Observacion.class)
-				.setParameter("ID_OBSERVACION", ID_OBSERVACION); 
+    	TypedQuery<Observacion> query = em.createQuery("SELECT O FROM OBSERVACIONES O JOIN LOCALIDAD L ON O.ID_LOCALIDAD = L.ID_LOCALIDAD \r\n" + 
+    			"JOIN departamento D ON L.ID_DEPARTAMENTO=D.ID_DEPARTAMENTO WHERE D.ID_Zona LIKE :ID_Zona", Observacion.class)
+				.setParameter("ID_Zona", ID_Zona); 
 		return query.getResultList();
-	}*/
+	}
     
 }

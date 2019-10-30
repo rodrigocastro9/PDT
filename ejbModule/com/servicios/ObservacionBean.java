@@ -101,5 +101,10 @@ public class ObservacionBean implements ObservacionBeanRemote {
 		return this.obsDao.obtenerTodasObservaciones();
 	}
 
+	@Override
+	public List<Observacion> ListarObservacionporZona(long ID_Zona)
+	{
+		return this.obsDao.ListarObservacionporZona(ID_Zona);
+	}
 	
 }
