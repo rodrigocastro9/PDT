@@ -9,13 +9,13 @@ import javax.persistence.PersistenceException;
 
 import com.entidades.*;
 import com.exception.ServiciosException;
-import com.Remote.UsuarioRemote;
+import com.Remote.UsuarioBeanRemote;
 import com.dao.Usuariodao;
 
 
 @Stateless
 @LocalBean
-public class UsuarioBean implements UsuarioRemote {
+public class UsuarioBean implements UsuarioBeanRemote {
 
 
 	@EJB 

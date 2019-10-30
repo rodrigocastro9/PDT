@@ -8,7 +8,7 @@ import com.exception.ServiciosException;
 
 
 @Remote
-public interface UsuarioRemote {
+public interface UsuarioBeanRemote {
 	
 	boolean CrearUsuario(Long id,String pass, String usuario, String nombre, String apellido, String estado, String tipodoc,
 
