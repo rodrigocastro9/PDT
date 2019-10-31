@@ -51,7 +51,7 @@ public class ObservacionBean implements ObservacionBeanRemote {
     {
     	boolean pudeModificar;
     	
-    	obs.setId(id);
+    	obs.setId(id); // el id no deberia poder modificarse Soy rodrigo
     	obs.setUsuario(usuario);
     	obs.setFenomeno(fenomeno);
     	obs.setLocalidad(localidad);
