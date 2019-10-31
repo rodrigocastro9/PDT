@@ -62,7 +62,7 @@ public class Usuariodao {
 	}
 	  
 	    
-	    public List<Usuario> ObtenerUsuarioYPass (String usuario, String pass){
+	    public List<Usuario> Login (String usuario, String pass){
 	    	TypedQuery<Usuario> query = em.createQuery("SELECT u FROM USUARIO u WHERE u.USUARIO LIKE :nombre AND u.PASS LIKE :pass",Usuario.class)
 					.setParameter("nombre", usuario)
 					.setParameter("pass",pass);
@@ -71,10 +71,10 @@ public class Usuariodao {
 	    }
 	    
 	    
-	    public List<TipoUsuario> ObtenerTipoUsu (long id){
+	    public TipoUsuario ObtenerTipoUsu (long id){
 	    	TypedQuery<TipoUsuario> query = em.createQuery("SELECT u FROM TIPOSUSUARIOS u.id_tipo like :id", TipoUsuario.class)
 	    			.setParameter("id",id);
-			return query.getResultList();
+			return query.getResultList().get(0);
 
 	    }
 	    
@@ -82,6 +82,7 @@ public class Usuariodao {
 	    public List<Usuario> obtenerusuarios()
 	    {
 	    	TypedQuery<Usuario> query = em.createQuery("SELECT U FROM USUARIO U",Usuario.class);
+	    	
 	    	return query.getResultList();
 	    }
 	    

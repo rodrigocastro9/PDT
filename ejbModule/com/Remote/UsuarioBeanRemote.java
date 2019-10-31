@@ -11,7 +11,6 @@ import com.exception.ServiciosException;
 public interface UsuarioBeanRemote {
 	
 	boolean CrearUsuario(Long id,String pass, String usuario, String nombre, String apellido, String estado, String tipodoc,
-
 			String numerodoc, String direccion, String mail, TipoUsuario tipousuario)throws ServiciosException;
 
 	boolean EliminarUsuario(long id) throws ServiciosException;
@@ -19,12 +18,7 @@ public interface UsuarioBeanRemote {
 	boolean ModificarUsuario(Long id,String pass, String usuario, String nombre, String apellido, String estado, String tipodoc,
 			String numerodoc, String direccion, String mail, TipoUsuario tipousuario)throws ServiciosException;
 
+	TipoUsuario ObtenerTipoUsu(Long id);
 	
-    List<Usuario> ObtenerUsuarioYPass (String usuario, String pass);
-    List<TipoUsuario> ObtenerTipoUsu ();
-
-	boolean CrearUsuario(Long id, String pass, String usuario, String nombre, String apellido, String estado,
-			String tipodoc, String numerodoc, String direccion, String mail, String tipousuario)
-			throws ServiciosException;
-
+    List<Usuario> Login (String usuario, String pass);
 }

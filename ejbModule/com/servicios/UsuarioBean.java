@@ -27,30 +27,32 @@ public  class UsuarioBean implements UsuarioBeanRemote {
 	Usuario usu = new Usuario();
 	public UsuarioBean()
 	{}
+	
 	@Override
 	public boolean CrearUsuario(Long id,String pass, String usuario, String nombre, String apellido, String estado, String tipodoc,
-			String numerodoc, String direccion, String mail, String tipousuario)throws ServiciosException
+			String numerodoc, String direccion, String mail, TipoUsuario tipousuario)throws ServiciosException
 	{
 		boolean pudeCrear;
-		TipoUsuario tipousu =tipousuariodao.obtenertipousuario(tipousuario);
 		
-		 Usuario tipusu= new Usuario(id,pass,usuario,nombre,apellido,estado,tipodoc,numerodoc,direccion,mail,tipousu);
+		 usu = new Usuario(id,pass,usuario,nombre,apellido,estado,tipodoc,numerodoc,direccion,mail,tipousuario);
 		 
 		try {
 			
-			this.usuariodao.AgregarUsuario(tipusu); 
+			this.usuariodao.AgregarUsuario(usu); 
 			pudeCrear = true;
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 			pudeCrear = false;
+			usu = new Usuario();
 		}
 
 		return pudeCrear;
 
 	}
+	
 	@Override
 	public boolean ModificarUsuario(Long id,String pass, String usuario, String nombre, String apellido, String estado, String tipodoc,
-			String numerodoc, String direccion, String mail, String tipousuario)throws ServiciosException
+			String numerodoc, String direccion, String mail, TipoUsuario tipousuario)throws ServiciosException
 	{
 		boolean pudeModificar;
 		usu= new Usuario(id, pass, usuario, nombre, apellido, estado, tipodoc ,numerodoc, direccion, mail, tipousuario);
@@ -80,15 +82,20 @@ public  class UsuarioBean implements UsuarioBeanRemote {
 		return pudeEliminar;
 	}
 	
-	public List<Usuario> ObtenerUsuarioYPass (String usuario, String pass)
+	public List<Usuario> Login (String usuario, String pass)
 	{
-		return usuariodao.ObtenerUsuarioYPass(usuario, pass);
+		return usuariodao.Login(usuario, pass);
 	}
 
 
 	public List<Usuario> obtenerusuarios()
 	{
 		return usuariodao.obtenerusuarios();
+	}
+
+	@Override
+	public TipoUsuario ObtenerTipoUsu(Long id) {
+		return usuariodao.ObtenerTipoUsu(id);
 	}
 
 
