@@ -13,6 +13,8 @@ import com.entidades.*;
 
 
 
+
+
 @Stateless
 public class Usuariodao {
 
@@ -21,13 +23,11 @@ public class Usuariodao {
 		private EntityManager em;
 	
 		
-	public void AgregarUsuario(String usuario,Long id) throws Exception 
+	public void AgregarUsuario(Usuario usuario) throws Exception 
 		{
 		try {
-			Usuario usuarionuevo = new Usuario();
-			usuarionuevo.setUsuario(usuario);
-			usuarionuevo.setTipousuario(em.find(TipoUsuario.class,id));
-			em.persist(usuarionuevo);
+			
+			em.persist(usuario);
 			em.flush();
 				
 		}catch(PersistenceException e)
@@ -71,8 +71,9 @@ public class Usuariodao {
 	    }
 	    
 	    
-	    public List<TipoUsuario> ObtenerTipoUsu (){
-	    	TypedQuery<TipoUsuario> query = em.createQuery("SELECT u FROM TIPOSUSUARIOS u", TipoUsuario.class);
+	    public List<TipoUsuario> ObtenerTipoUsu (long id){
+	    	TypedQuery<TipoUsuario> query = em.createQuery("SELECT u FROM TIPOSUSUARIOS u.id_tipo like :id", TipoUsuario.class)
+	    			.setParameter("id",id);
 			return query.getResultList();
 
 	    }
@@ -83,6 +84,8 @@ public class Usuariodao {
 	    	TypedQuery<Usuario> query = em.createQuery("SELECT U FROM USUARIO U",Usuario.class);
 	    	return query.getResultList();
 	    }
+	    
+	  
 	
 }
 

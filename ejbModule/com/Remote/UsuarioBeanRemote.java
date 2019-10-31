@@ -23,4 +23,8 @@ public interface UsuarioBeanRemote {
     List<Usuario> ObtenerUsuarioYPass (String usuario, String pass);
     List<TipoUsuario> ObtenerTipoUsu ();
 
+	boolean CrearUsuario(Long id, String pass, String usuario, String nombre, String apellido, String estado,
+			String tipodoc, String numerodoc, String direccion, String mail, String tipousuario)
+			throws ServiciosException;
+
 }

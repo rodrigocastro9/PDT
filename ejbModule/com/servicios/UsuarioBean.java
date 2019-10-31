@@ -10,27 +10,35 @@ import javax.persistence.PersistenceException;
 import com.entidades.*;
 import com.exception.ServiciosException;
 import com.Remote.UsuarioBeanRemote;
+import com.dao.TipoUsuariodao;
 import com.dao.Usuariodao;
 
 
 @Stateless
 @LocalBean
-public class UsuarioBean implements UsuarioBeanRemote {
+public  class UsuarioBean implements UsuarioBeanRemote {
 
 
 	@EJB 
 	private Usuariodao usuariodao;
+	@EJB
+	private TipoUsuariodao tipousuariodao;
+	
 	Usuario usu = new Usuario();
 	public UsuarioBean()
 	{}
 	@Override
 	public boolean CrearUsuario(Long id,String pass, String usuario, String nombre, String apellido, String estado, String tipodoc,
-			String numerodoc, String direccion, String mail, TipoUsuario tipousuario)throws ServiciosException
+			String numerodoc, String direccion, String mail, String tipousuario)throws ServiciosException
 	{
 		boolean pudeCrear;
-		usu= new Usuario(id, pass, usuario, nombre, apellido, estado, tipodoc ,numerodoc, direccion, mail, tipousuario);
+		TipoUsuario tipousu =tipousuariodao.obtenertipousuario(tipousuario);
+		
+		 Usuario tipusu= new Usuario(id,pass,usuario,nombre,apellido,estado,tipodoc,numerodoc,direccion,mail,tipousu);
+		 
 		try {
-			this.usuariodao.AgregarUsuario(usuario, id); 
+			
+			this.usuariodao.AgregarUsuario(tipusu); 
 			pudeCrear = true;
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
@@ -42,7 +50,7 @@ public class UsuarioBean implements UsuarioBeanRemote {
 	}
 	@Override
 	public boolean ModificarUsuario(Long id,String pass, String usuario, String nombre, String apellido, String estado, String tipodoc,
-			String numerodoc, String direccion, String mail, TipoUsuario tipousuario)throws ServiciosException
+			String numerodoc, String direccion, String mail, String tipousuario)throws ServiciosException
 	{
 		boolean pudeModificar;
 		usu= new Usuario(id, pass, usuario, nombre, apellido, estado, tipodoc ,numerodoc, direccion, mail, tipousuario);
@@ -55,7 +63,7 @@ public class UsuarioBean implements UsuarioBeanRemote {
 			pudeModificar=false;
 		}
 		return pudeModificar;
-	}
+	}// modificar.
 
 	@Override
 	public boolean EliminarUsuario(long id) throws ServiciosException{
@@ -77,10 +85,6 @@ public class UsuarioBean implements UsuarioBeanRemote {
 		return usuariodao.ObtenerUsuarioYPass(usuario, pass);
 	}
 
-	public  List<TipoUsuario> ObtenerTipoUsu ()
-	{
-		return usuariodao.ObtenerTipoUsu();
-	}
 
 	public List<Usuario> obtenerusuarios()
 	{
