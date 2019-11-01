@@ -45,11 +45,11 @@ public class Fenomenodao {
 		}
 	}
 	
-	public void BorrarFenomeno (long id) throws ServiciosException
+	public void BorrarFenomeno (long codigo) throws ServiciosException
 	{
 		try 
 		{
-			Fenomeno fen = em.find(Fenomeno.class, id);
+			Fenomeno fen = em.find(Fenomeno.class, codigo);
 			em.remove(fen);
 			em.flush();
 		}catch(PersistenceException e) 
@@ -66,6 +66,11 @@ public class Fenomenodao {
 			return query.getResultList();
 	}
 	
+	
+	public Fenomeno obtenerfenomenoporcoigo(long codigo)
+	{
+		return this.em.find(Fenomeno.class,codigo);
+	}
 	
 	
 	

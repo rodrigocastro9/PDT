@@ -11,9 +11,9 @@ public class TipoUsuariodao {
 	private EntityManager em;
 
 	
-	  public TipoUsuario obtenertipousuario(String tipousuario) {
+	  public TipoUsuario obtenertipousuario(long idtipousu) {
 
-			return this.em.find(TipoUsuario.class, tipousuario);
+			return this.em.find(TipoUsuario.class, idtipousu);
 
 		}
 
