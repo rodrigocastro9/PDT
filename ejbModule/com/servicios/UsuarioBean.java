@@ -29,6 +29,10 @@ public  class UsuarioBean implements UsuarioBeanRemote {
 	public UsuarioBean()
 	{}
 	
+	public String saludar (String nombre) {
+		return "hola"+nombre;
+	}
+	
 	@Override
 	public List<TipoUsuario> obtenerTodoslosTipos(){
 
