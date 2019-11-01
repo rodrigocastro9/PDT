@@ -26,4 +26,6 @@ public interface ObservacionBeanRemote {
 	
 	List<Observacion> ListarObservacionporZona(long ID_Zona);
 	
+	boolean validarDescripcion(Observacion obs, List<String> palabras);
+	
 }

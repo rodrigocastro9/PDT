@@ -1,5 +1,7 @@
 package com.servicios;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -21,9 +23,13 @@ import java.sql.Blob;
 public class ObservacionBean implements ObservacionBeanRemote {
 
 
-		@EJB
-		private Observaciondao obsDao;
+	@EJB
+	private Observaciondao obsDao;
 	Observacion obs = new Observacion();
+	
+	
+	//dato de prueba
+	private List<String> palabras = Arrays.asList("insulto1", "insulto2", "insulto3");
 	
     public ObservacionBean() 
     {}
@@ -34,6 +40,11 @@ public class ObservacionBean implements ObservacionBeanRemote {
     {
     	boolean pudeCrear;
     	obs = new Observacion(id, usuario, fenomeno, localidad, descripcion, imagen, latitud ,longitud, altitud, estado, fecha);
+    	
+    	//pasar lista de palabras inconvenientes en el segundo parametro
+    	if(!this.validarDescripcion(obs, this.palabras))
+    		obs.setDescripcion("CONTENIDO INCONVENIENTE");
+    	
     	try {
     		this.obsDao.AgregarObservacion(obs, usuario.getId(), estado.getId(), fenomeno.getCodigo(), localidad.getId());
     		pudeCrear = true;
@@ -48,7 +59,7 @@ public class ObservacionBean implements ObservacionBeanRemote {
 	@Override
     public boolean ModificarObservacion(Long id, Usuario usuario, Fenomeno fenomeno, Localidad localidad, 
     		String descripcion, Blob imagen, float latitud, float longitud, float altitud, Estado estado, Date fecha) throws ServiciosException
-    {
+    {		
     	boolean pudeModificar;
     	
     	obs.setId(id); // el id no deberia poder modificarse Soy rodrigo
@@ -62,6 +73,10 @@ public class ObservacionBean implements ObservacionBeanRemote {
     	obs.setAltitud(altitud);
     	obs.setEstado(estado);
     	obs.setFecha(fecha);
+    	
+    	//pasar lista de palabras inconvenientes en el segundo parametro
+    	if(!this.validarDescripcion(obs, this.palabras))
+    		obs.setDescripcion("CONTENIDO INCONVENIENTE");
     	
     	try {
     		this.obsDao.ModificarObservacion(obs);
@@ -105,6 +120,19 @@ public class ObservacionBean implements ObservacionBeanRemote {
 	public List<Observacion> ListarObservacionporZona(long ID_Zona)
 	{
 		return this.obsDao.ListarObservacionporZona(ID_Zona);
+	}
+	
+	@Override
+	public boolean validarDescripcion(Observacion obs, List<String> palabras) {
+		boolean estaLimpia = true; 
+		int i = 0;
+		
+		while(estaLimpia && i < palabras.size()) {
+			if(obs.getDescripcion().contains(palabras.get(i)))
+				estaLimpia = false;
+		}
+		
+		return estaLimpia;		
 	}
 	
 }
