@@ -9,7 +9,6 @@ import javax.persistence.PersistenceException;
 import javax.persistence.TypedQuery;
 
 import com.entidades.Fenomeno;
-import com.entidades.Usuario;
 import com.exception.ServiciosException;
 
 @Stateless
