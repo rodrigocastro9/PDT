@@ -2,10 +2,10 @@ package com.Remote;
 
 import java.util.List;
 import javax.ejb.Remote;
+
 import com.entidades.TipoUsuario;
 import com.entidades.Usuario;
 import com.exception.ServiciosException;
-
 
 @Remote
 public interface UsuarioBeanRemote {
@@ -21,4 +21,12 @@ public interface UsuarioBeanRemote {
 	TipoUsuario ObtenerTipoUsu(Long id);
 	
     List<Usuario> Login (String usuario, String pass);
+    
+	boolean existeUsuario(String ci)throws ServiciosException;
+	
+	List <TipoUsuario> obtenerTodoslosTipos();
+
+	List<Usuario> obtenerusuarios();
+
+
 }

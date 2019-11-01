@@ -9,6 +9,7 @@ import javax.persistence.PersistenceException;
 
 import com.entidades.*;
 import com.exception.ServiciosException;
+
 import com.Remote.UsuarioBeanRemote;
 import com.dao.TipoUsuariodao;
 import com.dao.Usuariodao;
@@ -27,6 +28,28 @@ public  class UsuarioBean implements UsuarioBeanRemote {
 	Usuario usu = new Usuario();
 	public UsuarioBean()
 	{}
+	
+	@Override
+	public List<TipoUsuario> obtenerTodoslosTipos(){
+
+		return this.usuariodao.obtenerTodoslosTipos();
+	}
+	
+	@Override
+	public boolean existeUsuario(String ci) {
+
+		boolean existe;
+		Usuario usuario = this.usuariodao.obtenerUsuario(ci);
+
+		if (usuario == null) {
+			existe = false;
+		} else {
+			existe = true;
+		}
+
+		return existe;
+
+	}
 	
 	@Override
 	public boolean CrearUsuario(Long id,String pass, String usuario, String nombre, String apellido, String estado, String tipodoc,
@@ -91,12 +114,13 @@ public  class UsuarioBean implements UsuarioBeanRemote {
 		return pudeEliminar;
 	}
 	
+	@Override
 	public List<Usuario> Login (String usuario, String pass)
 	{
 		return usuariodao.Login(usuario, pass);
 	}
 
-
+	@Override
 	public List<Usuario> obtenerusuarios()
 	{
 		return usuariodao.obtenerusuarios();

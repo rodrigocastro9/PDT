@@ -85,6 +85,17 @@ public class Usuariodao {
 	    	
 	    	return query.getResultList();
 	    }
+		
+	    public Usuario obtenerUsuario(String ci) {
+
+		return this.em.find(Usuario.class, ci);
+
+	}
+		public List<TipoUsuario> obtenerTodoslosTipos() {
+			TypedQuery<TipoUsuario> query = this.em.createQuery("select T from TIPOSUSUARIOS T", TipoUsuario.class);
+			return query.getResultList();
+		}
+
 	    
 	  
 	
