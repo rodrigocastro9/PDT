@@ -99,10 +99,10 @@ public  class UsuarioBean implements UsuarioBeanRemote {
 	}// modificar.
 
 	@Override
-	public boolean EliminarUsuario(long id) throws ServiciosException{
+	public boolean EliminarUsuario(String usuario) throws ServiciosException{
 		boolean pudeEliminar;
 		try {
-			this.usuariodao.EliminarUsuario(id);
+			this.usuariodao.EliminarUsuario(usuario);
 			pudeEliminar=true;
 		}
 		catch (Exception e)

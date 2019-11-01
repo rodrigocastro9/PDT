@@ -47,12 +47,12 @@ public class Usuariodao {
 	}
 	
 	
-	public void EliminarUsuario (long id)
+	public void EliminarUsuario (String usuario)
 	{
 		try 
 		{
-			Usuario usuario= em.find(Usuario.class,id);
-					em.remove(usuario);
+			Usuario usu = em.find(Usuario.class,usuario);
+					em.remove(usu);
 					em.flush();
 		}catch(PersistenceException e) 
 		{

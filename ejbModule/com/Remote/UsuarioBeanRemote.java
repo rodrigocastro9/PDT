@@ -13,7 +13,7 @@ public interface UsuarioBeanRemote {
 	boolean CrearUsuario(Long id,String pass, String usuario, String nombre, String apellido, String estado, String tipodoc,
 			String numerodoc, String direccion, String mail, TipoUsuario tipousuario)throws ServiciosException;
 
-	boolean EliminarUsuario(long id) throws ServiciosException;
+	boolean EliminarUsuario(String usuario) throws ServiciosException;
 	
 	boolean ModificarUsuario(Long id,String pass, String usuario, String nombre, String apellido, String estado, String tipodoc,
 			String numerodoc, String direccion, String mail, TipoUsuario tipousuario)throws ServiciosException;
