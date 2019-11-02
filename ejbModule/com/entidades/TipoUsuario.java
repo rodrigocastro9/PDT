@@ -1,11 +1,16 @@
 package com.entidades;
 
 import java.io.Serializable;
+import java.util.List;
+
 import javax.persistence.*;
+
+
 
 
 @Entity
 @Table(name = "TIPOSUSUARIOS")
+
 public class TipoUsuario implements Serializable {
 
 	
@@ -22,6 +27,9 @@ public class TipoUsuario implements Serializable {
     @Column(name="NOMBRE", length=50, nullable=true)
     private String nombre;
 
+    
+	@OneToMany(mappedBy="tipousuario")
+	private List<Usuario> usuarios;
     
     
 	public long getId() {

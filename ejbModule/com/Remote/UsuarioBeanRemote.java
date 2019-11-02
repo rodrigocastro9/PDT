@@ -29,7 +29,7 @@ public interface UsuarioBeanRemote {
 	Usuario existeUsuario(String usu)throws ServiciosException;
 	
 	//Listar todos los tipos de usuario
-	List <TipoUsuario> obtenerTodoslosTipos();
+	//List <TipoUsuario> obtenerTodoslosTipos();
 
 	//Listar todos los usuarios
 	List<Usuario> obtenerusuarios();

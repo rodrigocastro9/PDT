@@ -20,10 +20,11 @@ public class Usuariodao {
 		private EntityManager em;
 	
 		
-	public void AgregarUsuario(Usuario usuario) throws Exception 
+	public void AgregarUsuario(Usuario usuario, TipoUsuario tipousuario) throws Exception 
 		{
 		try {
-			
+			Usuario usu = new Usuario();
+			usu.setTipousuario(em.find(TipoUsuario.class,tipousuario));
 			em.persist(usuario);
 			em.flush();
 				
@@ -78,7 +79,7 @@ public class Usuariodao {
     //Metodo para listar todos los usuarios
 	public List<Usuario> obtenerusuarios()
 	    {
-	    	TypedQuery<Usuario> query = em.createQuery("SELECT U FROM USUARIO U",Usuario.class);
+	    	TypedQuery<Usuario> query = em.createQuery("SELECT U FROM Usuario U",Usuario.class);
 	    	
 	    	return query.getResultList();
 	    }
@@ -88,8 +89,9 @@ public class Usuariodao {
     	
     	Usuario u1 = new Usuario();
     	
-		 TypedQuery<Usuario> query = em.createQuery("SELECT U FROM USUARIO U WHERE U.USUARIO LIKE : usu", Usuario.class);
-    	
+		 TypedQuery<Usuario> query = em.createQuery("SELECT U FROM Usuario U WHERE U.Usuario LIKE : usu", Usuario.class)
+				 .setParameter("usu",usu);
+    	 
 		 u1 = query.getSingleResult();
 		 
     	return u1.getId();
@@ -97,18 +99,19 @@ public class Usuariodao {
 }
 	
     //Metodo para listar todos los tipos de usuario
-    public List<TipoUsuario> obtenerTodoslosTipos() {
+    /*public List<TipoUsuario> obtenerTodoslosTipos() {
 			TypedQuery<TipoUsuario> query = this.em.createQuery("select T from TIPOSUSUARIOS T", TipoUsuario.class);
+
 			return query.getResultList();
-		}
+		}*/
 
     //Validar existencia de usuario por numero de cedula
 	public Usuario existeUsuario(String usu) {	
 	
 		Usuario u = new Usuario();
-	 TypedQuery<Usuario> query = em.createQuery("SELECT U FROM USUARIO U WHERE U.USUARIO LIKE : usu",Usuario.class);
+	 TypedQuery<Usuario> query = em.createQuery("SELECT U FROM Usuario U WHERE U.usuario LIKE : Usuario",Usuario.class).setParameter("Usuario",usu);
     	
-	 	u=(Usuario) query;
+	 	u=(Usuario) query.getSingleResult();
 	 	if (u!=null)
 	 		return u;
 	 	else {
