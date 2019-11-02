@@ -129,9 +129,9 @@ public  class UsuarioBean implements UsuarioBeanRemote {
 
 	//Obtener id de usuario por su numero de documento o su nombre de usuario
 	@Override 
-	public Long NumeroDocUsuario (String usu) {
+	public Long BuscarUsuario (String usu) {
 	
-	return this.usuariodao.NumeroDocUsuario(usu);
+	return this.usuariodao.BuscarUsuario(usu);
 	}
 
 

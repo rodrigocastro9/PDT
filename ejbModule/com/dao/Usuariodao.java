@@ -86,12 +86,12 @@ public class Usuariodao {
 	    	return query.getResultList();
 	    }
 	
-    //Metodo para determinar id a partir de un numero de documento o un usuario
-    public Long NumeroDocUsuario(String usu) {
+    //Metodo para determinar id a partir de un usuario
+    public Long BuscarUsuario(String usu) {
     	
     	Usuario u1 = new Usuario();
     	
-		 TypedQuery<Usuario> query = em.createQuery("SELECT U FROM USUARIO U WHERE U.USUARIO LIKE : usu OR U.NUMERODOC LIKE : usu",Usuario.class);
+		 TypedQuery<Usuario> query = em.createQuery("SELECT U FROM USUARIO U WHERE U.USUARIO LIKE : usu", Usuario.class);
     	
 		 u1 = query.getSingleResult();
 		 

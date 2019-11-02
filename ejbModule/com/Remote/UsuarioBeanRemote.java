@@ -34,7 +34,7 @@ public interface UsuarioBeanRemote {
 	List<Usuario> obtenerusuarios();
 
 	//traer id de usuario cuando me pasan documento o nombre de usuario
-	Long NumeroDocUsuario(String usu);
+	Long BuscarUsuario(String usu);
 
 
 }
