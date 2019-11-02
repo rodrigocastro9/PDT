@@ -3,25 +3,29 @@ package com.servicios;
 import java.util.List;
 
 import javax.ejb.EJB;
+import javax.ejb.LocalBean;
+import javax.ejb.Stateless;
 
 import com.Remote.FenomenoBeanRemote;
 import com.dao.Fenomenodao;
 import com.entidades.Fenomeno;
 import com.exception.ServiciosException;
 
+@Stateless
+@LocalBean
 public class FenomenoBean implements FenomenoBeanRemote {
 	
 	@EJB
 	private Fenomenodao fenomenodao;
 	public FenomenoBean() 
 	{}
-	Fenomeno fenomeno= new Fenomeno();
+	//Fenomeno fenomeno= new Fenomeno();
 	
 	@Override
 	public boolean crearFenomeno(long codigo,String nombreFen,String descripcion) throws ServiciosException
 	{
 		boolean pudecrear;
-		fenomeno =new Fenomeno(codigo,nombreFen,descripcion);
+		Fenomeno fenomeno =new Fenomeno(codigo,nombreFen,descripcion);
 		try
 		{
 			this.fenomenodao.AgregarFenomeno(fenomeno);
@@ -29,6 +33,7 @@ public class FenomenoBean implements FenomenoBeanRemote {
 		}catch(Exception e)
 		{
 			System.out.println(e.getMessage());
+			
 			pudecrear=false;
 		}
 		return pudecrear;
@@ -38,7 +43,8 @@ public class FenomenoBean implements FenomenoBeanRemote {
 	{
 		boolean pudeModificar;
 		fenomenodao.obtenerfenomenoporcodigo(codigo);
-		fenomeno.setDescripcion(descripcion);
+		Fenomeno fenomeno= new Fenomeno();
+			fenomeno.setDescripcion(descripcion);
 		fenomeno.setNombreFen(nombreFen);
 		 
 		

@@ -2,6 +2,7 @@ package com.dao;
 
 import java.util.List;
 
+import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -12,6 +13,7 @@ import com.entidades.Fenomeno;
 import com.exception.ServiciosException;
 
 @Stateless
+@LocalBean
 public class Fenomenodao {
 
 	@PersistenceContext
