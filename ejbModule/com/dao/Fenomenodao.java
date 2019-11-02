@@ -38,6 +38,7 @@ public class Fenomenodao {
 			em.merge(fenomeno);
 			em.flush();
 			
+			
 		}catch(PersistenceException e)
 		{
 			System.out.println ("Error al querer actualizar el Fenomeno.");
@@ -66,7 +67,7 @@ public class Fenomenodao {
 	}
 	
 	
-	public Fenomeno obtenerfenomenoporcoigo(long codigo)
+	public Fenomeno obtenerfenomenoporcodigo(long codigo)
 	{
 		return this.em.find(Fenomeno.class,codigo);
 	}

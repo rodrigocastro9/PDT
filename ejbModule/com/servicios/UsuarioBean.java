@@ -60,7 +60,9 @@ public  class UsuarioBean implements UsuarioBeanRemote {
 			String numerodoc, String direccion, String mail, TipoUsuario tipousuario)throws ServiciosException
 	{
 		boolean pudeCrear;
-		 usu = new Usuario(id,pass,usuario,nombre,apellido,estado,tipodoc,numerodoc,direccion,mail,tipousuario);
+		  
+		 TipoUsuario tipusu = tipousuariodao.obtenertipousuario(idtipousu);
+		 usu = new Usuario(id,pass,usuario,nombre,apellido,estado,tipodoc,numerodoc,direccion,mail,tipusu);
 		 
 		try {
 			

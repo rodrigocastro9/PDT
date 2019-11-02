@@ -37,7 +37,7 @@ public class FenomenoBean implements FenomenoBeanRemote {
 	public boolean modificarFenomeno(long codigo,String nombreFen,String descripcion) throws ServiciosException
 	{
 		boolean pudeModificar;
-		fenomenodao.obtenerfenomenoporcoigo(codigo);
+		fenomenodao.obtenerfenomenoporcodigo(codigo);
 		fenomeno.setDescripcion(descripcion);
 		fenomeno.setNombreFen(nombreFen);
 		 
