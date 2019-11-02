@@ -129,8 +129,5 @@ public  class UsuarioBean implements UsuarioBeanRemote {
 		return usuariodao.ObtenerTipoUsu(id);
 	}
 
-
-
-
 }
 

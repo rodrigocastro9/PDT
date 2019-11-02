@@ -12,9 +12,6 @@ import javax.persistence.TypedQuery;
 import com.entidades.*;
 
 
-
-
-
 @Stateless
 public class Usuariodao {
 
