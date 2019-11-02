@@ -26,7 +26,7 @@ public class Fenomenodao {
 			
 		}catch(PersistenceException e)
 		{
-			System.out.println ("No se pudo dar de alta el Fenomeno.");
+			System.out.println ("No se pudo dar de alta el Fenomeno."+e.getStackTrace());
 		}
 	}
 	

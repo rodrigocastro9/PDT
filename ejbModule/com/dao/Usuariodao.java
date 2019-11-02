@@ -106,21 +106,17 @@ public class Usuariodao {
 		}
 
     //Validar existencia de usuario por numero de cedula
-	public boolean existeUsuario(String usu) {	
-	boolean existe = true;
+	public Usuario existeUsuario(String usu) {	
 	
+		Usuario u = new Usuario();
 	 TypedQuery<Usuario> query = em.createQuery("SELECT U FROM USUARIO U WHERE U.USUARIO LIKE : usu",Usuario.class);
     	
-	 if (query != null)
-		 {
-		 existe = true;
-		 }
-	 else {
-		 existe = false;
-	 }
-		 
-    	return existe;
-
+	 	u=(Usuario) query;
+	 	if (u!=null)
+	 		return u;
+	 	else {
+    	return null;
+	 	}
 }
 	  
 	

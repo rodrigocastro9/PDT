@@ -38,11 +38,13 @@ public  class UsuarioBean implements UsuarioBeanRemote {
 	
 	//Validar la existencia de un usuario por su cedula
 	@Override
-	public boolean existeUsuario(String nomUsu) {
+	public Usuario existeUsuario(String nomUsu) {
 
 		return this.usuariodao.existeUsuario(nomUsu);
 
 	}
+	
+	
 	
 	@Override
 	public boolean CrearUsuario(Long id,String pass, String usuario, String nombre, String apellido, String estado, String tipodoc,
@@ -66,7 +68,7 @@ public  class UsuarioBean implements UsuarioBeanRemote {
 		return pudeCrear;
 
 	}
-	
+	/*
 	@Override
 	public boolean ModificarUsuario(Long id,String pass, String usuario, String nombre, String apellido, String estado, String tipodoc,
 			String numerodoc, String direccion, String mail, TipoUsuario tipousuario)throws ServiciosException
@@ -91,8 +93,34 @@ public  class UsuarioBean implements UsuarioBeanRemote {
 			pudeModificar=false;
 		}
 		return pudeModificar;
-	}// modificar.
-
+	}*/
+	
+	@Override
+	public boolean ModificarUsuario(Long id, String nombre, String apellido, String tipoDoc, String NumDoc, String direccion,
+			String correo, String pass, String estado, TipoUsuario tipousuario)throws ServiciosException
+	{
+		boolean pudeModificar;
+		usu.setPass(pass);
+		usu.setNombre(nombre);
+		usu.setApellido(apellido);
+		usu.setTipodoc(tipoDoc);
+		usu.setNumerodoc(NumDoc);
+		usu.setDireccion(direccion);
+		usu.setMail(correo);
+		usu.setTipousuario(tipousuario);
+	
+		try {
+			this.usuariodao.Modificarusuario(usu);
+			pudeModificar=true;
+		}catch(PersistenceException e)
+		{
+			System.out.print("No se pudo actualizar el usuario.");
+			pudeModificar=false;
+		}
+		return pudeModificar;
+	}
+	
+	
 	@Override
 	public boolean EliminarUsuario(Long usuario) throws ServiciosException{
 		boolean pudeEliminar;
