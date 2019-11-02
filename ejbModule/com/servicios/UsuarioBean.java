@@ -29,29 +29,18 @@ public  class UsuarioBean implements UsuarioBeanRemote {
 	public UsuarioBean()
 	{}
 	
-	public String saludar (String nombre) {
-		return "hola"+nombre;
-	}
-	
+	//Listar todos los tipos de usuario
 	@Override
 	public List<TipoUsuario> obtenerTodoslosTipos(){
 
 		return this.usuariodao.obtenerTodoslosTipos();
 	}
 	
+	//Validar la existencia de un usuario por su cedula
 	@Override
-	public boolean existeUsuario(String ci) {
+	public boolean existeUsuario(String nomUsu) {
 
-		boolean existe;
-		Usuario usuario = this.usuariodao.obtenerUsuario(ci);
-
-		if (usuario == null) {
-			existe = false;
-		} else {
-			existe = true;
-		}
-
-		return existe;
+		return this.usuariodao.existeUsuario(nomUsu);
 
 	}
 	
@@ -105,7 +94,7 @@ public  class UsuarioBean implements UsuarioBeanRemote {
 	}// modificar.
 
 	@Override
-	public boolean EliminarUsuario(String usuario) throws ServiciosException{
+	public boolean EliminarUsuario(Long usuario) throws ServiciosException{
 		boolean pudeEliminar;
 		try {
 			this.usuariodao.EliminarUsuario(usuario);
@@ -125,18 +114,25 @@ public  class UsuarioBean implements UsuarioBeanRemote {
 		return usuariodao.Login(usuario, pass);
 	}
 
+	//Obtener toda la lista de usuarios
 	@Override
 	public List<Usuario> obtenerusuarios()
 	{
 		return usuariodao.obtenerusuarios();
 	}
-
+	
+	//Obtener tipo de usuario a partir de un id
 	@Override
 	public TipoUsuario ObtenerTipoUsu(Long id) {
 		return usuariodao.ObtenerTipoUsu(id);
 	}
 
-
+	//Obtener id de usuario por su numero de documento o su nombre de usuario
+	@Override 
+	public Long NumeroDocUsuario (String usu) {
+	
+	return this.usuariodao.NumeroDocUsuario(usu);
+	}
 
 
 
