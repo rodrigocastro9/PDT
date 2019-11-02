@@ -18,17 +18,17 @@ public class TipoUsuario implements Serializable {
     @Id
     @GeneratedValue( strategy = GenerationType.AUTO )
     @Column(name="ID_TIPO")
-    private long id;
+    private long idtipousu;
     @Column(name="NOMBRE", length=50, nullable=true)
     private String nombre;
 
     
     
 	public long getId() {
-		return id;
+		return idtipousu;
 	}
 	public void setId(long id) {
-		this.id = id;
+		this.idtipousu = idtipousu;
 	}
 	public String getNombre() {
 		return nombre;
@@ -40,7 +40,7 @@ public class TipoUsuario implements Serializable {
 	
 	public TipoUsuario(long id, String nombre) {
 		super();
-		this.id = id;
+		this.idtipousu = idtipousu;
 		this.nombre = nombre;
 	}
 

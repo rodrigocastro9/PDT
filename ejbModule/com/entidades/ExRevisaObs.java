@@ -1,25 +1,19 @@
 package com.entidades;
 
 import java.io.Serializable;
-import java.util.Date;
 
 import javax.persistence.*;
 
 
 @Entity
 @Table(name = "REVISA")
-@IdClass(PK_ExRevisaObs.class)
 public class ExRevisaObs implements Serializable {
-
-	
 	private static final long serialVersionUID = 1L;
 
-	public ExRevisaObs() {
-		super();
-	}
-	@Id
-	@Column(name="FECHAYHORA")
-	private Date fecha;
+	
+	@EmbeddedId
+	private PK_ExRevisaObs pkRevisa;
+	
 	
 	@Column(name="FIABILIDAD", nullable=true)
 	private String Fiabilidad;
@@ -27,26 +21,15 @@ public class ExRevisaObs implements Serializable {
 	@Column(name="COMENTARIOS")
 	private String Comentarios;
 	
-	@Id
-	@ManyToOne
-	@JoinColumn(name = "ID_USUARIO")
-	private Usuario usuario;
 	
-	@Id
-	@ManyToOne
-	@JoinColumn(name = "ID_OBSERVACION")
-	private Observacion observacion;
-	
-	
-
-	public Date getFecha() {
-		return fecha;
+	public PK_ExRevisaObs getPkRevisa() {
+		return pkRevisa;
 	}
 
-	public void setFecha(Date fecha) {
-		this.fecha = fecha;
+	public void setPkRevisa(PK_ExRevisaObs pkRevisa) {
+		this.pkRevisa = pkRevisa;
 	}
-
+	
 	public String getFiabilidad() {
 		return Fiabilidad;
 	}
@@ -64,31 +47,18 @@ public class ExRevisaObs implements Serializable {
 	}
 
 
-	public Usuario getUsuario() {
-		return usuario;
-	}
 
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
-	}
-
-	public Observacion getObservacion() {
-		return observacion;
-	}
-
-	public void setObservacion(Observacion observacion) {
-		this.observacion = observacion;
-	}
-
-	public ExRevisaObs(Date fecha, String fiabilidad, String comentarios, Usuario usuario, Observacion observacion) {
+	
+	public ExRevisaObs(PK_ExRevisaObs pkRevisa, String fiabilidad, String comentarios) {
 		super();
-		this.fecha = fecha;
+		this.pkRevisa = pkRevisa;
 		Fiabilidad = fiabilidad;
 		Comentarios = comentarios;
-		this.usuario = usuario;
-		this.observacion = observacion;
 	}
-	
+
+	public ExRevisaObs() {
+		super();
+	}
 	
 	
 }

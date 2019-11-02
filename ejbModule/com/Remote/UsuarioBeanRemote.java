@@ -1,0 +1,40 @@
+package com.Remote;
+
+import java.util.List;
+import javax.ejb.Remote;
+
+import com.entidades.TipoUsuario;
+import com.entidades.Usuario;
+import com.exception.ServiciosException;
+
+@Remote
+public interface UsuarioBeanRemote {
+	
+	boolean CrearUsuario(Long id,String pass, String usuario, String nombre, String apellido, String estado, String tipodoc,
+			String numerodoc, String direccion, String mail, TipoUsuario tipousuario)throws ServiciosException;
+
+	boolean EliminarUsuario(Long usuario) throws ServiciosException;
+	
+	boolean ModificarUsuario(Long id,String pass, String usuario, String nombre, String apellido, String estado, String tipodoc,
+			String numerodoc, String direccion, String mail, TipoUsuario tipousuario)throws ServiciosException;
+
+	//Obtener tipo de usuario por id
+	TipoUsuario ObtenerTipoUsu(Long id);
+	
+	//Login de usuario
+    List<Usuario> Login (String usuario, String pass);
+    
+    //Validar la existencia de un usuario por su cedula
+	boolean existeUsuario(String usu)throws ServiciosException;
+	
+	//Listar todos los tipos de usuario
+	List <TipoUsuario> obtenerTodoslosTipos();
+
+	//Listar todos los usuarios
+	List<Usuario> obtenerusuarios();
+
+	//traer id de usuario cuando me pasan documento o nombre de usuario
+	Long BuscarUsuario(String usu);
+
+
+}

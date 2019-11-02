@@ -19,7 +19,7 @@ public class Localidad implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@SequenceGenerator(name="secuencialoc",sequenceName="SEQ_IDLOCALIDAD", initialValue=1, allocationSize=100)
+	@SequenceGenerator(name="secuencialoc",sequenceName="SEQ_IDLOCALIDADID", initialValue=1, allocationSize=100)
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="secuencialoc")// ver como funciona los trigger.
 	@Column(name="ID_LOCALIDAD")
 	private long id;
