@@ -61,8 +61,8 @@ public  class UsuarioBean implements UsuarioBeanRemote {
 	{
 		boolean pudeCrear;
 		  
-		 TipoUsuario tipusu = tipousuariodao.obtenertipousuario(idtipousu);
-		 usu = new Usuario(id,pass,usuario,nombre,apellido,estado,tipodoc,numerodoc,direccion,mail,tipusu);
+		 
+		 usu = new Usuario(id,pass,usuario,nombre,apellido,estado,tipodoc,numerodoc,direccion,mail,tipousuario);
 		 
 		try {
 			
