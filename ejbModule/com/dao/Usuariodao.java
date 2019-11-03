@@ -25,7 +25,7 @@ public class Usuariodao {
 		try {
 			Usuario usu = new Usuario();
 			usu.setTipousuario(em.find(TipoUsuario.class,tipousuario));
-			em.persist(usuario);
+			em.merge(usuario);
 			em.flush();
 				
 		}catch(PersistenceException e)
