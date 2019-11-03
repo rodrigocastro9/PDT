@@ -27,9 +27,7 @@ public class TipoUsuario implements Serializable {
     @Column(name="NOMBRE", length=50, nullable=true)
     private String nombre;
 
-    
-	@OneToMany(mappedBy="tipousuario")
-	private List<Usuario> usuarios;
+ 
     
     
 	public long getId() {

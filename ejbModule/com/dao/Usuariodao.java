@@ -61,7 +61,7 @@ public class Usuariodao {
 	
 	//Metodo para el login de usuario
     public List<Usuario> Login (String usuario, String pass){
-	    	TypedQuery<Usuario> query = em.createQuery("SELECT u FROM USUARIO u WHERE u.USUARIO LIKE :nombre AND u.PASS LIKE :pass",Usuario.class)
+	    	TypedQuery<Usuario> query = em.createQuery("SELECT u FROM Usuario u WHERE u.Usuario LIKE :nombre AND u.PASS LIKE :pass",Usuario.class)
 					.setParameter("nombre", usuario)
 					.setParameter("pass",pass);
 			return query.getResultList();
@@ -70,8 +70,8 @@ public class Usuariodao {
     
     //Metodo para obtener el tipo de usuario a partir de un id
     public TipoUsuario ObtenerTipoUsu (long id){
-	    	TypedQuery<TipoUsuario> query = em.createQuery("SELECT u FROM TIPOSUSUARIOS u.id_tipo like :id", TipoUsuario.class)
-	    			.setParameter("id",id);
+	    	TypedQuery<TipoUsuario> query = em.createQuery("SELECT u FROM tiposusuarios u.id_tipo like :id_tipo", TipoUsuario.class)
+	    			.setParameter("id_tipo",id);
 			return query.getResultList().get(0);
 
 	    }
