@@ -1,5 +1,6 @@
 package com.dao;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import javax.ejb.LocalBean;
@@ -21,14 +22,13 @@ public class Fenomenodao {
 	
 	public void AgregarFenomeno (Fenomeno fenomeno) throws ServiciosException
 	{
-		try 
-		{
+		try {
 			em.persist(fenomeno);
 			em.flush();
 			
-		}catch(PersistenceException e)
+	}catch(PersistenceException e)
 		{
-			System.out.println ("No se pudo dar de alta el Fenomeno."+e.getMessage());
+		System.out.println ("Error al querer Agregar el Fenomeno."+e.getLocalizedMessage());
 		}
 	}
 	
@@ -47,11 +47,11 @@ public class Fenomenodao {
 		}
 	}
 	
-	public void BorrarFenomeno (long codigo) throws ServiciosException
+	public void BorrarFenomeno (long id) throws ServiciosException
 	{
 		try 
 		{
-			Fenomeno fen = em.find(Fenomeno.class, codigo);
+			Fenomeno fen = em.find(Fenomeno.class, id);
 			em.remove(fen);
 			em.flush();
 		}catch(PersistenceException e) 

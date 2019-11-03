@@ -85,5 +85,13 @@ public class Observaciondao {
 				.setParameter("NomZona", NomZona); 
 		return query.getResultList();
 	}
-    
+
+  /*  public List<Observacion> ListarObservacionporCaraFenoFech(String NomCaraFenoFech)
+	{
+    	TypedQuery<Observacion> query = em.createQuery("SELECT O FROM OBSERVACIONES O JOIN localidad L ON O.id_localidad = L.id_localidad \r\n" + 
+    			"JOIN departamento D ON L.id_departamento=D.id_departamento JOIN zona z on z.id_zona = D.id_zona WHERE D.id_zona LIKE :id_zona", Observacion.class)
+				.setParameter("NomZona", NomZona); 
+		return query.getResultList();
+	}
+    */
 }

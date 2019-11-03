@@ -9,7 +9,7 @@ import com.exception.ServiciosException;
 @Remote
 public interface FenomenoBeanRemote {
 	
-	boolean crearFenomeno(long codigo,String nombreFen,String descripcion) throws ServiciosException;
+	boolean crearFenomeno(long id,String codigo,String nombreFen,String descripcion) throws ServiciosException;
 	boolean modificarFenomeno(long codigo,String nombreFen,String descripcion) throws ServiciosException;
 	boolean EliminarFenomeno(long codigo,String nombreFen,String descripcion) throws ServiciosException;
 	 List<Fenomeno> Obtenertodoslosfenomenos();
