@@ -12,9 +12,6 @@ import javax.persistence.TypedQuery;
 import com.entidades.*;
 
 
-
-
-
 @Stateless
 public class Usuariodao {
 
@@ -23,10 +20,11 @@ public class Usuariodao {
 		private EntityManager em;
 	
 		
-	public void AgregarUsuario(Usuario usuario) throws Exception 
+	public void AgregarUsuario(Usuario usuario, TipoUsuario tipousuario) throws Exception 
 		{
 		try {
-			
+			Usuario usu = new Usuario();
+			usu.setTipousuario(em.find(TipoUsuario.class,tipousuario));
 			em.persist(usuario);
 			em.flush();
 				
@@ -63,7 +61,7 @@ public class Usuariodao {
 	
 	//Metodo para el login de usuario
     public List<Usuario> Login (String usuario, String pass){
-	    	TypedQuery<Usuario> query = em.createQuery("SELECT u FROM USUARIO u WHERE u.USUARIO LIKE :nombre AND u.PASS LIKE :pass",Usuario.class)
+	    	TypedQuery<Usuario> query = em.createQuery("SELECT u FROM Usuario u WHERE u.Usuario LIKE :nombre AND u.PASS LIKE :pass",Usuario.class)
 					.setParameter("nombre", usuario)
 					.setParameter("pass",pass);
 			return query.getResultList();
@@ -72,8 +70,8 @@ public class Usuariodao {
     
     //Metodo para obtener el tipo de usuario a partir de un id
     public TipoUsuario ObtenerTipoUsu (long id){
-	    	TypedQuery<TipoUsuario> query = em.createQuery("SELECT u FROM TIPOSUSUARIOS u.id_tipo like :id", TipoUsuario.class)
-	    			.setParameter("id",id);
+	    	TypedQuery<TipoUsuario> query = em.createQuery("SELECT u FROM tiposusuarios u.id_tipo like :id_tipo", TipoUsuario.class)
+	    			.setParameter("id_tipo",id);
 			return query.getResultList().get(0);
 
 	    }
@@ -81,7 +79,7 @@ public class Usuariodao {
     //Metodo para listar todos los usuarios
 	public List<Usuario> obtenerusuarios()
 	    {
-	    	TypedQuery<Usuario> query = em.createQuery("SELECT U FROM USUARIO U",Usuario.class);
+	    	TypedQuery<Usuario> query = em.createQuery("SELECT U FROM Usuario U",Usuario.class);
 	    	
 	    	return query.getResultList();
 	    }
@@ -91,8 +89,9 @@ public class Usuariodao {
     	
     	Usuario u1 = new Usuario();
     	
-		 TypedQuery<Usuario> query = em.createQuery("SELECT U FROM USUARIO U WHERE U.USUARIO LIKE : usu", Usuario.class);
-    	
+		 TypedQuery<Usuario> query = em.createQuery("SELECT U FROM Usuario U WHERE U.Usuario LIKE : usu", Usuario.class)
+				 .setParameter("usu",usu);
+    	 
 		 u1 = query.getSingleResult();
 		 
     	return u1.getId();
@@ -100,27 +99,24 @@ public class Usuariodao {
 }
 	
     //Metodo para listar todos los tipos de usuario
-    public List<TipoUsuario> obtenerTodoslosTipos() {
+    /*public List<TipoUsuario> obtenerTodoslosTipos() {
 			TypedQuery<TipoUsuario> query = this.em.createQuery("select T from TIPOSUSUARIOS T", TipoUsuario.class);
+
 			return query.getResultList();
-		}
+		}*/
 
     //Validar existencia de usuario por numero de cedula
-	public boolean existeUsuario(String usu) {	
-	boolean existe = true;
+	public Usuario existeUsuario(String usu) {	
 	
-	 TypedQuery<Usuario> query = em.createQuery("SELECT U FROM USUARIO U WHERE U.USUARIO LIKE : usu",Usuario.class);
+		Usuario u = new Usuario();
+	 TypedQuery<Usuario> query = em.createQuery("SELECT U FROM Usuario U WHERE U.usuario LIKE : Usuario",Usuario.class).setParameter("Usuario",usu);
     	
-	 if (query != null)
-		 {
-		 existe = true;
-		 }
-	 else {
-		 existe = false;
-	 }
-		 
-    	return existe;
-
+	 	u=(Usuario) query.getSingleResult();
+	 	if (u!=null)
+	 		return u;
+	 	else {
+    	return null;
+	 	}
 }
 	  
 	

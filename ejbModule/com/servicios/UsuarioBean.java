@@ -30,19 +30,23 @@ public  class UsuarioBean implements UsuarioBeanRemote {
 	{}
 	
 	//Listar todos los tipos de usuario
-	@Override
+	
+	
+	
+	/*@Override
 	public List<TipoUsuario> obtenerTodoslosTipos(){
 
 		return this.usuariodao.obtenerTodoslosTipos();
-	}
+	}*/
 	
 	//Validar la existencia de un usuario por su cedula
 	@Override
-	public boolean existeUsuario(String nomUsu) {
+	public Usuario existeUsuario(String nomUsu) {
 
 		return this.usuariodao.existeUsuario(nomUsu);
 
 	}
+	
 	
 	@Override
 	public boolean CrearUsuario(Long id,String pass, String usuario, String nombre, String apellido, String estado, String tipodoc,
@@ -55,7 +59,7 @@ public  class UsuarioBean implements UsuarioBeanRemote {
 		 
 		try {
 			
-			this.usuariodao.AgregarUsuario(usu); 
+			this.usuariodao.AgregarUsuario(usu,tipousuario); 
 			pudeCrear = true;
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
@@ -67,20 +71,20 @@ public  class UsuarioBean implements UsuarioBeanRemote {
 
 	}
 	
+	
 	@Override
-	public boolean ModificarUsuario(Long id,String pass, String usuario, String nombre, String apellido, String estado, String tipodoc,
-			String numerodoc, String direccion, String mail, TipoUsuario tipousuario)throws ServiciosException
+	public boolean ModificarUsuario(Long id, String nombre, String apellido, String tipoDoc, String NumDoc, String direccion,
+			String correo, String pass, String estado, TipoUsuario tipousuario)throws ServiciosException
 	{
 		boolean pudeModificar;
 		usu.setPass(pass);
-		usu.setUsuario(usuario);
 		usu.setNombre(nombre);
 		usu.setApellido(apellido);
-		usu.setEstado(estado);
-		usu.setTipodoc(tipodoc);
-		usu.setNumerodoc(numerodoc);
+		usu.setTipodoc(tipoDoc);
+		usu.setNumerodoc(NumDoc);
 		usu.setDireccion(direccion);
-		usu.setMail(mail);
+		usu.setMail(correo);
+		usu.setTipousuario(tipousuario);
 	
 		try {
 			this.usuariodao.Modificarusuario(usu);
@@ -91,8 +95,9 @@ public  class UsuarioBean implements UsuarioBeanRemote {
 			pudeModificar=false;
 		}
 		return pudeModificar;
-	}// modificar.
-
+	}
+	
+	
 	@Override
 	public boolean EliminarUsuario(Long usuario) throws ServiciosException{
 		boolean pudeEliminar;
@@ -126,15 +131,6 @@ public  class UsuarioBean implements UsuarioBeanRemote {
 	public TipoUsuario ObtenerTipoUsu(Long id) {
 		return usuariodao.ObtenerTipoUsu(id);
 	}
-
-	//Obtener id de usuario por su numero de documento o su nombre de usuario
-	@Override 
-	public Long BuscarUsuario (String usu) {
-	
-	return this.usuariodao.BuscarUsuario(usu);
-	}
-
-
 
 }
 

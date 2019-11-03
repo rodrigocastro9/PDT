@@ -2,13 +2,19 @@
 package com.entidades;
 
 import java.io.Serializable;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+
+
 
 
 @Entity
@@ -30,6 +36,23 @@ public class Fenomeno implements Serializable{
     private String nombreFen;
     @Column(name="DESCRIPCION", length=100, nullable=true)
     private String descripcion;  
+    
+    
+  //bi-directional many-to-one association to Caracteristica
+  	@OneToMany(mappedBy="fenomeno", cascade = {CascadeType.ALL})
+  	private List<Caracteristica> caracteristicas;
+
+  	//bi-directional many-to-one association to Observacione
+  	@OneToMany(mappedBy="fenomeno",cascade = {CascadeType.ALL})
+  	private List<Observacion> observaciones;
+
+  	//bi-directional many-to-one association to Telefono
+  	@OneToMany(mappedBy="fenomeno",cascade = {CascadeType.ALL})
+  	private List<Telefono> telefonos;
+    
+    
+    
+    
     
 	public long getCodigo() {
 		return codigo;

@@ -2,6 +2,7 @@ package com.dao;
 
 import java.util.List;
 
+import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -12,6 +13,7 @@ import com.entidades.Fenomeno;
 import com.exception.ServiciosException;
 
 @Stateless
+@LocalBean
 public class Fenomenodao {
 
 	@PersistenceContext
@@ -26,7 +28,7 @@ public class Fenomenodao {
 			
 		}catch(PersistenceException e)
 		{
-			System.out.println ("No se pudo dar de alta el Fenomeno.");
+			System.out.println ("No se pudo dar de alta el Fenomeno."+e.getMessage());
 		}
 	}
 	
@@ -62,7 +64,7 @@ public class Fenomenodao {
 	
 	public List<Fenomeno>obtenerfenomenos ()
 	{
-		TypedQuery<Fenomeno> query= em.createQuery("SELECT F FROM FENOMENO F",Fenomeno.class);
+		TypedQuery<Fenomeno> query= em.createQuery("SELECT F FROM Fenomeno F",Fenomeno.class);
 			return query.getResultList();
 	}
 	
