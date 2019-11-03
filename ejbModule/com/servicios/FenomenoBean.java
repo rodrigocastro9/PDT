@@ -1,10 +1,12 @@
 package com.servicios;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import javax.ejb.EJB;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
+import javax.persistence.PersistenceException;
 
 import com.Remote.FenomenoBeanRemote;
 import com.dao.Fenomenodao;
@@ -22,17 +24,17 @@ public class FenomenoBean implements FenomenoBeanRemote {
 	//Fenomeno fenomeno= new Fenomeno();
 	
 	@Override
-	public boolean crearFenomeno(long codigo,String nombreFen,String descripcion) throws ServiciosException
+	public boolean crearFenomeno(long id,String codigo, String nombreFen,String descripcion) throws ServiciosException
 	{
 		boolean pudecrear;
-		Fenomeno fenomeno =new Fenomeno(codigo,nombreFen,descripcion);
+		Fenomeno fenomeno =new Fenomeno(id,codigo,nombreFen,descripcion);
 		try
 		{
 			this.fenomenodao.AgregarFenomeno(fenomeno);
 			pudecrear=true;
-		}catch(Exception e)
+		}catch(PersistenceException e)
 		{
-			System.out.println(e.getMessage());
+			System.out.println("Falla el insert al querer insertar "+e.getLocalizedMessage());
 			
 			pudecrear=false;
 		}

@@ -45,7 +45,8 @@ public class ObservacionBean implements ObservacionBeanRemote {
     		obs.setDescripcion("CONTENIDO INCONVENIENTE");
     	
     	try {
-    		this.obsDao.AgregarObservacion(obs, usuario.getId(), estado.getId(), fenomeno.getCodigo(), localidad.getId());
+    		
+    		this.obsDao.AgregarObservacion(obs, usuario.getId(), estado.getId(), fenomeno.getId(), localidad.getId());
     		pudeCrear = true;
     	} catch (Exception e) {
     		System.out.println(e.getMessage());
