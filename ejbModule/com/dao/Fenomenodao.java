@@ -13,6 +13,8 @@ import javax.persistence.TypedQuery;
 import com.entidades.Fenomeno;
 import com.exception.ServiciosException;
 
+
+
 @Stateless
 @LocalBean
 public class Fenomenodao {
@@ -69,11 +71,24 @@ public class Fenomenodao {
 	}
 	
 	
-	public Fenomeno obtenerfenomenoporcodigo(long codigo)
+	public Fenomeno obtenerfenomenoporcodigo(String codigo)
 	{
 		return this.em.find(Fenomeno.class,codigo);
 	}
 	
+	public List<Fenomeno> existeFenomeno(String codigo)
+	{
+		//Fenomeno fen = new Fenomeno();
+		TypedQuery<Fenomeno> query = em.createQuery("SELECT COD FROM Fenomeno COD where COD.codigo LIKE : codigo",Fenomeno.class).setParameter("codigo",codigo);
+		return query.getResultList();
+		
+	}
+	public Fenomeno obtenercodigoFen(long codigofen) {
+
+		return this.em.find(Fenomeno.class, codigofen);
+
+	}
+
 	
 	
 }

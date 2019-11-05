@@ -13,6 +13,8 @@ import com.dao.Fenomenodao;
 import com.entidades.Fenomeno;
 import com.exception.ServiciosException;
 
+
+
 @Stateless
 @LocalBean
 public class FenomenoBean implements FenomenoBeanRemote {
@@ -41,15 +43,15 @@ public class FenomenoBean implements FenomenoBeanRemote {
 		return pudecrear;
 	} 
 	@Override
-	public boolean modificarFenomeno(long codigo,String nombreFen,String descripcion) throws ServiciosException
+	public boolean modificarFenomeno(long codigofen,String codigo,String nombreFen,String descripcion) throws ServiciosException
 	{
 		boolean pudeModificar;
-		fenomenodao.obtenerfenomenoporcodigo(codigo);
+		fenomenodao.existeFenomeno(codigo);
+		
 		Fenomeno fenomeno= new Fenomeno();
 			fenomeno.setDescripcion(descripcion);
-		fenomeno.setNombreFen(nombreFen);
-		 
-		
+			fenomeno.setNombreFen(nombreFen);
+			
 		try
 		{
 			this.fenomenodao.ModificarFenomeno(fenomeno);
@@ -61,6 +63,15 @@ public class FenomenoBean implements FenomenoBeanRemote {
 		}
 		return pudeModificar;
 	} 
+	
+	
+    @Override
+	public List<Fenomeno> existecodigo(String codigo)throws ServiciosException {
+
+    	   	 List<Fenomeno> fenomeno = this.fenomenodao.existeFenomeno(codigo);
+	    	 return fenomeno;
+    }
+	
 	@Override
 	public boolean EliminarFenomeno(long codigo,String nombreFen,String descripcion) throws ServiciosException
 	{
