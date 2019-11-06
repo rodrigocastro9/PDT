@@ -119,7 +119,8 @@ public class ObservacionBean implements ObservacionBeanRemote {
 	@Override
 	public List<Observacion> ListarObservacionporZona(String NomZona)
 	{
-		return this.obsDao.ListarObservacionporZona(NomZona);
+		List<Observacion> observaciones = this.obsDao.ListarObservacionporZona(NomZona);
+		return observaciones;
 	}
 	
 	@Override

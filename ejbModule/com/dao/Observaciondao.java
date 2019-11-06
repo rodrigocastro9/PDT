@@ -78,11 +78,11 @@ public class Observaciondao {
 		return query.getResultList();
 	}
     
-    public List<Observacion> ListarObservacionporZona(String NomZona)
+    public List<Observacion> ListarObservacionporZona(String nomZona)
 	{
-    	TypedQuery<Observacion> query = em.createQuery("SELECT O FROM observaciones O JOIN localidad L ON O.id_localidad = L.id_localidad \r\n" + 
-    			"JOIN departamento D ON L.id_departamento=D.id_departamento JOIN zona z on z.id_zona = D.id_zona WHERE D.id_zona LIKE :id_zona", Observacion.class)
-				.setParameter("NomZona", NomZona); 
+    	TypedQuery<Observacion> query = em.createQuery("SELECT O FROM Observacion O JOIN Localidad L ON O.localidad = L.id \r\n" + 
+    			"JOIN Departamento D ON L.departamento = D.id JOIN Zona Z on Z.id = D.zona WHERE Z.nombre_zona LIKE :NomZona", Observacion.class)
+				.setParameter("nomZona", nomZona); 
 		return query.getResultList();
 	}
 
