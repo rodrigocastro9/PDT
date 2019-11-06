@@ -10,7 +10,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "TIPOSUSUARIOS")
-
+@NamedQuery(name="TipoUsuario.findAll", query="SELECT t FROM TipoUsuario t")
 public class TipoUsuario implements Serializable {
 
 	
@@ -27,13 +27,15 @@ public class TipoUsuario implements Serializable {
     @Column(name="NOMBRE", length=50, nullable=true)
     private String nombre;
 
- 
+  //bi-directional many-to-one association to Usuario
+  	@OneToMany(mappedBy="tiposusuario")
+  	private List<Usuario> usuarios;
     
     
 	public long getId() {
 		return idtipousu;
 	}
-	public void setId(long id) {
+	public void setId(long idtipousu) {
 		this.idtipousu = idtipousu;
 	}
 	public String getNombre() {
@@ -44,7 +46,7 @@ public class TipoUsuario implements Serializable {
 	}
 	
 	
-	public TipoUsuario(long id, String nombre) {
+	public TipoUsuario(long idtipousu, String nombre) {
 		super();
 		this.idtipousu = idtipousu;
 		this.nombre = nombre;

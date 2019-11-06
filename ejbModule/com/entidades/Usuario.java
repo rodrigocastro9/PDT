@@ -54,7 +54,7 @@ public class Usuario implements Serializable{
         
     @ManyToOne (optional=false)
     @JoinColumn (name="ID_TIPO")
-    private TipoUsuario tipousuario;
+    private TipoUsuario tiposusuario;
     
 	public Usuario(long id, String pass, String usuario, String nombre, String apellido, String estado, String tipodoc,
 			String numerodoc, String direccion, String mail, TipoUsuario tipousuario) {
@@ -69,14 +69,14 @@ public class Usuario implements Serializable{
 		this.numerodoc = numerodoc;
 		this.direccion = direccion;
 		this.mail = mail;
-		this.tipousuario = tipousuario;
+		this.tiposusuario = tipousuario;
 	}
     
 	public TipoUsuario getTipousuario() {
-		return tipousuario;
+		return tiposusuario;
 	}
 	public void setTipousuario(TipoUsuario tipousuario) {
-		this.tipousuario = tipousuario;
+		this.tiposusuario = tipousuario;
 	}
 	
 	public long getId() {

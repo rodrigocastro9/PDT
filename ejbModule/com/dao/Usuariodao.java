@@ -45,11 +45,11 @@ public class Usuariodao {
 		}
 	}
 		
-	public void EliminarUsuario (Long usuario)
+	public void EliminarUsuario (Long id)
 	{
 		try 
 		{
-			Usuario usu = em.find(Usuario.class,usuario);
+			Usuario usu = em.find(Usuario.class,id);
 					em.remove(usu);
 					em.flush();
 		}catch(PersistenceException e) 
@@ -98,29 +98,20 @@ public class Usuariodao {
 
 }
 	
-    //Metodo para listar todos los tipos de usuario
-    /*public List<TipoUsuario> obtenerTodoslosTipos() {
-			TypedQuery<TipoUsuario> query = this.em.createQuery("select T from TIPOSUSUARIOS T", TipoUsuario.class);
-
-			return query.getResultList();
-		}*/
-
-    //Validar existencia de usuario por numero de cedula
-	public Usuario existeUsuario(String usu) {	
-	
-		Usuario u = new Usuario();
-	 TypedQuery<Usuario> query = em.createQuery("SELECT U FROM Usuario U WHERE U.usuario LIKE : Usuario",Usuario.class).setParameter("Usuario",usu);
-    	
-	 	u=(Usuario) query.getSingleResult();
-	 	if (u!=null)
-	 		return u;
-	 	else {
-    	return null;
-	 	}
+   
+    
+  //Validar existencia de usuario por numero de cedula
+  	public List<Usuario> existeUsuario(String nomUsu) {	
+  		TypedQuery<Usuario> query = em.createQuery("SELECT u FROM Usuario u WHERE u.nombre LIKE : nomUsu",Usuario.class).setParameter("nomUsu",nomUsu);
+  		
+  		return query.getResultList();
+  	}
+  	
+  	
 }
 	  
 	
-}
+
 
 		
 

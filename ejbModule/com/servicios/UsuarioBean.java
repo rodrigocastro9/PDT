@@ -32,19 +32,14 @@ public  class UsuarioBean implements UsuarioBeanRemote {
 	//Listar todos los tipos de usuario
 	
 	
-	
-	/*@Override
-	public List<TipoUsuario> obtenerTodoslosTipos(){
 
-		return this.usuariodao.obtenerTodoslosTipos();
-	}*/
-	
 	//Validar la existencia de un usuario por su cedula
 	@Override
-	public Usuario existeUsuario(String nomUsu) {
+	public List<Usuario> existeUsuario(String nomUsu)throws ServiciosException  {
 
-		return this.usuariodao.existeUsuario(nomUsu);
-
+		
+		List<Usuario> usuarios = this.usuariodao.existeUsuario(nomUsu);
+   	 return usuarios;
 	}
 	
 	
