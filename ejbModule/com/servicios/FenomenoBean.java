@@ -43,12 +43,13 @@ public class FenomenoBean implements FenomenoBeanRemote {
 		return pudecrear;
 	} 
 	@Override
-	public boolean modificarFenomeno(long codigofen,String codigo,String nombreFen,String descripcion) throws ServiciosException
+	public boolean modificarFenomeno(String codigo,String nombreFen,String descripcion) throws ServiciosException
 	{
 		boolean pudeModificar;
 		fenomenodao.existeFenomeno(codigo);
 		
 		Fenomeno fenomeno= new Fenomeno();
+			fenomeno.setCodigo(codigo);
 			fenomeno.setDescripcion(descripcion);
 			fenomeno.setNombreFen(nombreFen);
 			
@@ -73,7 +74,7 @@ public class FenomenoBean implements FenomenoBeanRemote {
     }
 	
 	@Override
-	public boolean EliminarFenomeno(long codigo,String nombreFen,String descripcion) throws ServiciosException
+	public boolean EliminarFenomeno(long codigo) throws ServiciosException
 	{
 		boolean pudeborrar;
 		try
