@@ -22,6 +22,8 @@ public class TIpoUsuarioBean implements TIpoUsuarioBeanRemote{
 	@Override
 	public List<TipoUsuario> obtenerTodoslosTipos(){
 
-		return this.tipousuariodao.obtenerTodoslosTipos();
+		List <TipoUsuario> TP = tipousuariodao.obtenerTodoslosTipos();
+		
+		return TP;
 	}
 }
