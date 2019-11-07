@@ -20,7 +20,7 @@ public class TipoUsuariodao {
 			return this.em.find(TipoUsuario.class, idtipousu);
 
 		}
-	  
+	    
 
 	    //Metodo para listar todos los tipos de usuario
 	    public List<TipoUsuario> obtenerTodoslosTipos() {

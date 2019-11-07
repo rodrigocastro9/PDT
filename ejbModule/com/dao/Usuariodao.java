@@ -1,5 +1,6 @@
 package com.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -97,14 +98,21 @@ public class Usuariodao {
     	return u1.getId();
 
 }
-	
    
-    
+   public Usuario ObtenerUsuarioporNombre(String nomUsu)
+   {
+	   return this.em.find(Usuario.class, nomUsu);
+   }
+   
+   
   //Validar existencia de usuario por numero de cedula
-  	public List<Usuario> existeUsuario(String nomUsu) {	
-  		TypedQuery<Usuario> query = em.createQuery("SELECT u FROM Usuario u WHERE u.nombre LIKE : nomUsu",Usuario.class).setParameter("nomUsu",nomUsu);
+  	public Usuario existeUsuario(String nomUsu) {
   		
-  		return query.getResultList();
+  		TypedQuery<Usuario> query = em.createQuery("SELECT u FROM Usuario U",Usuario.class).setParameter("nomUsu",nomUsu);
+		
+  		Usuario us  = query.getSingleResult();
+  		
+  		return us;
   	}
   	
   	

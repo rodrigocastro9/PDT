@@ -32,29 +32,29 @@ public  class UsuarioBean implements UsuarioBeanRemote {
 	//Listar todos los tipos de usuario
 	
 	
-
 	//Validar la existencia de un usuario por su cedula
 	@Override
-	public List<Usuario> existeUsuario(String nomUsu)throws ServiciosException  {
+	public Usuario existeUsuario(String nomUsu)throws ServiciosException  {
 
 		
-		List<Usuario> usuarios = this.usuariodao.existeUsuario(nomUsu);
+		Usuario usuarios = this.usuariodao.existeUsuario(nomUsu);
    	 return usuarios;
 	}
-	
+
 	
 	@Override
 	public boolean CrearUsuario(Long id,String pass, String usuario, String nombre, String apellido, String estado, String tipodoc,
-			String numerodoc, String direccion, String mail, TipoUsuario tipousuario)throws ServiciosException
+			String numerodoc, String direccion, String mail, long tipousuario)throws ServiciosException
 	{
 		boolean pudeCrear;
-		  
 		 
-		 usu = new Usuario(id,pass,usuario,nombre,apellido,estado,tipodoc,numerodoc,direccion,mail,tipousuario);
+		TipoUsuario tipoUsu = this.tipousuariodao.obtenertipousuario(tipousuario);
+		 
+		 usu = new Usuario(id,pass,usuario,nombre,apellido,estado,tipodoc,numerodoc,direccion,mail,tipoUsu);
 		 
 		try {
 			
-			this.usuariodao.AgregarUsuario(usu,tipousuario); 
+			this.usuariodao.AgregarUsuario(usu,tipoUsu); 
 			pudeCrear = true;
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
