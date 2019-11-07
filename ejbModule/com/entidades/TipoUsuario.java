@@ -28,9 +28,9 @@ public class TipoUsuario implements Serializable {
     private String nombre;
 
   //bi-directional many-to-one association to Usuario
-  	@OneToMany(mappedBy="tiposusuario")
+  /*	@OneToMany(mappedBy="tiposusuario")
   	private List<Usuario> usuarios;
-    
+    */
     
 	public long getId() {
 		return idtipousu;

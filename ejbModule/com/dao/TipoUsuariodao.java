@@ -26,7 +26,7 @@ public class TipoUsuariodao {
 	    public List<TipoUsuario> obtenerTodoslosTipos() {
 	    	 TypedQuery<TipoUsuario> query = this.em.createQuery("SELECT U FROM TipoUsuario U", TipoUsuario.class);
 	  		
-	    	List<TipoUsuario> tus = (List<TipoUsuario>)query.getResultList();
+	    	List<TipoUsuario> tus = query.getResultList();
 	    	 
 	    	 return tus;
 	  		
