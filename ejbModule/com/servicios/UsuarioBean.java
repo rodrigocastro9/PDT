@@ -116,7 +116,7 @@ public  class UsuarioBean implements UsuarioBeanRemote {
 
 	//Obtener toda la lista de usuarios
 	@Override
-	public List<Usuario> obtenerusuarios()
+	public  List<Usuario> obtenerusuarios()
 	{
 		return usuariodao.obtenerusuarios();
 	}

@@ -24,7 +24,7 @@ public interface UsuarioBeanRemote {
 	TipoUsuario ObtenerTipoUsu(Long id);
 	
 	//Login de usuario
-    List<Usuario> Login (String usuario, String pass);
+     List<Usuario> Login (String usuario, String pass);
     
     //Validar la existencia de un usuario por su cedula
 	Usuario existeUsuario(String usu)throws ServiciosException;

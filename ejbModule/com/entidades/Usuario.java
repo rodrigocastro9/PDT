@@ -33,7 +33,7 @@ public class Usuario implements Serializable{
     
     @Column(name="ID_USUARIO")
     private long id;
-    @Column(name="PASS", length=30, nullable=true)
+    @Column(name="PASS", length=50, nullable=true)
     private String pass;
     @Column(name="USUARIO", length=80, nullable=true)
     private String usuario;
