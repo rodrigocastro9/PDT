@@ -17,16 +17,8 @@ public interface UsuarioBeanRemote {
 	boolean ModificarUsuario(Long id,String nombre, String apellido, String tipoDoc, String NumDoc, String direccion, String correo,
 			String password, String estado, TipoUsuario tipoUsuario)throws ServiciosException;
 	
-<<<<<<< Updated upstream
-	
-	//Obtener tipo de usuario por id
-	TipoUsuario ObtenerTipoUsu(Long id);
-	
 	//Login de usuario
      List<Usuario> Login (String usuario, String pass);
-=======
-    List<Usuario> Login (String usuario, String pass);
->>>>>>> Stashed changes
     
 	Usuario existeUsuario(String usu)throws ServiciosException;
 	

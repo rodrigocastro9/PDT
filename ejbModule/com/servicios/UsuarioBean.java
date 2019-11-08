@@ -105,21 +105,5 @@ public  class UsuarioBean implements UsuarioBeanRemote {
 		return usuariodao.Login(usuario, pass);
 	}
 
-<<<<<<< Updated upstream
-	//Obtener toda la lista de usuarios
-	@Override
-	public  List<Usuario> obtenerusuarios()
-	{
-		return usuariodao.obtenerusuarios();
-	}
-	
-	//Obtener tipo de usuario a partir de un id
-	@Override
-	public TipoUsuario ObtenerTipoUsu(Long id) {
-		return usuariodao.ObtenerTipoUsu(id);
-	}
-
-=======
->>>>>>> Stashed changes
 }
 

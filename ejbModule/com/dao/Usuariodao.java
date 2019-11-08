@@ -54,16 +54,10 @@ public class Usuariodao {
 		}
 	}
 	
-<<<<<<< Updated upstream
-	//Metodo para el login de usuario
-    public List<Usuario> Login (String usuario, String pass){
-	    	TypedQuery<Usuario> query = em.createQuery("SELECT u FROM Usuario u WHERE u.usuario LIKE :usuario AND u.pass LIKE :pass",Usuario.class)
-					.setParameter("usuario", usuario)
-=======
+
 	public List<Usuario> Login (String usuario, String pass){
 	    	TypedQuery<Usuario> query = em.createQuery("SELECT u FROM Usuario u WHERE u.Usuario LIKE :nombre AND u.PASS LIKE :pass",Usuario.class)
 					.setParameter("nombre", usuario)
->>>>>>> Stashed changes
 					.setParameter("pass",pass);
 			return query.getResultList();
 	    	
