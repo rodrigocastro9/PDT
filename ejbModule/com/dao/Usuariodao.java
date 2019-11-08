@@ -63,11 +63,11 @@ public class Usuariodao {
 	    	
 	    }
     
-  	public Usuario existeUsuario(String nomUsu) {
+  	public Usuario existeUsuario(String usuario) {
   		
-  		TypedQuery<Usuario> query = em.createQuery("SELECT u FROM Usuario U WHERE U.usuario LIKE : nomUsu",Usuario.class).setParameter("nomUsu",nomUsu);
+  		TypedQuery<Usuario> query = em.createQuery("SELECT U FROM Usuario U WHERE U.usuario LIKE :usuario",Usuario.class).setParameter("usuario",usuario);
 		
-  		Usuario us  = query.getSingleResult();
+  		Usuario us  =  query.getSingleResult();
   		
   		return us;
   	}
