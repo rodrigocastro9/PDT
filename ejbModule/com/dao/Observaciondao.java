@@ -82,7 +82,7 @@ public class Observaciondao {
 	{
     	TypedQuery<Observacion> query = em.createQuery("SELECT O FROM Observacion O JOIN Localidad L ON O.localidad = L.id \r\n" + 
     			"JOIN Departamento D ON L.departamento = D.id JOIN Zona Z on Z.id = D.zona WHERE Z.nombre_zona LIKE :NomZona", Observacion.class)
-				.setParameter("nomZona", nomZona); 
+				.setParameter("NomZona", nomZona); 
 		return query.getResultList();
 	}
 
