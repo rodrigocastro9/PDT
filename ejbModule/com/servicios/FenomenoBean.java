@@ -43,7 +43,7 @@ public class FenomenoBean implements FenomenoBeanRemote {
 		return pudecrear;
 	} 
 	@Override
-	public boolean modificarFenomeno(String codigo,String nombreFen,String descripcion) throws ServiciosException
+	public boolean modificarFenomeno(long id, String codigo,String nombreFen,String descripcion) throws ServiciosException
 	{
 		boolean pudeModificar;
 		fenomenodao.existeFenomeno(codigo);

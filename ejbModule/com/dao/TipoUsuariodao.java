@@ -7,6 +7,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
+import com.entidades.Fenomeno;
 import com.entidades.TipoUsuario;
 @Stateless
 public class TipoUsuariodao {
@@ -15,10 +16,11 @@ public class TipoUsuariodao {
 	private EntityManager em;
 
 	
-	  public TipoUsuario obtenertipousuario(long idtipousu) {
-
-			return this.em.find(TipoUsuario.class, idtipousu);
-
+	  public TipoUsuario obtenertipousuario(String tipousuario) {
+		  
+		  TypedQuery<TipoUsuario> query = em.createQuery("SELECT TU FROM TipoUsuario TU where TU.nombre LIKE : tipousuario",TipoUsuario.class).setParameter("tipousuario",tipousuario);
+			return query.getSingleResult();
+		  
 		}
 	    
 

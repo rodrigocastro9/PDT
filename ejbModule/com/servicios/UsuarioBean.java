@@ -29,22 +29,18 @@ public  class UsuarioBean implements UsuarioBeanRemote {
 	public UsuarioBean()
 	{}
 	
-	//Listar todos los tipos de usuario
-	
-	
 	//Validar la existencia de un usuario por su cedula
 	@Override
 	public Usuario existeUsuario(String nomUsu)throws ServiciosException  {
 
 		
-		Usuario usuarios = this.usuariodao.existeUsuario(nomUsu);
+	 Usuario usuarios = this.usuariodao.existeUsuario(nomUsu);
    	 return usuarios;
 	}
-
 	
 	@Override
 	public boolean CrearUsuario(Long id,String pass, String usuario, String nombre, String apellido, String estado, String tipodoc,
-			String numerodoc, String direccion, String mail, long tipousuario)throws ServiciosException
+			String numerodoc, String direccion, String mail, String tipousuario)throws ServiciosException
 	{
 		boolean pudeCrear;
 		 
@@ -53,19 +49,15 @@ public  class UsuarioBean implements UsuarioBeanRemote {
 		 usu = new Usuario(id,pass,usuario,nombre,apellido,estado,tipodoc,numerodoc,direccion,mail,tipoUsu);
 		 
 		try {
-			
-			this.usuariodao.AgregarUsuario(usu,tipoUsu); 
+			this.usuariodao.AgregarUsuario(usu);
 			pudeCrear = true;
 		} catch (Exception e) {
-			System.out.println(e.getMessage());
 			pudeCrear = false;
-			usu = new Usuario();
 		}
 
 		return pudeCrear;
 
 	}
-	
 	
 	@Override
 	public boolean ModificarUsuario(Long id, String nombre, String apellido, String tipoDoc, String NumDoc, String direccion,
@@ -92,7 +84,6 @@ public  class UsuarioBean implements UsuarioBeanRemote {
 		return pudeModificar;
 	}
 	
-	
 	@Override
 	public boolean EliminarUsuario(Long usuario) throws ServiciosException{
 		boolean pudeEliminar;
@@ -114,6 +105,7 @@ public  class UsuarioBean implements UsuarioBeanRemote {
 		return usuariodao.Login(usuario, pass);
 	}
 
+<<<<<<< Updated upstream
 	//Obtener toda la lista de usuarios
 	@Override
 	public  List<Usuario> obtenerusuarios()
@@ -127,5 +119,7 @@ public  class UsuarioBean implements UsuarioBeanRemote {
 		return usuariodao.ObtenerTipoUsu(id);
 	}
 
+=======
+>>>>>>> Stashed changes
 }
 
