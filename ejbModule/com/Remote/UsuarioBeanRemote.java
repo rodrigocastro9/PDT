@@ -20,7 +20,7 @@ public interface UsuarioBeanRemote {
 	//Login de usuario
      List<Usuario> Login (String usuario, String pass);
     
-	Usuario existeUsuario(String usu)throws ServiciosException;
+	List<Usuario> existeUsuario(String usu)throws ServiciosException;
 	
 
 

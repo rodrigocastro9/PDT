@@ -31,10 +31,10 @@ public  class UsuarioBean implements UsuarioBeanRemote {
 	
 	//Validar la existencia de un usuario por su cedula
 	@Override
-	public Usuario existeUsuario(String nomUsu)throws ServiciosException  {
+	public List<Usuario> existeUsuario(String nomUsu)throws ServiciosException  {
 
 		
-	 Usuario usuarios = this.usuariodao.existeUsuario(nomUsu);
+	 List<Usuario> usuarios = this.usuariodao.existeUsuario(nomUsu);
    	 return usuarios;
 	}
 	
