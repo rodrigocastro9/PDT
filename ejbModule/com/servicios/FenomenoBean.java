@@ -11,6 +11,7 @@ import javax.persistence.PersistenceException;
 import com.Remote.FenomenoBeanRemote;
 import com.dao.Fenomenodao;
 import com.entidades.Fenomeno;
+import com.entidades.Telefono;
 import com.exception.ServiciosException;
 
 
@@ -92,6 +93,12 @@ public class FenomenoBean implements FenomenoBeanRemote {
 	public List<Fenomeno> Obtenertodoslosfenomenos()
 	{
 		return this.fenomenodao.obtenerfenomenos();
+	}
+	
+	public List<Telefono> ObtenerTelefono()
+	{
+		List<Telefono> TL =fenomenodao.obtenertelefonoemergencia();
+		return TL;
 	}
 	
 }

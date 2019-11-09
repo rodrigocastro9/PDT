@@ -5,6 +5,7 @@ import java.util.List;
 import javax.ejb.Remote;
 
 import com.entidades.Fenomeno;
+import com.entidades.Telefono;
 import com.exception.ServiciosException;
 @Remote
 public interface FenomenoBeanRemote {
@@ -14,6 +15,7 @@ public interface FenomenoBeanRemote {
 	boolean EliminarFenomeno(long codigo) throws ServiciosException;
 	 List<Fenomeno> existecodigo(String codigo)throws ServiciosException;
 	 List<Fenomeno> Obtenertodoslosfenomenos();
+	 List<Telefono> ObtenerTelefono();
 	 
 
 }

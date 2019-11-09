@@ -11,6 +11,8 @@ import javax.persistence.PersistenceException;
 import javax.persistence.TypedQuery;
 
 import com.entidades.Fenomeno;
+import com.entidades.Telefono;
+import com.entidades.TipoUsuario;
 import com.exception.ServiciosException;
 
 
@@ -89,6 +91,14 @@ public class Fenomenodao {
 
 	}
 
-	
+	  public List<Telefono> obtenertelefonoemergencia() {
+		  
+		  TypedQuery<Telefono> query = em.createQuery("SELECT TU FROM Telefono TU",Telefono.class); 
+			return query.getResultList();
+		  //SELECT u FROM Usuario u WHERE u.Usuario LIKE :nombre AND u.PASS LIKE :pass
+		}
+	    
+
+
 	
 }
