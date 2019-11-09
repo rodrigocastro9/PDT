@@ -29,8 +29,11 @@ public class Telefono implements Serializable{
     @GeneratedValue( strategy = GenerationType.AUTO )
     @Column(name="ID_TEL")
     private long id;
+    @Column(name="NOMBRE")
+    private String nombre;
     @Column(name="NUMERO", length=20, nullable=true)
     private String numero;
+    
     @ManyToOne (optional=false)
     @JoinColumn (name="CODIGO_FEN")
     private Fenomeno fenomeno;
@@ -56,12 +59,19 @@ public class Telefono implements Serializable{
 	
 	
 	
-	public Telefono(long id, String numero, Fenomeno fenomeno ) {
+	public String getNombre() {
+		return nombre;
+	}
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+	public Telefono(long id, String nombre, String numero, Fenomeno fenomeno) {
 		super();
 		this.id = id;
+		this.nombre = nombre;
 		this.numero = numero;
 		this.fenomeno = fenomeno;
-	
 	}
+	
 
 }
