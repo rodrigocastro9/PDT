@@ -61,8 +61,11 @@ public  class UsuarioBean implements UsuarioBeanRemote {
 	
 	@Override
 	public boolean ModificarUsuario(Long id, String nombre, String apellido, String tipoDoc, String NumDoc, String direccion,
-			String correo, String pass, String estado, TipoUsuario tipousuario)throws ServiciosException
+			String correo, String pass, String estado, String tipousuario)throws ServiciosException
 	{
+		
+		TipoUsuario tipoUsu = this.tipousuariodao.obtenertipousuario(tipousuario);
+		
 		boolean pudeModificar;
 		usu.setPass(pass);
 		usu.setNombre(nombre);
@@ -71,7 +74,7 @@ public  class UsuarioBean implements UsuarioBeanRemote {
 		usu.setNumerodoc(NumDoc);
 		usu.setDireccion(direccion);
 		usu.setMail(correo);
-		usu.setTipousuario(tipousuario);
+		usu.setTipousuario(tipoUsu);
 	
 		try {
 			this.usuariodao.Modificarusuario(usu);

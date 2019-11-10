@@ -15,7 +15,7 @@ public interface UsuarioBeanRemote {
 	boolean EliminarUsuario(Long usuario) throws ServiciosException;
 	
 	boolean ModificarUsuario(Long id,String nombre, String apellido, String tipoDoc, String NumDoc, String direccion, String correo,
-			String password, String estado, TipoUsuario tipoUsuario)throws ServiciosException;
+			String password, String estado, String tipoUsuario)throws ServiciosException;
 	
 	//Login de usuario
      List<Usuario> Login (String usuario, String pass);

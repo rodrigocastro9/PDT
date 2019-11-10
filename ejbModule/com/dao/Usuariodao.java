@@ -20,7 +20,7 @@ public class Usuariodao {
 	public void AgregarUsuario(Usuario usuario) throws Exception 
 		{
 		try {
-			em.merge(usuario);
+			em.persist(usuario);
 			em.flush();
 				
 		}catch(PersistenceException e)

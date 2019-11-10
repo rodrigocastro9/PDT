@@ -74,8 +74,9 @@ public class Observaciondao {
     public List<Observacion> obtenerTodasObservaciones() 
     {
 
-		TypedQuery<Observacion> query = this.em.createQuery("select O from OBSERVACIONES O", Observacion.class);
-		return query.getResultList();
+		TypedQuery<Observacion> query = this.em.createQuery("select o from Observacion o", Observacion.class);
+		List<Observacion> obs = query.getResultList();
+		return obs;
 	}
     
     public List<Observacion> ListarObservacionporZona(String nomZona)
