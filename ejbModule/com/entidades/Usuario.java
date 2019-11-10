@@ -56,7 +56,7 @@ public class Usuario implements Serializable{
     @JoinColumn (name="ID_TIPO")
     private TipoUsuario tiposusuario;
     
-	public Usuario(long id, String pass, String usuario, String nombre, String apellido, String estado, String tipodoc,
+	public Usuario(Long id, String pass, String usuario, String nombre, String apellido, String estado, String tipodoc,
 			String numerodoc, String direccion, String mail, TipoUsuario tipousuario) {
 		super();
 		this.id = id;
@@ -79,10 +79,10 @@ public class Usuario implements Serializable{
 		this.tiposusuario = tipousuario;
 	}
 	
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public String getPass() {

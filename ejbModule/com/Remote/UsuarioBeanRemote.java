@@ -9,13 +9,13 @@ import com.exception.ServiciosException;
 @Remote
 public interface UsuarioBeanRemote {
 	
-	boolean CrearUsuario(Long id,String pass, String usuario, String nombre, String apellido, String estado, String tipodoc,
+	boolean CrearUsuario(Long id, String pass, String usuario, String nombre, String apellido, String estado, String tipodoc,
 			String numerodoc, String direccion, String mail, String tipousuario)throws ServiciosException;
 
 	boolean EliminarUsuario(Long usuario) throws ServiciosException;
 	
-	boolean ModificarUsuario(Long id,String nombre, String apellido, String tipoDoc, String NumDoc, String direccion, String correo,
-			String password, String estado, String tipoUsuario)throws ServiciosException;
+	boolean ModificarUsuario(Long id, String pass, String usuario, String nombre, String apellido, String estado, String tipodoc,
+			String numerodoc, String direccion, String mail, String tipousuario)throws ServiciosException;
 	
 	//Login de usuario
      List<Usuario> Login (String usuario, String pass);

@@ -39,14 +39,14 @@ public  class UsuarioBean implements UsuarioBeanRemote {
 	}
 	
 	@Override
-	public boolean CrearUsuario(Long id,String pass, String usuario, String nombre, String apellido, String estado, String tipodoc,
+	public boolean CrearUsuario(Long id, String pass, String usuario, String nombre, String apellido, String estado, String tipodoc,
 			String numerodoc, String direccion, String mail, String tipousuario)throws ServiciosException
 	{
 		boolean pudeCrear;
 		 
 		TipoUsuario tipoUsu = this.tipousuariodao.obtenertipousuario(tipousuario);
 		 
-		 usu = new Usuario(id,pass,usuario,nombre,apellido,estado,tipodoc,numerodoc,direccion,mail,tipoUsu);
+		 usu = new Usuario(id, pass,usuario,nombre,apellido,estado,tipodoc,numerodoc,direccion,mail,tipoUsu);
 		 
 		try {
 			this.usuariodao.AgregarUsuario(usu);
@@ -60,22 +60,24 @@ public  class UsuarioBean implements UsuarioBeanRemote {
 	}
 	
 	@Override
-	public boolean ModificarUsuario(Long id, String nombre, String apellido, String tipoDoc, String NumDoc, String direccion,
-			String correo, String pass, String estado, String tipousuario)throws ServiciosException
+	public boolean ModificarUsuario(Long id, String pass, String usuario, String nombre, String apellido, String estado, String tipodoc,
+			String numerodoc, String direccion, String mail, String tipousuario)throws ServiciosException
 	{
 		
 		TipoUsuario tipoUsu = this.tipousuariodao.obtenertipousuario(tipousuario);
 		
 		boolean pudeModificar;
-		usu.setPass(pass);
+		usu.setId(id);
+		usu.setTipodoc(tipodoc);
 		usu.setNombre(nombre);
-		usu.setApellido(apellido);
-		usu.setTipodoc(tipoDoc);
-		usu.setNumerodoc(NumDoc);
+		usu.setUsuario(usuario);
+		usu.setPass(pass);
+		usu.setNumerodoc(numerodoc);
+		usu.setEstado(estado);
+		usu.setMail(mail);
 		usu.setDireccion(direccion);
-		usu.setMail(correo);
 		usu.setTipousuario(tipoUsu);
-	
+		usu.setApellido(apellido);
 		try {
 			this.usuariodao.Modificarusuario(usu);
 			pudeModificar=true;

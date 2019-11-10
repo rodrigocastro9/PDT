@@ -20,12 +20,11 @@ public class Usuariodao {
 	public void AgregarUsuario(Usuario usuario) throws Exception 
 		{
 		try {
-			em.persist(usuario);
+			em.merge(usuario);	
 			em.flush();
-				
 		}catch(PersistenceException e)
 		{
-			System.out.println ("Error al querer consultar el usuario.");
+			System.out.println ("Error al querer agregar el usuario.");
 		}
 		}
 	

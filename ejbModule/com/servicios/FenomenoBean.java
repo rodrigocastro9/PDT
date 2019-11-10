@@ -37,7 +37,7 @@ public class FenomenoBean implements FenomenoBeanRemote {
 			pudecrear=true;
 		}catch(PersistenceException e)
 		{
-			System.out.println("Falla el insert al querer insertar "+e.getLocalizedMessage());
+			System.out.println("Falla el insert al querer insertar ");
 			
 			pudecrear=false;
 		}

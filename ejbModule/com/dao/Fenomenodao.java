@@ -32,7 +32,7 @@ public class Fenomenodao {
 			
 	}catch(PersistenceException e)
 		{
-		System.out.println ("Error al querer Agregar el Fenomeno."+e.getLocalizedMessage());
+		System.out.println ("Error al querer Agregar el Fenomeno.");
 		}
 	}
 	
