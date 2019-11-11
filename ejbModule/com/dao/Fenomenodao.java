@@ -93,7 +93,7 @@ public class Fenomenodao {
 
 	  public List<Telefono> obtenertelefonoemergencia() {
 		  
-		  TypedQuery<Telefono> query = em.createQuery("SELECT TU FROM Telefono TU",Telefono.class); 
+		  TypedQuery<Telefono> query = em.createQuery("SELECT TU FROM TELEFONO TU",Telefono.class); 
 			return query.getResultList();
 		  //SELECT u FROM Usuario u WHERE u.Usuario LIKE :nombre AND u.PASS LIKE :pass
 		}

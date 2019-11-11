@@ -97,8 +97,8 @@ public class FenomenoBean implements FenomenoBeanRemote {
 	
 	public List<Telefono> ObtenerTelefono()
 	{
-		List<Telefono> TL =fenomenodao.obtenertelefonoemergencia();
-		return TL;
+		//List<Telefono> TL =fenomenodao.obtenertelefonoemergencia();
+		return fenomenodao.obtenertelefonoemergencia();
 	}
 	
 }
