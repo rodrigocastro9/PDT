@@ -91,14 +91,22 @@ public class Fenomenodao {
 
 	}
 
-	  public List<Telefono> obtenertelefonoemergencia() {
+	  public Telefono obtenertelefonoemergencia(String Numero) {
 		  
-		  TypedQuery<Telefono> query = em.createQuery("SELECT TU FROM TELEFONO TU",Telefono.class); 
-			return query.getResultList();
+		  TypedQuery<Telefono> query = em.createQuery("SELECT TU FROM Telefono TU where  TU.numero LIKE :numero",Telefono.class)
+				  .setParameter("numero",Numero);
+			return query.getSingleResult();
 		  //SELECT u FROM Usuario u WHERE u.Usuario LIKE :nombre AND u.PASS LIKE :pass
 		}
 	    
-
+	//Metodo para listar todos los tipos de usuario
+	    public List<Telefono> obtenerTelEmergencia() {
+	    	 TypedQuery<Telefono> query = this.em.createQuery("select u FROM Telefono u", Telefono.class);
+	  		
+	    	List<Telefono> tus = query.getResultList();
+	    	 
+	    	 return tus;	
+	    }    
 
 	
 }

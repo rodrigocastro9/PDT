@@ -34,16 +34,17 @@ public class Telefono implements Serializable{
     @Column(name="NUMERO", length=20, nullable=true)
     private String numero;
     
-    @ManyToOne (optional=false)
+    /*@ManyToOne (optional=false)
     @JoinColumn (name="CODIGO_FEN")
-    private Fenomeno fenomeno;
+    private Fenomeno fenomeno;*/
    
-	public Fenomeno getFenomeno() {
+/*	public Fenomeno getFenomeno() {
 		return fenomeno;
 	}
 	public void setFenomeno(Fenomeno fenomeno) {
 		this.fenomeno = fenomeno;
 	}
+	*/
 	public long getId() {
 		return id;
 	}
@@ -65,12 +66,12 @@ public class Telefono implements Serializable{
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	public Telefono(long id, String nombre, String numero, Fenomeno fenomeno) {
+	public Telefono(long id, String nombre, String numero) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
 		this.numero = numero;
-		this.fenomeno = fenomeno;
+		//this.fenomeno = fenomeno;
 	}
 	
 
