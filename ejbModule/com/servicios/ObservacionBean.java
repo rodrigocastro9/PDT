@@ -113,7 +113,8 @@ public class ObservacionBean implements ObservacionBeanRemote {
 	@Override
 	public List<Observacion> obtenerTodasObservaciones(){
 
-		return this.obsDao.obtenerTodasObservaciones();
+		 List <Observacion> obs = this.obsDao.obtenerTodasObservaciones();		
+		 return obs;
 	}
 
 	@Override
