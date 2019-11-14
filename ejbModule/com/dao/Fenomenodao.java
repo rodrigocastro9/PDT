@@ -91,10 +91,10 @@ public class Fenomenodao {
 
 	}
 
-	  public Telefono obtenertelefonoemergencia(String Numero) {
+	  public Telefono obtenertelefonoemergencia(String nombre) {
 		  
-		  TypedQuery<Telefono> query = em.createQuery("SELECT TU FROM Telefono TU where  TU.numero LIKE :numero",Telefono.class)
-				  .setParameter("numero",Numero);
+		  TypedQuery<Telefono> query = em.createQuery("SELECT TU FROM Telefono TU where TU.nombre LIKE: nombre ",Telefono.class)
+				  .setParameter("nombre", nombre);
 			return query.getSingleResult();
 		  //SELECT u FROM Usuario u WHERE u.Usuario LIKE :nombre AND u.PASS LIKE :pass
 		}
