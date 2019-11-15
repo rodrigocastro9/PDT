@@ -27,13 +27,13 @@ public class FenomenoBean implements FenomenoBeanRemote {
 	//Fenomeno fenomeno= new Fenomeno();
 	
 	@Override
-	public boolean crearFenomeno(long id,String codigo, String nombreFen,String descripcion,String nombre) throws ServiciosException
+	public boolean crearFenomeno(long id,String codigo,String estado, String nombreFen,String descripcion,String nombre) throws ServiciosException
 	{
 		boolean pudecrear;
 		Telefono tels = fenomenodao.obtenertelefonoemergencia(nombre);
 		
 		
-		Fenomeno fenomeno =new Fenomeno(id,codigo,nombreFen,descripcion, tels);
+		Fenomeno fenomeno =new Fenomeno(id,codigo,estado,nombreFen,descripcion, tels);
 		try
 		{
 			this.fenomenodao.AgregarFenomeno(fenomeno);
@@ -47,7 +47,7 @@ public class FenomenoBean implements FenomenoBeanRemote {
 		return pudecrear;
 	} 
 	@Override
-	public boolean modificarFenomeno(long id, String codigo,String nombreFen,String descripcion,String tel) throws ServiciosException
+	public boolean modificarFenomeno(long id, String codigo,String estado,String nombreFen,String descripcion,String tel) throws ServiciosException
 	{
 		
 		Telefono tels = fenomenodao.obtenertelefonoemergencia(tel);
@@ -57,6 +57,7 @@ public class FenomenoBean implements FenomenoBeanRemote {
 		
 		Fenomeno fenomeno= new Fenomeno();
 			fenomeno.setCodigo(codigo);
+			fenomeno.setEstado(estado);
 			fenomeno.setDescripcion(descripcion);
 			fenomeno.setNombreFen(nombreFen);
 			fenomeno.setTelefonos(tels);

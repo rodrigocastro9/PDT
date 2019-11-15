@@ -40,6 +40,8 @@ public class Fenomeno implements Serializable{
     private String codigo;
     @Column(name="NOMBRE_FEN", length=40, nullable=true)
     private String nombreFen;
+    @Column(name="ESTADO", length=50, nullable=true)
+    private String estado;
     @Column(name="DESCRIPCION", length=100, nullable=true)
     private String descripcion;  
     
@@ -52,13 +54,26 @@ public class Fenomeno implements Serializable{
     
 
 
-	public Fenomeno(long id, String codigo, String nombreFen, String descripcion, Telefono telefonos) {
+
+
+	public Fenomeno(long id, String codigo, String nombreFen, String estado, String descripcion, Telefono telefonos) {
 		super();
 		this.id = id;
 		this.codigo = codigo;
 		this.nombreFen = nombreFen;
+		this.estado = estado;
 		this.descripcion = descripcion;
 		this.telefonos = telefonos;
+	}
+
+
+	public String getEstado() {
+		return estado;
+	}
+
+
+	public void setEstado(String estado) {
+		this.estado = estado;
 	}
 
 
