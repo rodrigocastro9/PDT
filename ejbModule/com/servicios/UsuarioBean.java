@@ -107,7 +107,9 @@ public  class UsuarioBean implements UsuarioBeanRemote {
 	@Override
 	public List<Usuario> Login (String usuario, String pass)
 	{
-		return usuariodao.Login(usuario, pass);
+		List<Usuario> usuarios = usuariodao.Login(usuario, pass);
+		
+		return usuarios;
 	}
 
 }
