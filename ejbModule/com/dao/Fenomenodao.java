@@ -27,7 +27,7 @@ public class Fenomenodao {
 	public void AgregarFenomeno (Fenomeno fenomeno) throws ServiciosException
 	{
 		try {
-			em.merge(fenomeno);
+			em.persist(fenomeno);
 			em.flush();
 			
 	}catch(PersistenceException e)
@@ -91,15 +91,15 @@ public class Fenomenodao {
 
 	}
 
-	  public List<Telefono> obtenertelefonoemergencia(String nombre) {
+	  public Telefono obtenertelefonoemergencia(String nombre) {
 		  
-		  TypedQuery<Telefono> query = em.createQuery("SELECT TU FROM Telefono TU where CONCAT(lower(TU.nombre),'-',lower(TU.numero))  LIKE: NumeroyTel ",Telefono.class)
-				  .setParameter("NumeroyTel", nombre);
-		  return query.getResultList();
+		  TypedQuery<Telefono> query = em.createQuery("SELECT TU FROM Telefono TU where TU.nombre LIKE: nombre ",Telefono.class)
+				  .setParameter("nombre", nombre);
+			return query.getSingleResult();
 		  //SELECT u FROM Usuario u WHERE u.Usuario LIKE :nombre AND u.PASS LIKE :pass
 		}
 	    
-	
+	//Metodo para listar todos los tipos de usuario
 	    public List<Telefono> obtenerTelEmergencia() {
 	    	 TypedQuery<Telefono> query = this.em.createQuery("select u FROM Telefono u", Telefono.class);
 	  		

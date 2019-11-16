@@ -49,7 +49,10 @@ public class Fenomeno implements Serializable{
     @JoinColumn (name="ID_TEL")
     private Telefono telefonos;
     
-  
+    
+ 
+    
+
 
 
 
