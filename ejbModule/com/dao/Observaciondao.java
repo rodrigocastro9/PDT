@@ -73,26 +73,29 @@ public class Observaciondao {
     
     public List<Observacion> obtenerTodasObservaciones() 
     {
-
 		TypedQuery<Observacion> query = this.em.createQuery("select o from Observacion o", Observacion.class);
 		List<Observacion> observaciones = query.getResultList();
 		return observaciones;
 	}
     
-    public List<Observacion> ListarObservacionporZona(String nomZona)
-	{
-    	TypedQuery<Observacion> query = em.createQuery("SELECT O FROM Observacion O JOIN Localidad L ON O.localidad = L.id \r\n" + 
-    			"JOIN Departamento D ON L.departamento = D.id JOIN Zona Z on Z.id = D.zona WHERE Z.nombre_zona LIKE :NomZona", Observacion.class)
-				.setParameter("NomZona", nomZona); 
-		return query.getResultList();
+    public List<Fenomeno> obtenerTodosFenomenos() 
+    {
+		TypedQuery<Fenomeno> query = this.em.createQuery("select f from Fenomeno f", Fenomeno.class);
+		List<Fenomeno> fenomenos = query.getResultList();
+		return fenomenos;
 	}
-
-  /*  public List<Observacion> ListarObservacionporCaraFenoFech(String NomCaraFenoFech)
-	{
-    	TypedQuery<Observacion> query = em.createQuery("SELECT O FROM OBSERVACIONES O JOIN localidad L ON O.id_localidad = L.id_localidad \r\n" + 
-    			"JOIN departamento D ON L.id_departamento=D.id_departamento JOIN zona z on z.id_zona = D.id_zona WHERE D.id_zona LIKE :id_zona", Observacion.class)
-				.setParameter("NomZona", NomZona); 
-		return query.getResultList();
+    
+    public List<Localidad> obtenerTodasLocalidades() 
+    {
+		TypedQuery<Localidad> query = this.em.createQuery("select l from Localidad l", Localidad.class);
+		List<Localidad> localidades = query.getResultList();
+		return localidades;
 	}
-    */
+    
+    public List<Estado> obtenerTodasEstados() 
+    {
+		TypedQuery<Estado> query = this.em.createQuery("select e from Estado e", Estado.class);
+		List<Estado> estados = query.getResultList();
+		return estados;
+	}
 }

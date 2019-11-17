@@ -23,9 +23,15 @@ public interface ObservacionBeanRemote {
 	List<Observacion> ListarObservacionporID(long ID_OBSERVACION);
 	
 	List <Observacion> obtenerTodasObservaciones();
-	
-	List<Observacion> ListarObservacionporZona(String NomZona);
-	
+		
 	boolean validarDescripcion(Observacion obs, List<String> palabras);
+
+	List <Fenomeno> obtenerTodosFenomenos();
+
+	List <Localidad> obtenerTodasLocalidades();
+	
+	List <Estado> obtenerTodosEstados();
+	
+	
 	
 }

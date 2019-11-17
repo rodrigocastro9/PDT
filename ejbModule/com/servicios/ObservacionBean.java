@@ -113,15 +113,8 @@ public class ObservacionBean implements ObservacionBeanRemote {
 	@Override
 	public List<Observacion> obtenerTodasObservaciones(){
 
-		 List <Observacion> obs = this.obsDao.obtenerTodasObservaciones();		
-		 return obs;
-	}
-
-	@Override
-	public List<Observacion> ListarObservacionporZona(String NomZona)
-	{
-		List<Observacion> observaciones = this.obsDao.ListarObservacionporZona(NomZona);
-		return observaciones;
+		 List <Observacion> observaciones = this.obsDao.obtenerTodasObservaciones();		
+		 return observaciones;
 	}
 	
 	@Override
@@ -136,5 +129,28 @@ public class ObservacionBean implements ObservacionBeanRemote {
 		
 		return estaLimpia;		
 	}
+
+	@Override
+	public List<Fenomeno> obtenerTodosFenomenos(){
+
+		 List <Fenomeno> fenomenos = this.obsDao.obtenerTodosFenomenos();		
+		 return fenomenos;
+	}
+	
+	@Override
+	public List<Localidad> obtenerTodasLocalidades(){
+
+		 List <Localidad> localidades = this.obsDao.obtenerTodasLocalidades();		
+		 return localidades;
+	}
+	
+	@Override
+	public List<Estado> obtenerTodosEstados(){
+
+		 List <Estado> estados = this.obsDao.obtenerTodasEstados();		
+		 return estados;
+	}
+	
+	
 	
 }
