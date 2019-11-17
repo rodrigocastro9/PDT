@@ -12,7 +12,7 @@ import com.exception.ServiciosException;
 @Remote
 public interface ObservacionBeanRemote {
 
-	boolean CrearObservacion (Long id, String usuario, String fenomeno, String localidad, 
+	boolean CrearObservacion (String CodOBS, String usuario, String fenomeno, String localidad, 
     		String descripcion, Blob imagen, float latitud, float longitud, float altitud, String estado, Date fecha) throws ServiciosException;
 	
 	boolean ModificarObservacion(Long id, String usuario, String fenomeno, String localidad, 

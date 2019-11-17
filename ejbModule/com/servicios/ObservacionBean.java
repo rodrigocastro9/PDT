@@ -46,7 +46,7 @@ public class ObservacionBean implements ObservacionBeanRemote {
     {}
     
 	@Override
-    public boolean CrearObservacion(Long id, String usuario, String fenomeno, String localidad, 
+    public boolean CrearObservacion(String CodOBS, String usuario, String fenomeno, String localidad, 
     		String descripcion, Blob imagen, float latitud, float longitud, float altitud, String estado, Date fecha) throws ServiciosException
     {
     	boolean pudeCrear;
@@ -56,7 +56,7 @@ public class ObservacionBean implements ObservacionBeanRemote {
 		Localidad loc = this.locDao.obtenerLocalidad(localidad);
 		Estado est = this.estDao.obtenerEstadonombre(estado);
     	
-    	obs = new Observacion(id, usu, fen, loc, descripcion, imagen, latitud ,longitud, altitud, est, fecha);
+    	obs = new Observacion(CodOBS, usu, fen, loc, descripcion, imagen, latitud ,longitud, altitud, est, fecha);
     	
     	//pasar lista de palabras inconvenientes en el segundo parametro
     	if(!this.validarDescripcion(obs, this.palabras))

@@ -592,6 +592,8 @@ CREATE UNIQUE INDEX "PDT"."UK_USUARIO" ON "PDT"."USUARIO" ("USUARIO")
   ALTER TABLE "PDT"."OBSERVACIONES" MODIFY ("ALTITUD" NOT NULL ENABLE);
  
   ALTER TABLE "PDT"."OBSERVACIONES" MODIFY ("ID_ESTADO" NOT NULL ENABLE);
+  
+  ALTER TABLE "PDT"."OBSERVACIONES" MODIFY ("CODIGO_OBS" NOT NULL ENABLE);
 --------------------------------------------------------
 --  Constraints for Table FENOMENO
 --------------------------------------------------------

@@ -21,7 +21,11 @@ public class Observacion implements Serializable {
     @GeneratedValue( strategy = GenerationType.AUTO )
     @Column(name="ID_OBSERVACION")
     private long id;
-    @ManyToOne (optional=false)
+    @Column(name="CODIGO_OBS")
+    private String codigo_OBS;
+  
+
+	@ManyToOne (optional=false)
     @JoinColumn (name="ID_USUARIO")
 	private Usuario usuario; 
     @ManyToOne (optional=false)
@@ -52,6 +56,12 @@ public class Observacion implements Serializable {
 	public void setId(long id) {
 		this.id = id;
 	}
+	  public String getCodigo_OBS() {
+			return codigo_OBS;
+		}
+		public void setCodigo_OBS(String codigo_OBS) {
+			this.codigo_OBS = codigo_OBS;
+		}
 	public Usuario getUsuario() {
 		return usuario;
 	}
@@ -113,10 +123,12 @@ public class Observacion implements Serializable {
 		this.fecha = fecha;
 	}
 	
-	public Observacion(long id, Usuario usuario, Fenomeno fenomeno, Localidad localidad, String descripcion,
-			Blob imagen, float latitud, float longitud, float altitud, Estado estado, Date fecha) {
+
+	public Observacion(String codigo_OBS, Usuario usuario, Fenomeno fenomeno, Localidad localidad,
+			String descripcion, Blob imagen, float latitud, float longitud, float altitud, Estado estado, Date fecha) {
 		super();
 		this.id = id;
+		this.codigo_OBS = codigo_OBS;
 		this.usuario = usuario;
 		this.fenomeno = fenomeno;
 		this.localidad = localidad;
