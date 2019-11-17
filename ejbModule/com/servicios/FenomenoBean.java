@@ -56,6 +56,7 @@ public class FenomenoBean implements FenomenoBeanRemote {
 		fenomenodao.existeFenomeno(codigo);
 		
 		Fenomeno fenomeno= new Fenomeno();
+			fenomeno.setId(id);
 			fenomeno.setCodigo(codigo);
 			fenomeno.setEstado(estado);
 			fenomeno.setDescripcion(descripcion);
