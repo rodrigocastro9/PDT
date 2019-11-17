@@ -15,7 +15,6 @@ public interface FenomenoBeanRemote {
 	boolean EliminarFenomeno(long codigo) throws ServiciosException;
 	 List<Fenomeno> existecodigo(String codigo)throws ServiciosException;
 	 List<Fenomeno> Obtenertodoslosfenomenos();
-	 	 List<Telefono> obtenerTelEmergencia();
-	 
+	 List<Telefono> obtenerTelEmergencia();	 
 
 }

@@ -1,13 +1,10 @@
 package com.servicios;
 
-import java.sql.SQLException;
 import java.util.List;
-
 import javax.ejb.EJB;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.persistence.PersistenceException;
-
 import com.Remote.FenomenoBeanRemote;
 import com.dao.Fenomenodao;
 import com.entidades.Fenomeno;
@@ -111,8 +108,6 @@ public class FenomenoBean implements FenomenoBeanRemote {
 		return TelE;
 	}
 
-
-	
 	
 	
 	

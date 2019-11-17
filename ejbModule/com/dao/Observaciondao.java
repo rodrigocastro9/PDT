@@ -77,25 +77,14 @@ public class Observaciondao {
 		List<Observacion> observaciones = query.getResultList();
 		return observaciones;
 	}
-    
-    public List<Fenomeno> obtenerTodosFenomenos() 
-    {
-		TypedQuery<Fenomeno> query = this.em.createQuery("select f from Fenomeno f", Fenomeno.class);
-		List<Fenomeno> fenomenos = query.getResultList();
-		return fenomenos;
-	}
-    
-    public List<Localidad> obtenerTodasLocalidades() 
-    {
-		TypedQuery<Localidad> query = this.em.createQuery("select l from Localidad l", Localidad.class);
-		List<Localidad> localidades = query.getResultList();
-		return localidades;
-	}
-    
-    public List<Estado> obtenerTodasEstados() 
-    {
-		TypedQuery<Estado> query = this.em.createQuery("select e from Estado e", Estado.class);
-		List<Estado> estados = query.getResultList();
-		return estados;
-	}
+   
+    public List<Observacion> existeObservacion(String codigo) {
+  		
+  		TypedQuery<Observacion> query = em.createQuery("SELECT o FROM Observacion o WHERE o.codigo LIKE :codigo", Observacion.class).setParameter("codigo", codigo);
+		
+  		List<Observacion> observaciones  =  query.getResultList();
+  		
+  		return observaciones;
+  	}
+  
 }

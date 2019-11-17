@@ -10,6 +10,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceException;
 import javax.persistence.TypedQuery;
 
+import com.entidades.Estado;
 import com.entidades.Fenomeno;
 import com.entidades.Telefono;
 import com.entidades.TipoUsuario;
@@ -35,8 +36,7 @@ public class Fenomenodao {
 		System.out.println ("Error al querer Agregar el Fenomeno.");
 		}
 	}
-	
-	
+		
 	public void ModificarFenomeno (Fenomeno fenomeno) throws ServiciosException
 	{
 		try 
@@ -65,13 +65,11 @@ public class Fenomenodao {
 		}
 	}
 	
-	
 	public List<Fenomeno>obtenerfenomenos ()
 	{
 		TypedQuery<Fenomeno> query= em.createQuery("SELECT F FROM Fenomeno F",Fenomeno.class);
 			return query.getResultList();
 	}
-	
 	
 	public Fenomeno obtenerfenomenoporcodigo(String codigo)
 	{
@@ -85,13 +83,14 @@ public class Fenomenodao {
 		return query.getResultList();
 		
 	}
+	
 	public Fenomeno obtenercodigoFen(long codigofen) {
 
 		return this.em.find(Fenomeno.class, codigofen);
 
 	}
 
-	  public Telefono obtenertelefonoemergencia(String nombre) {
+	 public Telefono obtenertelefonoemergencia(String nombre) {
 		  
 		  TypedQuery<Telefono> query = em.createQuery("SELECT TU FROM Telefono TU where TU.nombre LIKE: nombre ",Telefono.class)
 				  .setParameter("nombre", nombre);
@@ -99,14 +98,21 @@ public class Fenomenodao {
 		  //SELECT u FROM Usuario u WHERE u.Usuario LIKE :nombre AND u.PASS LIKE :pass
 		}
 	    
-	//Metodo para listar todos los tipos de usuario
-	    public List<Telefono> obtenerTelEmergencia() {
-	    	 TypedQuery<Telefono> query = this.em.createQuery("select u FROM Telefono u", Telefono.class);
-	  		
-	    	List<Telefono> tus = query.getResultList();
-	    	 
-	    	 return tus;	
-	    }    
+    public List<Telefono> obtenerTelEmergencia() {
+    	 TypedQuery<Telefono> query = this.em.createQuery("select u FROM Telefono u", Telefono.class);
+  		
+    	List<Telefono> tus = query.getResultList();
+    	 
+    	 return tus;	
+    }    
 
-	
+    public Fenomeno obtenerFenomeno(String codigo) {
+
+	    	TypedQuery<Fenomeno> query = em.createQuery("SELECT f FROM Fenomeno f where f.codigo LIKE : codigo",Fenomeno.class).setParameter("codigo",codigo);
+			return query.getSingleResult();
+
+		}    
+	    
+	    
+	    
 }

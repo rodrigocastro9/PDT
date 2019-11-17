@@ -9,7 +9,7 @@ import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 
 import com.Remote.ObservacionBeanRemote;
-import com.dao.Observaciondao;
+import com.dao.*;
 import com.entidades.*;
 import com.exception.ServiciosException;
 
@@ -25,6 +25,18 @@ public class ObservacionBean implements ObservacionBeanRemote {
 	@EJB
 	private Observaciondao obsDao;
 	Observacion obs = new Observacion();
+	@EJB
+	private Usuariodao usuDao;
+	Usuario usu = new Usuario();
+	@EJB
+	private Localidaddao locDao;
+	Localidad loc = new Localidad();
+	@EJB
+	private Estadodao estDao;
+	Estado est = new Estado();
+	@EJB
+	private Fenomenodao fenDao;
+	Fenomeno fen = new Fenomeno();
 	
 	
 	//dato de prueba
@@ -34,11 +46,17 @@ public class ObservacionBean implements ObservacionBeanRemote {
     {}
     
 	@Override
-    public boolean CrearObservacion(Long id, Usuario usuario, Fenomeno fenomeno, Localidad localidad, 
-    		String descripcion, Blob imagen, float latitud, float longitud, float altitud, Estado estado, Date fecha) throws ServiciosException
+    public boolean CrearObservacion(Long id, String usuario, String fenomeno, String localidad, 
+    		String descripcion, Blob imagen, float latitud, float longitud, float altitud, String estado, Date fecha) throws ServiciosException
     {
     	boolean pudeCrear;
-    	obs = new Observacion(id, usuario, fenomeno, localidad, descripcion, imagen, latitud ,longitud, altitud, estado, fecha);
+    	
+    	Usuario usu = this.usuDao.obtenerUsuario(usuario);
+		Fenomeno fen = this.fenDao.obtenerFenomeno(fenomeno);
+		Localidad loc = this.locDao.obtenerLocalidad(localidad);
+		Estado est = this.estDao.obtenerEstadonombre(estado);
+    	
+    	obs = new Observacion(id, usu, fen, loc, descripcion, imagen, latitud ,longitud, altitud, est, fecha);
     	
     	//pasar lista de palabras inconvenientes en el segundo parametro
     	if(!this.validarDescripcion(obs, this.palabras))
@@ -46,7 +64,7 @@ public class ObservacionBean implements ObservacionBeanRemote {
     	
     	try {
     		
-    		this.obsDao.AgregarObservacion(obs, usuario.getId(), estado.getId(), fenomeno.getId(), localidad.getId());
+    		this.obsDao.AgregarObservacion(obs, usu.getId(), est.getId(), fen.getId(), loc.getId());
     		pudeCrear = true;
     	} catch (Exception e) {
     		System.out.println(e.getMessage());
@@ -57,21 +75,28 @@ public class ObservacionBean implements ObservacionBeanRemote {
     }
 	
 	@Override
-    public boolean ModificarObservacion(Long id, Usuario usuario, Fenomeno fenomeno, Localidad localidad, 
-    		String descripcion, Blob imagen, float latitud, float longitud, float altitud, Estado estado, Date fecha) throws ServiciosException
+    public boolean ModificarObservacion(Long id, String usuario, String fenomeno, String localidad, 
+    		String descripcion, Blob imagen, float latitud, float longitud, float altitud, String estado, Date fecha) throws ServiciosException
     {		
     	boolean pudeModificar;
     	
+    	Usuario usu = this.usuDao.obtenerUsuario(usuario);
+		Fenomeno fen = this.fenDao.obtenerFenomeno(fenomeno);
+		Localidad loc = this.locDao.obtenerLocalidad(localidad);
+		Estado est = this.estDao.obtenerEstadonombre(estado);
+    	
+    	
+    	
     	obs.setId(id); // el id no deberia poder modificarse Soy rodrigo
-    	obs.setUsuario(usuario);
-    	obs.setFenomeno(fenomeno);
-    	obs.setLocalidad(localidad);
+    	obs.setUsuario(usu);
+    	obs.setFenomeno(fen);
+    	obs.setLocalidad(loc);
     	obs.setDescripcion(descripcion);
     	obs.setImagen(imagen);
     	obs.setLatitud(latitud);
     	obs.setLongitud(longitud);
     	obs.setAltitud(altitud);
-    	obs.setEstado(estado);
+    	obs.setEstado(est);
     	obs.setFecha(fecha);
     	
     	//pasar lista de palabras inconvenientes en el segundo parametro
@@ -130,27 +155,11 @@ public class ObservacionBean implements ObservacionBeanRemote {
 		return estaLimpia;		
 	}
 
-	@Override
-	public List<Fenomeno> obtenerTodosFenomenos(){
-
-		 List <Fenomeno> fenomenos = this.obsDao.obtenerTodosFenomenos();		
-		 return fenomenos;
-	}
 	
 	@Override
-	public List<Localidad> obtenerTodasLocalidades(){
-
-		 List <Localidad> localidades = this.obsDao.obtenerTodasLocalidades();		
-		 return localidades;
-	}
-	
-	@Override
-	public List<Estado> obtenerTodosEstados(){
-
-		 List <Estado> estados = this.obsDao.obtenerTodasEstados();		
-		 return estados;
-	}
-	
-	
+	public List<Observacion> existeObservacion(String codigo){
+		List <Observacion> observaciones = this.obsDao.existeObservacion(codigo);		
+		 return observaciones;
+	}	
 	
 }

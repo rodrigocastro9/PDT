@@ -12,11 +12,11 @@ import com.exception.ServiciosException;
 @Remote
 public interface ObservacionBeanRemote {
 
-	boolean CrearObservacion (Long id, Usuario usuario, Fenomeno fenomeno, Localidad localidad, 
-    		String descripcion, Blob imagen, float latitud, float longitud, float altitud, Estado estado, Date fecha) throws ServiciosException;
+	boolean CrearObservacion (Long id, String usuario, String fenomeno, String localidad, 
+    		String descripcion, Blob imagen, float latitud, float longitud, float altitud, String estado, Date fecha) throws ServiciosException;
 	
-	boolean ModificarObservacion(Long id, Usuario usuario, Fenomeno fenomeno, Localidad localidad, 
-    		String descripcion, Blob imagen, float latitud, float longitud, float altitud, Estado estado, Date fecha) throws ServiciosException;
+	boolean ModificarObservacion(Long id, String usuario, String fenomeno, String localidad, 
+    		String descripcion, Blob imagen, float latitud, float longitud, float altitud, String estado, Date fecha) throws ServiciosException;
 	 
 	boolean EliminarObservacion(long id) throws ServiciosException;
 	
@@ -25,13 +25,7 @@ public interface ObservacionBeanRemote {
 	List <Observacion> obtenerTodasObservaciones();
 		
 	boolean validarDescripcion(Observacion obs, List<String> palabras);
-
-	List <Fenomeno> obtenerTodosFenomenos();
-
-	List <Localidad> obtenerTodasLocalidades();
-	
-	List <Estado> obtenerTodosEstados();
-	
-	
+		
+	List<Observacion> existeObservacion(String codigo);
 	
 }

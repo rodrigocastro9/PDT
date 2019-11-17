@@ -23,7 +23,6 @@ public class TipoUsuariodao {
 		  
 		}
 	    
-
 	    //Metodo para listar todos los tipos de usuario
 	    public List<TipoUsuario> obtenerTodoslosTipos() {
 	    	 TypedQuery<TipoUsuario> query = this.em.createQuery("select u FROM TipoUsuario u", TipoUsuario.class);
