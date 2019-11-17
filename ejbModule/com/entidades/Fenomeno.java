@@ -32,9 +32,9 @@ public class Fenomeno implements Serializable{
     private static final long serialVersionUID = 1L;
  
     @Id
-	@SequenceGenerator(name="secuenciafenomeno",sequenceName="SEQ_CODIGOFENOMENO", initialValue=1, allocationSize=100)
-    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="secuenciafenomeno")
-	@Column(name="CODIGO_FEN")
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="secuenciafenomeno")
+    @SequenceGenerator(name="secuenciafenomeno",sequenceName="SEQ_CODIGOFENOMENO", allocationSize=1)
+	@Column(name="CODIGO_FEN",updatable = false)
     private long id;
     @Column(name="CODIGO",length=40, nullable=true)
     private String codigo;
@@ -56,9 +56,9 @@ public class Fenomeno implements Serializable{
 
 
 
-	public Fenomeno(long id, String codigo, String nombreFen, String estado, String descripcion, Telefono telefonos) {
+	public Fenomeno(String codigo, String nombreFen, String estado, String descripcion, Telefono telefonos) {
 		super();
-		this.id = id;
+		
 		this.codigo = codigo;
 		this.nombreFen = nombreFen;
 		this.estado = estado;

@@ -39,14 +39,14 @@ public  class UsuarioBean implements UsuarioBeanRemote {
 	}
 	
 	@Override
-	public boolean CrearUsuario(Long id, String pass, String usuario, String nombre, String apellido, String estado, String tipodoc,
+	public boolean CrearUsuario( String pass, String usuario, String nombre, String apellido, String estado, String tipodoc,
 			String numerodoc, String direccion, String mail, String tipousuario)throws ServiciosException
 	{
 		boolean pudeCrear;
 		 
 		TipoUsuario tipoUsu = this.tipousuariodao.obtenertipousuario(tipousuario);
 		 
-		 usu = new Usuario(id, pass,usuario,nombre,apellido,estado,tipodoc,numerodoc,direccion,mail,tipoUsu);
+		 usu = new Usuario( pass,usuario,nombre,apellido,estado,tipodoc,numerodoc,direccion,mail,tipoUsu);
 		 
 		try {
 			this.usuariodao.AgregarUsuario(usu);

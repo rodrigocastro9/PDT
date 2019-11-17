@@ -9,7 +9,7 @@ import com.exception.ServiciosException;
 @Remote
 public interface UsuarioBeanRemote {
 	
-	boolean CrearUsuario(Long id, String pass, String usuario, String nombre, String apellido, String estado, String tipodoc,
+	boolean CrearUsuario( String pass, String usuario, String nombre, String apellido, String estado, String tipodoc,
 			String numerodoc, String direccion, String mail, String tipousuario)throws ServiciosException;
 
 	boolean EliminarUsuario(Long usuario) throws ServiciosException;

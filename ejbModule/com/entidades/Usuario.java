@@ -28,10 +28,9 @@ public class Usuario implements Serializable{
     }
 
     @Id
-    @SequenceGenerator(name="secuenciausuario",sequenceName="SEQ_USUARIOID")
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="secuenciausuario"  )
-    
-    @Column(name="ID_USUARIO")
+    @SequenceGenerator(name="secuenciausuario",sequenceName="SEQ_USUARIOID",allocationSize=1)
+    @Column(name="ID_USUARIO",updatable = false)
     private long id;
     @Column(name="PASS", length=50, nullable=true)
     private String pass;
@@ -56,10 +55,10 @@ public class Usuario implements Serializable{
     @JoinColumn (name="ID_TIPO")
     private TipoUsuario tiposusuario;
     
-	public Usuario(Long id, String pass, String usuario, String nombre, String apellido, String estado, String tipodoc,
+	public Usuario( String pass, String usuario, String nombre, String apellido, String estado, String tipodoc,
 			String numerodoc, String direccion, String mail, TipoUsuario tipousuario) {
 		super();
-		this.id = id;
+		
 		this.pass = pass;
 		this.usuario = usuario;
 		this.nombre = nombre;
