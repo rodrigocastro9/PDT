@@ -36,8 +36,10 @@ public class Observacion implements Serializable {
     private Localidad localidad; 
     @Column(name="DESCRIPCION", length=(50), nullable=false)
 	private String descripcion;
-    @Column(name="IMAGEN")
-	private Blob imagen;
+    @Lob
+	private byte[] imagen;
+    //@Column(name="IMAGEN")
+	//private Blob imagen;
     @Column(name="LATITUD",length=(50),nullable=false)
 	private float latitud;
 	@Column(name="LONGITUD",length=(50),nullable=false)
@@ -86,10 +88,11 @@ public class Observacion implements Serializable {
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
-	public Blob getImagen() {
+	
+	public byte[] getImagen() {
 		return imagen;
 	}
-	public void setImagen(Blob imagen) {
+	public void setImagen(byte[] imagen) {
 		this.imagen = imagen;
 	}
 	public float getLatitud() {
@@ -125,7 +128,7 @@ public class Observacion implements Serializable {
 	
 
 	public Observacion(String codigo_OBS, Usuario usuario, Fenomeno fenomeno, Localidad localidad,
-			String descripcion, Blob imagen, float latitud, float longitud, float altitud, Estado estado, Date fecha) {
+			String descripcion, byte[] imagen, float latitud, float longitud, float altitud, Estado estado, Date fecha) {
 		super();
 		this.id = id;
 		this.codigo_OBS = codigo_OBS;
@@ -140,6 +143,7 @@ public class Observacion implements Serializable {
 		this.estado = estado;
 		this.fecha = fecha;
 	}
+
     
     
 }
