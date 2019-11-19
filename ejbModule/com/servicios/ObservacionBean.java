@@ -157,8 +157,8 @@ public class ObservacionBean implements ObservacionBeanRemote {
 
 	
 	@Override
-	public List<Observacion> existeObservacion(String codigo){
-		List <Observacion> observaciones = this.obsDao.existeObservacion(codigo);		
+	public List<Observacion> existeObservacion(String identificacion){
+		List <Observacion> observaciones = this.obsDao.existeObservacion(identificacion);		
 		 return observaciones;
 	}	
 	

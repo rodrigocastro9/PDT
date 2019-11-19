@@ -26,6 +26,6 @@ public interface ObservacionBeanRemote {
 		
 	boolean validarDescripcion(Observacion obs, List<String> palabras);
 		
-	List<Observacion> existeObservacion(String codigo);
+	List<Observacion> existeObservacion(String identificacion);
 	
 }

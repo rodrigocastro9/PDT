@@ -78,9 +78,9 @@ public class Observaciondao {
 		return observaciones;
 	}
    
-    public List<Observacion> existeObservacion(String codigo) {
+    public List<Observacion> existeObservacion(String codigo_OBS) {
   		
-  		TypedQuery<Observacion> query = em.createQuery("SELECT o FROM Observacion o WHERE o.codigo LIKE :codigo", Observacion.class).setParameter("codigo", codigo);
+  		TypedQuery<Observacion> query = em.createQuery("SELECT o FROM Observacion o WHERE o.codigo_OBS LIKE :codigo_OBS", Observacion.class).setParameter("codigo_OBS", codigo_OBS);
 		
   		List<Observacion> observaciones  =  query.getResultList();
   		
