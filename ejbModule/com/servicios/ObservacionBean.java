@@ -58,10 +58,10 @@ public class ObservacionBean implements ObservacionBeanRemote {
     	
     	obs = new Observacion(CodOBS, usu, fen, loc, descripcion, imagen, latitud ,longitud, altitud, est, fecha);
     	
-    	//pasar lista de palabras inconvenientes en el segundo parametro
+    /*	//pasar lista de palabras inconvenientes en el segundo parametro
     	if(!this.validarDescripcion(obs, this.palabras))
     		obs.setDescripcion("CONTENIDO INCONVENIENTE");
-    	
+    */
     	try {
     		
     		this.obsDao.AgregarObservacion(obs);
