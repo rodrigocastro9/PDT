@@ -64,7 +64,7 @@ public class ObservacionBean implements ObservacionBeanRemote {
     	
     	try {
     		
-    		this.obsDao.AgregarObservacion(obs, usu.getId(), est.getId(), fen.getId(), loc.getId());
+    		this.obsDao.AgregarObservacion(obs);
     		pudeCrear = true;
     	} catch (Exception e) {
     		System.out.println(e.getMessage());

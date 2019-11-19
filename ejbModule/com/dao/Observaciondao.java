@@ -21,14 +21,10 @@ public class Observaciondao {
     @PersistenceContext
 	private EntityManager em;
 
-    public void AgregarObservacion(Observacion nuevaObs, Long idUsu, Long idEst, Long idFen, Long idLocal) throws ServiciosException 
+    public void AgregarObservacion(Observacion nuevaObs) throws ServiciosException 
 	{
     	try {
-			nuevaObs.setUsuario(em.find(Usuario.class, idUsu));
-			nuevaObs.setEstado(em.find(Estado.class, idEst));
-			nuevaObs.setFenomeno(em.find(Fenomeno.class, idFen));
-			nuevaObs.setLocalidad(em.find(Localidad.class, idLocal));
-			em.persist(nuevaObs);
+			em.merge(nuevaObs);
 			em.flush();
 				
 		}catch(PersistenceException e)

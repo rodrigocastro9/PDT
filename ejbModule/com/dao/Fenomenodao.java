@@ -12,6 +12,7 @@ import javax.persistence.TypedQuery;
 
 import com.entidades.Estado;
 import com.entidades.Fenomeno;
+import com.entidades.Localidad;
 import com.entidades.Telefono;
 import com.entidades.TipoUsuario;
 import com.exception.ServiciosException;
@@ -109,9 +110,21 @@ public class Fenomenodao {
     public Fenomeno obtenerFenomeno(String codigo) {
 
 	    	TypedQuery<Fenomeno> query = em.createQuery("SELECT f FROM Fenomeno f where f.codigo LIKE : codigo",Fenomeno.class).setParameter("codigo",codigo);
-			return query.getSingleResult();
+	    	
+	    	return query.getSingleResult();
 
 		}    
+    
+    
+   
+    public List <Fenomeno> obtenerFenomenosTodos(String codigo){
+    	
+    	TypedQuery<Fenomeno> query = em.createQuery("SELECT f FROM Fenomeno f where f.codigo LIKE : codigo",Fenomeno.class).setParameter("codigo",codigo);
+		
+    		
+    	return query.getResultList();
+    }
+    
 	    
 	    
 	    
