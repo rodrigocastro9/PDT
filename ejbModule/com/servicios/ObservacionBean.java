@@ -47,7 +47,7 @@ public class ObservacionBean implements ObservacionBeanRemote {
     
 	@Override
     public boolean CrearObservacion(String CodOBS, String usuario, String fenomeno, String localidad, 
-    		String descripcion, Blob imagen, float latitud, float longitud, float altitud, String estado, Date fecha) throws ServiciosException
+    		String descripcion,  byte[] imagen, float latitud, float longitud, float altitud, String estado, Date fecha) throws ServiciosException
     {
     	boolean pudeCrear;
     	
@@ -76,7 +76,7 @@ public class ObservacionBean implements ObservacionBeanRemote {
 	
 	@Override
     public boolean ModificarObservacion(Long id, String usuario, String fenomeno, String localidad, 
-    		String descripcion, Blob imagen, float latitud, float longitud, float altitud, String estado, Date fecha) throws ServiciosException
+    		String descripcion,  byte[] imagen, float latitud, float longitud, float altitud, String estado, Date fecha) throws ServiciosException
     {		
     	boolean pudeModificar;
     	
