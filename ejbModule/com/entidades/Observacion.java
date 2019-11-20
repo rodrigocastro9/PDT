@@ -1,7 +1,7 @@
 package com.entidades;
 
 import java.io.Serializable;
-import java.sql.Blob;
+
 import java.util.Date;
 
 import javax.persistence.*;
@@ -18,7 +18,8 @@ public class Observacion implements Serializable {
 	}
 	
     @Id
-    @GeneratedValue( strategy = GenerationType.AUTO )
+    @GeneratedValue( strategy = GenerationType.SEQUENCE, generator="secuenciaObservacion" )
+    @SequenceGenerator(name="secuenciaObservacion",sequenceName="SEQ_OBSERVACIONID", allocationSize=1)
     @Column(name="ID_OBSERVACION")
     private long id;
     @Column(name="CODIGO_OBS")
