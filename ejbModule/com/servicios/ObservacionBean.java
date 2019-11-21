@@ -58,10 +58,6 @@ public class ObservacionBean implements ObservacionBeanRemote {
     	
     	obs = new Observacion(CodOBS, usu, fen, loc, descripcion, imagen, latitud ,longitud, altitud, est, fecha);
     	
-    /*	//pasar lista de palabras inconvenientes en el segundo parametro
-    	if(!this.validarDescripcion(obs, this.palabras))
-    		obs.setDescripcion("CONTENIDO INCONVENIENTE");
-    */
     	try {
     		
     		this.obsDao.AgregarObservacion(obs);
@@ -75,7 +71,7 @@ public class ObservacionBean implements ObservacionBeanRemote {
     }
 	
 	@Override
-    public boolean ModificarObservacion(Long id, String usuario, String fenomeno, String localidad, 
+    public boolean ModificarObservacion(Long id, String CodOBS, String usuario, String fenomeno, String localidad, 
     		String descripcion,  byte[] imagen, float latitud, float longitud, float altitud, String estado, Date fecha) throws ServiciosException
     {		
     	boolean pudeModificar;
@@ -86,8 +82,8 @@ public class ObservacionBean implements ObservacionBeanRemote {
 		Estado est = this.estDao.obtenerEstadonombre(estado);
     	
     	
-    	
-    	obs.setId(id); // el id no deberia poder modificarse Soy rodrigo
+    	obs.setCodigo_OBS(CodOBS);
+    	obs.setId(id); 
     	obs.setUsuario(usu);
     	obs.setFenomeno(fen);
     	obs.setLocalidad(loc);
@@ -99,9 +95,6 @@ public class ObservacionBean implements ObservacionBeanRemote {
     	obs.setEstado(est);
     	obs.setFecha(fecha);
     	
-    	//pasar lista de palabras inconvenientes en el segundo parametro
-    	if(!this.validarDescripcion(obs, this.palabras))
-    		obs.setDescripcion("CONTENIDO INCONVENIENTE");
     	
     	try {
     		this.obsDao.ModificarObservacion(obs);

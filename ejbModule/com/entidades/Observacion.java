@@ -39,8 +39,6 @@ public class Observacion implements Serializable {
 	private String descripcion;
     @Lob
 	private byte[] imagen;
-    //@Column(name="IMAGEN")
-	//private Blob imagen;
     @Column(name="LATITUD",length=(50),nullable=false)
 	private float latitud;
 	@Column(name="LONGITUD",length=(50),nullable=false)
