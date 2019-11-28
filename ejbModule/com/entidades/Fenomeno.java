@@ -36,9 +36,9 @@ public class Fenomeno implements Serializable{
     @SequenceGenerator(name="secuenciafenomeno",sequenceName="SEQ_CODIGOFENOMENO", allocationSize=1)
 	@Column(name="CODIGO_FEN",updatable = false)
     private long id;
-    @Column(name="CODIGO",length=40, nullable=true)
+    @Column(name="CODIGO",length=50, nullable=true)
     private String codigo;
-    @Column(name="NOMBRE_FEN", length=40, nullable=true)
+    @Column(name="NOMBRE_FEN", length=50, nullable=true)
     private String nombreFen;
     @Column(name="ESTADO", length=50, nullable=true)
     private String estado;
