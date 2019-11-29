@@ -39,8 +39,6 @@ public class ObservacionBean implements ObservacionBeanRemote {
 	Fenomeno fen = new Fenomeno();
 	
 	
-	//dato de prueba
-	private List<String> palabras = Arrays.asList("insulto1", "insulto2", "insulto3");
 	
     public ObservacionBean() 
     {}
@@ -52,7 +50,7 @@ public class ObservacionBean implements ObservacionBeanRemote {
     	boolean pudeCrear;
     	
     	Usuario usu = this.usuDao.obtenerUsuario(usuario);
-		Fenomeno fen = this.fenDao.obtenerFenomeno(fenomeno);
+    	Fenomeno fen = this.fenDao.obtenerNombreFen(fenomeno);
 		Localidad loc = this.locDao.obtenerLocalidad(localidad);
 		Estado est = this.estDao.obtenerEstadonombre(estado);
     	
@@ -77,7 +75,7 @@ public class ObservacionBean implements ObservacionBeanRemote {
     	boolean pudeModificar;
     	
     	Usuario usu = this.usuDao.obtenerUsuario(usuario);
-		Fenomeno fen = this.fenDao.obtenerFenomeno(fenomeno);
+		Fenomeno fen = this.fenDao.obtenerNombreFen(fenomeno);
 		Localidad loc = this.locDao.obtenerLocalidad(localidad);
 		Estado est = this.estDao.obtenerEstadonombre(estado);
     	
@@ -153,6 +151,9 @@ public class ObservacionBean implements ObservacionBeanRemote {
 	public List<Observacion> existeObservacion(String identificacion){
 		List <Observacion> observaciones = this.obsDao.existeObservacion(identificacion);		
 		 return observaciones;
-	}	
+	}
+	
+	
+	
 	
 }

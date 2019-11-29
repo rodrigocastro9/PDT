@@ -115,8 +115,16 @@ public class Fenomenodao {
 
 		}    
     
-    
-   
+    public Fenomeno obtenerNombreFen(String nombreFen) {
+
+    	TypedQuery<Fenomeno> query = em.createQuery("SELECT f FROM Fenomeno f where f.nombreFen LIKE : nombreFen",Fenomeno.class).setParameter("nombreFen",nombreFen);
+    	
+    	Fenomeno f = query.getSingleResult();
+    	
+    	return f;
+
+	}    
+
     public List <Fenomeno> obtenerFenomenosTodos(String codigo){
     	
     	TypedQuery<Fenomeno> query = em.createQuery("SELECT f FROM Fenomeno f where f.codigo LIKE : codigo",Fenomeno.class).setParameter("codigo",codigo);
