@@ -9,6 +9,7 @@ import javax.ejb.Stateless;
 import com.Remote.LocalidadBeanRemote;
 import com.dao.Localidaddao;
 import com.entidades.Localidad;
+import com.entidades.Usuario;
 
 @Stateless
 @LocalBean
@@ -25,5 +26,12 @@ public class LocalidadBean implements LocalidadBeanRemote{
 		List <Localidad> localidades = locdao.obtenerTodasLocalidades();
 		
 		return localidades;
+	}
+	
+	public Localidad obtenerLocalidad(String loc) {
+		
+		Localidad localidad = this.locdao.obtenerLocalidad(loc);
+	   	 return localidad;
+		
 	}
 }

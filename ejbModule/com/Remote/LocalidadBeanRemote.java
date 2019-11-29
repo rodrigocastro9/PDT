@@ -12,4 +12,6 @@ public interface LocalidadBeanRemote {
 
 	List <Localidad> obtenerTodasLocalidades();
 	
+	Localidad obtenerLocalidad(String localidad);
+	
 }
