@@ -3,10 +3,6 @@ package com.entidades;
 import java.io.Serializable;
 import javax.persistence.*;
 
-/**
- * Entity implementation class for Entity: Localidad
- *
- */
 @Entity
 @Table(name = "LOCALIDAD")
 public class Localidad implements Serializable {
@@ -20,7 +16,7 @@ public class Localidad implements Serializable {
 
 	@Id
 	@SequenceGenerator(name="secuencialoc",sequenceName="SEQ_IDLOCALIDADID", initialValue=1, allocationSize=100)
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="secuencialoc")// ver como funciona los trigger.
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="secuencialoc")
 	@Column(name="ID_LOCALIDAD")
 	private long id;
 	@ManyToOne (optional=false)

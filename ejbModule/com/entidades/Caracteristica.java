@@ -12,7 +12,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
-//Probando
 
 @Entity
 @Table(name = "CARACTERISTICAS")

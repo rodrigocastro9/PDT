@@ -60,13 +60,7 @@ public class Observaciondao {
 	    }
     }
  
-	public List<Observacion> ListarObservacionporID(long ID_OBSERVACION)
-	{
-    	TypedQuery<Observacion> query = em.createQuery("SELECT O FROM OBSERVACIONES O WHERE O.ID_OBSERVACION LIKE :ID_OBSERVACION", Observacion.class)
-				.setParameter("ID_OBSERVACION", ID_OBSERVACION); 
-		return query.getResultList();
-	}
-    
+    //Listar todas las observaciones
     public List<Observacion> obtenerTodasObservaciones() 
     {
 		TypedQuery<Observacion> query = this.em.createQuery("select o from Observacion o", Observacion.class);
@@ -74,6 +68,7 @@ public class Observaciondao {
 		return observaciones;
 	}
    
+    //Lista de observaciones por codigo
     public List<Observacion> existeObservacion(String codigo_OBS) {
   		
   		TypedQuery<Observacion> query = em.createQuery("SELECT o FROM Observacion o WHERE o.codigo_OBS LIKE :codigo_OBS", Observacion.class).setParameter("codigo_OBS", codigo_OBS);

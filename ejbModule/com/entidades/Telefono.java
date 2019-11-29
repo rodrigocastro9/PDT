@@ -1,6 +1,4 @@
 
-
-
 package com.entidades;
 
 import java.io.Serializable;
@@ -10,8 +8,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 
@@ -20,7 +16,6 @@ import javax.persistence.Table;
 public class Telefono implements Serializable{
 
     public Telefono() {
-        // TODO Auto-generated constructor stub
     }
     
     private static final long serialVersionUID = 1L;
@@ -34,17 +29,6 @@ public class Telefono implements Serializable{
     @Column(name="NUMERO", length=20, nullable=true)
     private String numero;
     
-    /*@ManyToOne (optional=false)
-    @JoinColumn (name="CODIGO_FEN")
-    private Fenomeno fenomeno;*/
-   
-/*	public Fenomeno getFenomeno() {
-		return fenomeno;
-	}
-	public void setFenomeno(Fenomeno fenomeno) {
-		this.fenomeno = fenomeno;
-	}
-	*/
 	public long getId() {
 		return id;
 	}
@@ -71,7 +55,6 @@ public class Telefono implements Serializable{
 		this.id = id;
 		this.nombre = nombre;
 		this.numero = numero;
-		//this.fenomeno = fenomeno;
 	}
 	
 

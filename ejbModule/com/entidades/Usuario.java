@@ -1,4 +1,3 @@
-//usuario
 package com.entidades;
 
 import java.io.Serializable;
@@ -13,9 +12,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
-/**
- * Session Bean implementation class Usuario
- */
 @Entity
 @Table(name = "USUARIO")
 public class Usuario implements Serializable{
@@ -24,7 +20,6 @@ public class Usuario implements Serializable{
 	
 	
     public Usuario() {
-        // TODO Auto-generated constructor stub
     }
 
     @Id

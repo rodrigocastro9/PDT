@@ -11,18 +11,12 @@ public class PK_Detalle implements Serializable{
     private static final long serialVersionUID = 1L;
 
     
-    //Atributos
     @Column(name="ID_CARACT")    
     private long caracteristica;
     @Column(name="ID_OBSERVACION")
     private long observacion;
-    
-	//Propiedades
+   	
 	
-	
-	
-
-	//Constructor por defecto
 	public PK_Detalle()
 	{}
 	

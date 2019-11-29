@@ -1,9 +1,7 @@
 package com.entidades;
 
 import java.io.Serializable;
-
 import java.util.Date;
-
 import javax.persistence.*;
 
 @Entity
@@ -129,7 +127,6 @@ public class Observacion implements Serializable {
 	public Observacion(String codigo_OBS, Usuario usuario, Fenomeno fenomeno, Localidad localidad,
 			String descripcion, byte[] imagen, float latitud, float longitud, float altitud, Estado estado, Date fecha) {
 		super();
-		this.id = id;
 		this.codigo_OBS = codigo_OBS;
 		this.usuario = usuario;
 		this.fenomeno = fenomeno;

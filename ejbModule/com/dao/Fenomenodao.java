@@ -1,20 +1,14 @@
 package com.dao;
 
-import java.sql.SQLException;
 import java.util.List;
-
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceException;
 import javax.persistence.TypedQuery;
-
-import com.entidades.Estado;
 import com.entidades.Fenomeno;
-import com.entidades.Localidad;
 import com.entidades.Telefono;
-import com.entidades.TipoUsuario;
 import com.exception.ServiciosException;
 
 
@@ -37,7 +31,7 @@ public class Fenomenodao {
 		System.out.println ("Error al querer Agregar el Fenomeno.");
 		}
 	}
-		
+	
 	public void ModificarFenomeno (Fenomeno fenomeno) throws ServiciosException
 	{
 		try 
@@ -66,17 +60,14 @@ public class Fenomenodao {
 		}
 	}
 	
+	//Listar Todos los telefonos
 	public List<Fenomeno>obtenerfenomenos ()
 	{
 		TypedQuery<Fenomeno> query= em.createQuery("SELECT F FROM Fenomeno F",Fenomeno.class);
 			return query.getResultList();
 	}
 	
-	public Fenomeno obtenerfenomenoporcodigo(String codigo)
-	{
-		return this.em.find(Fenomeno.class,codigo);
-	}
-	
+	//Obtener una lista de fenomenos por el codigo
 	public List<Fenomeno> existeFenomeno(String codigo)
 	{
 		//Fenomeno fen = new Fenomeno();
@@ -84,21 +75,16 @@ public class Fenomenodao {
 		return query.getResultList();
 		
 	}
-	
-	public Fenomeno obtenercodigoFen(long codigofen) {
 
-		return this.em.find(Fenomeno.class, codigofen);
-
-	}
-
-	 public Telefono obtenertelefonoemergencia(String nombre) {
+	//Obtener un Telefono por el nombre
+	public Telefono obtenertelefonoemergencia(String nombre) {
 		  
 		  TypedQuery<Telefono> query = em.createQuery("SELECT TU FROM Telefono TU where TU.nombre LIKE: nombre ",Telefono.class)
 				  .setParameter("nombre", nombre);
 			return query.getSingleResult();
-		  //SELECT u FROM Usuario u WHERE u.Usuario LIKE :nombre AND u.PASS LIKE :pass
 		}
-	    
+	
+	//Obtener una lista de telefonos
     public List<Telefono> obtenerTelEmergencia() {
     	 TypedQuery<Telefono> query = this.em.createQuery("select u FROM Telefono u", Telefono.class);
   		
@@ -107,6 +93,7 @@ public class Fenomenodao {
     	 return tus;	
     }    
 
+    //Obtener Fenomeno por el codigo
     public Fenomeno obtenerFenomeno(String codigo) {
 
 	    	TypedQuery<Fenomeno> query = em.createQuery("SELECT f FROM Fenomeno f where f.codigo LIKE : codigo",Fenomeno.class).setParameter("codigo",codigo);
@@ -115,6 +102,7 @@ public class Fenomenodao {
 
 		}    
     
+    //Obtener Fenomeno por el nombre
     public Fenomeno obtenerNombreFen(String nombreFen) {
 
     	TypedQuery<Fenomeno> query = em.createQuery("SELECT f FROM Fenomeno f where f.nombreFen LIKE : nombreFen",Fenomeno.class).setParameter("nombreFen",nombreFen);
@@ -125,15 +113,4 @@ public class Fenomenodao {
 
 	}    
 
-    public List <Fenomeno> obtenerFenomenosTodos(String codigo){
-    	
-    	TypedQuery<Fenomeno> query = em.createQuery("SELECT f FROM Fenomeno f where f.codigo LIKE : codigo",Fenomeno.class).setParameter("codigo",codigo);
-		
-    		
-    	return query.getResultList();
-    }
-    
-	    
-	    
-	    
 }

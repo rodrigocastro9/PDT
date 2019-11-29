@@ -53,6 +53,7 @@ public class Usuariodao {
 		}
 	}
 
+	//Lista de usuario por nombre de usuario y password
 	public List<Usuario> Login (String usuario, String pass){
 	    	TypedQuery<Usuario> query = em.createQuery("SELECT u FROM Usuario u WHERE u.usuario LIKE :usuario AND u.pass LIKE :pass",Usuario.class)
 					.setParameter("usuario", usuario)
@@ -63,6 +64,7 @@ public class Usuariodao {
 			 
 	    }
     
+	//Lista de usuario por nombre de usuario
   	public List<Usuario> existeUsuario(String usuario) {
   		
   		TypedQuery<Usuario> query = em.createQuery("SELECT U FROM Usuario U WHERE U.usuario LIKE :usuario",Usuario.class).setParameter("usuario",usuario);
@@ -72,7 +74,8 @@ public class Usuariodao {
   		return us;
   	}
   	
-  	 public Usuario obtenerUsuario(String usuario) {
+  	//Obtener usuario por nombre de usuario
+  	public Usuario obtenerUsuario(String usuario) {
 
 	    	TypedQuery<Usuario> query = em.createQuery("SELECT u FROM Usuario u where u.usuario LIKE : usuario",Usuario.class).setParameter("usuario",usuario);
 			return query.getSingleResult();

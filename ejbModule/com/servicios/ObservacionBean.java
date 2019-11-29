@@ -1,20 +1,14 @@
 package com.servicios;
 
-import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
-
 import javax.ejb.EJB;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
-
 import com.Remote.ObservacionBeanRemote;
 import com.dao.*;
 import com.entidades.*;
 import com.exception.ServiciosException;
-
-import java.sql.Blob;
-
 
 
 @Stateless
@@ -120,11 +114,7 @@ public class ObservacionBean implements ObservacionBeanRemote {
 		return pudeEliminar;
 	}
 	
-	@Override
-	public List<Observacion> ListarObservacionporID(long ID_OBSERVACION){
-
-		return this.obsDao.ListarObservacionporID(ID_OBSERVACION);
-	}
+	
 	
 	@Override
 	public List<Observacion> obtenerTodasObservaciones(){

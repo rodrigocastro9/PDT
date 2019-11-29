@@ -12,7 +12,7 @@ import javax.persistence.*;
 public class Detalle implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
-    
+    //Esta es una PK compuesta que esta definida en la entity PK_Detalle
 	@EmbeddedId
 	private PK_Detalle pkDetalle;
 	

@@ -1,15 +1,12 @@
 package com.servicios;
 
 import java.util.List;
-
 import javax.ejb.EJB;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
-
 import com.Remote.LocalidadBeanRemote;
 import com.dao.Localidaddao;
 import com.entidades.Localidad;
-import com.entidades.Usuario;
 
 @Stateless
 @LocalBean

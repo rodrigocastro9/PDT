@@ -21,7 +21,6 @@ public class FenomenoBean implements FenomenoBeanRemote {
 	private Fenomenodao fenomenodao;
 	public FenomenoBean() 
 	{}
-	//Fenomeno fenomeno= new Fenomeno();
 	
 	@Override
 	public boolean crearFenomeno(String codigo,String estado, String nombreFen,String descripcion,String nombre) throws ServiciosException

@@ -12,18 +12,17 @@ import com.entidades.Estado;
 public class Estadodao {
 	
 	
-	
 	@PersistenceContext
 	private EntityManager em;
 
-	
+	//Obtengo el estado por el nombre
 	  public Estado obtenerEstadonombre(String nombre) {
 		  
 		  TypedQuery<Estado> query = em.createQuery("SELECT e FROM Estado e where e.nombre LIKE : nombre",Estado.class).setParameter("nombre",nombre);
 			return query.getSingleResult();
 		}
 	  
-	
+	//Obtengo la lista de estados
     public List<Estado> obtenerTodasEstados() 
     {
 		TypedQuery<Estado> query = this.em.createQuery("select e from Estado e", Estado.class);

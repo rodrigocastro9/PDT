@@ -10,7 +10,7 @@ import javax.persistence.*;
 public class ExRevisaObs implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	
+	//Esta es una PK compuesta que esta definida en la entity PK_ExRevisaObs
 	@EmbeddedId
 	private PK_ExRevisaObs pkRevisa;
 	
